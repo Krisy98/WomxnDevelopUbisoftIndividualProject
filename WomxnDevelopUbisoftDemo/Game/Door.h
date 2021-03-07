@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 class Door : public sf::Drawable, public BoxCollideable
 {
 public:
@@ -17,6 +19,9 @@ private:
 	float m_rColor;
 	float m_gColor;
 	float m_bColor;
+
+	
+	
 
 	bool m_IsPlayingEndGame;
 };

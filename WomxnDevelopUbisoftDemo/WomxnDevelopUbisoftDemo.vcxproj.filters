@@ -20,20 +20,41 @@
     <ClCompile Include="..\external\imgui-master\imgui_tables.cpp">
       <Filter>Engine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="Game\MainCharacter.cpp">
+    <ClCompile Include="Entity.cpp">
+      <Filter>Engine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="MainLoop.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainCharacter.cpp">
+      <Filter>Game\Demo</Filter>
     </ClCompile>
     <ClCompile Include="Game\Door.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Game.cpp">
-      <Filter>Engine</Filter>
+      <Filter>Game\Demo</Filter>
     </ClCompile>
     <ClCompile Include="Game\GameDemo.cpp">
-      <Filter>Game</Filter>
+      <Filter>Game\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Game.cpp">
+      <Filter>Engine\Demo</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Collision.cpp">
-      <Filter>Engine</Filter>
+      <Filter>Engine\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayContext.cpp">
+      <Filter>Game\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="Context.cpp">
+      <Filter>Game\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerEmplacement.cpp">
+      <Filter>Game\Entities\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="Insect.cpp">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClCompile>
+    <ClCompile Include="Flower.cpp">
+      <Filter>Game\Entities\Dynamic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,20 +68,44 @@
     <ClInclude Include="..\external\imgui-sfml-master\imgui-SFML.h">
       <Filter>Engine\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Engine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="MainLoop.h">
+      <Filter>Game</Filter>
+    </ClInclude>
     <ClInclude Include="Game\MainCharacter.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Door.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Game.h">
-      <Filter>Engine</Filter>
+      <Filter>Game\Demo</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameDemo.h">
-      <Filter>Game</Filter>
+      <Filter>Game\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Door.h">
+      <Filter>Game\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Game.h">
+      <Filter>Engine\Demo</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Collision.h">
-      <Filter>Engine</Filter>
+      <Filter>Engine\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayContext.h">
+      <Filter>Game\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="Context.h">
+      <Filter>Game\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerEmplacement.h">
+      <Filter>Game\Entities\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="Insect.h">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="Flower.h">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityType.h">
+      <Filter>Game\Entities\Dynamic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +117,27 @@
     </Filter>
     <Filter Include="Engine\ImGui">
       <UniqueIdentifier>{f630cd3c-1cea-471c-9a95-a35b86a8dd9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Entities">
+      <UniqueIdentifier>{1f480547-ed0b-459a-82a7-bcb930f48472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entities">
+      <UniqueIdentifier>{1ebb8cb2-f30f-48aa-90b3-caaf13ac03b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Demo">
+      <UniqueIdentifier>{ec1cf4e2-4f83-4355-93b7-39f605d26411}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Demo">
+      <UniqueIdentifier>{ca0ffad1-3364-4340-90aa-a1b7939b11ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Context">
+      <UniqueIdentifier>{8484cf38-7f27-4740-89b7-1a255c25e000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entities\Dynamic">
+      <UniqueIdentifier>{50066bc9-5842-4d0f-a6d1-9f574e989799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entities\Static">
+      <UniqueIdentifier>{4f32e13e-5938-494d-bb41-4152807a332a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
