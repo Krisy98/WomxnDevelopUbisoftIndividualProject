@@ -27,7 +27,7 @@ void Game::RunGameLoop(){
         clock.restart();
 
         sf::Event event;
-
+       
         while (m_Window.pollEvent(event)) {
             switch (event.type) {
                 case sf::Event::Closed:
@@ -47,9 +47,9 @@ void Game::RunGameLoop(){
 
         ImGui::SFML::Update(m_Window, clock.restart());
 
-        Update(deltaTime);
-        Render(m_Window);
-        RenderDebugMenu(m_Window);
+        Update(deltaTime); // call Update function of GameDemo class
+        Render(m_Window); //
+        RenderDebugMenu(m_Window); //
 
         ImGui::EndFrame();
         if (toggleImGui) { ImGui::SFML::Render(m_Window); }
@@ -58,4 +58,8 @@ void Game::RunGameLoop(){
 
         deltaTime = clock.getElapsedTime().asSeconds();
     }
+}
+
+sf::RenderWindow *Game::getWindow(){
+    return &m_Window;
 }

@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "GameDemo.h"
+#include "Door.h"
+#include "MainCharacter.h"
+
 
 GameDemo::GameDemo()
     : Game{ "Game Demo" }
