@@ -2,6 +2,7 @@
 
 #include "Engine/Entities/Entity.h"
 #include "EntityType.h"
+#include "Engine/Shapes/Shape.h"
 
 class Flower : public Entity {
 
@@ -19,15 +20,7 @@ public :
 	//bool isOnMouseMoved(sf::Window *win);
 	
 private :
-
-	/// <summary>
-	/// Set the attributes value according to the flowertype
-	/// </summary>
-	/// <param name="type">value from FlowerType enum</param>
-	void initFromType(FlowerType type);
-
-	void setRange(float value);
-
+	Shape shaper;
 	sf::Event event;
 
 	sf::CircleShape circle;
@@ -40,12 +33,18 @@ private :
 
 	//int damage;
 
-	
 
 	bool visibleRange;
 
 
-	
+
+	/// <summary>
+	/// Set the attributes value according to the flowertype
+	/// </summary>
+	/// <param name="type">value from FlowerType enum</param>
+	void initFromType(FlowerType type);
+
+	void setRange(float value);
 
 };
 

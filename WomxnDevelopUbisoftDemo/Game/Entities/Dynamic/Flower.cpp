@@ -9,20 +9,10 @@ Flower::Flower(float xPosition, float yPosition, FlowerType type){
 
 	initFromType(type);
 
-	circle.setPosition(sf::Vector2f(getXPosition(), getYPosition()));
-	circle.setRadius(this->plantRadius);
-	
-	circle.setFillColor(sf::Color(0, 0, 0, 0));
-	circle.setOutlineThickness(1.f); // 1px wide 
-	circle.setOutlineColor(getColor());
+	this->circle = shaper.getCircle(getXPosition(), getYPosition(), this->plantRadius);
 
-	//
-	circleRange.setPosition(sf::Vector2f(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius));
-	circleRange.setRadius(this->rangeRadius);
+	this->circle = shaper.setColor(circle, sf::Color(0, 0, 0, 0), 1.f, getColor());
 
-	circleRange.setFillColor(sf::Color(0, 255, 255, 1));
-	circleRange.setOutlineThickness(1.f); // 1px wide 
-	circleRange.setOutlineColor(sf::Color(0, 255, 255, 0.3));
 }
 
 Flower::~Flower(){
