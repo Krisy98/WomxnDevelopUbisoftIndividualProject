@@ -9,10 +9,15 @@ Flower::Flower(float xPosition, float yPosition, FlowerType type){
 
 	initFromType(type);
 
-	this->circle = shaper.getCircle(getXPosition(), getYPosition(), this->plantRadius);
 
-	this->circle = shaper.setColor(circle, sf::Color(0, 0, 0, 0), 1.f, getColor());
+	circle = shaper.getCircle(getXPosition(), getYPosition(), this->plantRadius);
 
+	circle = shaper.setColor(circle, sf::Color(0, 0, 0, 0), 1.f, getColor());
+
+
+	circleRange = shaper.getCircle(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius, this->rangeRadius);
+
+	circleRange = shaper.setColor(circleRange, sf::Color(0, 255, 255, 0.8), 1.f, sf::Color(0, 255, 255, 1));
 }
 
 Flower::~Flower(){
