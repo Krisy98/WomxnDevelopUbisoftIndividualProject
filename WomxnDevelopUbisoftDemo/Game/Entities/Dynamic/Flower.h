@@ -11,14 +11,15 @@ public :
 	~Flower();
 
 	void draw(sf::RenderTarget& target) override;
-	void update() override;
+	void update(sf::RenderWindow& win) override;
 
 	void setVisibleRange(bool value);
 	bool getVisibleRange();
+	
+	sf::Color getRangeColor();
+	sf::Color getRangeOutLineColor();
+	
 
-	
-	//bool isOnMouseMoved(sf::Window *win);
-	
 private :
 	Shape shaper;
 	sf::Event event;
@@ -28,11 +29,9 @@ private :
 
 
 	float plantRadius; 
-
 	float rangeRadius; 
 
 	//int damage;
-
 
 	bool visibleRange;
 

@@ -1,8 +1,9 @@
 #include "stdafx.h"
+#include <iostream>
 #include "PlayContext.h"
 
 
-PlayContext::PlayContext(sf::Window *win){
+PlayContext::PlayContext(){
 
 	flowers->current = nullptr;
 	flowers->next = nullptr;
@@ -11,45 +12,43 @@ PlayContext::PlayContext(sf::Window *win){
 	insects->next = nullptr;
 
 
-
 	addFlower(200, 200, FlowerType::Anemone);
-
 	addFlower(100, 200, FlowerType::Delphinium);
-
-
 
 	this->emplacement = new TowerEmplacement(200, 200);
 }
 
 PlayContext::~PlayContext(){
+	while (flowers->current != nullptr) {
+		delete flowers->current;
+		flowers = flowers->next;
+	}
+
+	while (insects->current != nullptr) {
+		delete insects->current;
+		insects = insects->next;
+	}
+
+	delete emplacement;
 }
 
 
-void PlayContext::update(){
-
+void PlayContext::update(sf::RenderWindow& win){
 	// movement
 	// collision
 
+	updateEntities(*flowers, win);
 
-	updateEntities(*flowers);
-
-	
-	//printf("" + flowers->current->isOnMouseMoved(&win));
-	
-	// y a rien
-	//if ((flowers->current)->isOnMouseMoved(&win)) ((Flower*) flowers->current)->setVisibleRange(true);
-
-	//if (event.type == sf::Event::MouseMoved) printf("he");
 }
 
-void PlayContext::updateEntities(Entities entities) {
+void PlayContext::updateEntities(Entities entities, sf::RenderWindow& win) {
 	Entities start = entities;
 
-	if (start.current != nullptr) start.current->update();
+	if (start.current != nullptr) start.current->update(win);
 
 	while (start.next != nullptr) {
 		start = *start.next;
-		start.current->update();
+		start.current->update(win);
 	}
 }
 
@@ -73,8 +72,6 @@ void PlayContext::renderEntities(sf::RenderTarget& target, Entities entities){
 		start.current->draw(target);
 	}
 }
-
-
 
 void PlayContext::addFlower(float x, float y, FlowerType type) {
 	Entities* start = flowers;

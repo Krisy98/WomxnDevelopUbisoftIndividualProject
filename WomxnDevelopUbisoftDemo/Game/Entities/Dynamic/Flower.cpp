@@ -1,36 +1,55 @@
 #include "stdafx.h"
+#include <iostream>
 #include "Flower.h"
 
 
 Flower::Flower(float xPosition, float yPosition, FlowerType type){
 	setPosition(xPosition, yPosition);
-	this->plantRadius = 20.0/2;
+
+	this->plantRadius = 10.f;
 	this->visibleRange = false;
+
+	setWidth(20.f);
+	setHeight(20.f);
+
+	createBoundingBox();
 
 	initFromType(type);
 
-
 	circle = shaper.getCircle(getXPosition(), getYPosition(), this->plantRadius);
-
 	circle = shaper.setColor(circle, sf::Color(0, 0, 0, 0), 1.f, getColor());
-
 
 	circleRange = shaper.getCircle(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius, this->rangeRadius);
 
-	circleRange = shaper.setColor(circleRange, sf::Color(0, 255, 255, 0.8), 1.f, sf::Color(0, 255, 255, 1));
+	circleRange = shaper.setColor(circleRange, getRangeColor(), 1.f, getRangeOutLineColor());
 }
 
 Flower::~Flower(){
 }
 
+void Flower::update(sf::RenderWindow& window){
+	
 
-void Flower::update(){
+	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+	//std::cout << mousePos.x << std::endl;
+	
 	// collision
+
+	if (mousePos.x >= getXPosition() && mousePos.x <= getXPosition() + getWidth() &&
+		mousePos.y >= getYPosition() && mousePos.y <= getYPosition() + getHeight())
+		setVisibleRange(true);
+	else
+		setVisibleRange(false);
+
+
 	
 }
 
 void Flower::draw(sf::RenderTarget& target) {
 	target.draw(circle);
+
+	//target.draw(circleRange);
 
 	if (this->visibleRange) target.draw(circleRange);
 }
@@ -39,28 +58,9 @@ void Flower::setVisibleRange(bool value){ this->visibleRange = value; }
 
 bool Flower::getVisibleRange(){ return this->visibleRange; }
 
-/*
-bool Flower::isOnMouseMoved(sf::Window *win){
-	while (win->pollEvent(event)) {
-		printf("event poll ! ");
-		switch (event.type) {
+sf::Color Flower::getRangeColor(){ return sf::Color(static_cast<uint8_t>(0.0f), static_cast<uint8_t>(255.0f), static_cast<uint8_t>(255.0f), static_cast<uint8_t>(0.1 * 255.0f)); }
 
-			case sf::Event::MouseMoved :
-				printf("mouseMoved ! ");
-				return true;
-
-			case sf::Event::MouseButtonPressed :
-				printf("mouse pressed ");
-				break;
-
-			default:
-				break;
-		}
-	}
-	printf("no event ...");
-	return false;
-}
-*/
+sf::Color Flower::getRangeOutLineColor(){ return sf::Color(static_cast<uint8_t>(255.0f), static_cast<uint8_t>(255.0f), static_cast<uint8_t>(255.0f), static_cast<uint8_t>(255.0f)); }
 
 void Flower::setRange(float value){ this->rangeRadius = value; }
 

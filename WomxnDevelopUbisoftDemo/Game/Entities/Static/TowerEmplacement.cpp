@@ -44,7 +44,7 @@ void TowerEmplacement::draw(sf::RenderTarget& target){
 	target.draw(shape);
 }
 
-void TowerEmplacement::update(){
+void TowerEmplacement::update(sf::RenderWindow& win){
 	// click mouse event
 
 }

@@ -7,7 +7,6 @@ class Insect : public Entity {
 
 public : 
 	Insect(float xPosition, float yPosition, InsectType type);
-	~Insect();
 
 	void initialization(InsectType type);
 

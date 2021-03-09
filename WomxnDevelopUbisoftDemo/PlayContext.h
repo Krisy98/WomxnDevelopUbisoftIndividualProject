@@ -14,13 +14,13 @@ struct Entities {
 class PlayContext : public Context {
 
 public :
-	PlayContext(sf::Window *win);
+	PlayContext();
 	virtual ~PlayContext();
 
-	virtual void update();
+	virtual void update(sf::RenderWindow& win);
 	virtual void render(sf::RenderTarget& target);
 	
-	void updateEntities(Entities entities);
+	void updateEntities(Entities entities, sf::RenderWindow& win);
 
 	/// <summary>
 	/// Render (draw) a child entity
@@ -30,9 +30,11 @@ public :
 	void renderEntities(sf::RenderTarget& target, Entities entities);
 
 
+	
+
+
 private :
-	sf::Event event;
-	sf::Window win;
+	sf::RenderWindow window;
 
 	void addFlower(float x, float y, FlowerType type);
 

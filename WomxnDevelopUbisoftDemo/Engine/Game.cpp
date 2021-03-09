@@ -39,7 +39,11 @@ void Game::RunGameLoop(){
                     else if (event.key.code == sf::Keyboard::F1) { toggleImGui = !toggleImGui; }
                     break;
                 
-                case sf::Event::Resized:  break;
+                //case sf::Event::Resized:  break;
+
+                case sf::Event::MouseMoved :
+                    //controller(event);
+                    break;
             }
 
             ImGui::SFML::ProcessEvent(event);
@@ -60,6 +64,7 @@ void Game::RunGameLoop(){
     }
 }
 
-sf::RenderWindow *Game::getWindow(){
-    return &m_Window;
+sf::RenderWindow* Game::getWindow(){
+    sf::RenderWindow *win = &m_Window;
+    return win;
 }

@@ -10,7 +10,7 @@ public:
 
 protected:
 
-    sf::RenderWindow *getWindow();
+    sf::RenderWindow* getWindow();
 
     // To override
     virtual void Update(float deltaTime) = 0;
