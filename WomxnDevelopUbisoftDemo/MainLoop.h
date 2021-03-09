@@ -19,9 +19,8 @@ public :
 private :
 
 	sf::Event event;
-	const char* title = "Flowers Survive";
 
-	Context *context = new PlayContext();  // first context of the program
+	Context *context;  // first context of the program
 
 
 };

@@ -2,7 +2,7 @@
 #include "MainLoop.h"
 
 MainLoop::MainLoop() :
-	Game{ title }
+	Game{ "Flowers Survive" }
 {
 
 	
@@ -23,6 +23,6 @@ void MainLoop::RenderDebugMenu(sf::RenderTarget& target){
 }
 
 void MainLoop::initPlayContext(){
-	this->context = new PlayContext();
+	this->context = new PlayContext(getWindow());
 }
 

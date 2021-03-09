@@ -3,22 +3,21 @@
 
 
 Flower::Flower(float xPosition, float yPosition, FlowerType type){
-	this->xPosition = xPosition;
-	this->yPosition = yPosition;
+	setPosition(xPosition, yPosition);
 	this->plantRadius = 20.0/2;
 	this->visibleRange = false;
 
 	initFromType(type);
 
-	circle.setPosition(sf::Vector2f(this->xPosition, this->yPosition));
+	circle.setPosition(sf::Vector2f(getXPosition(), getYPosition()));
 	circle.setRadius(this->plantRadius);
 	
 	circle.setFillColor(sf::Color(0, 0, 0, 0));
 	circle.setOutlineThickness(1.f); // 1px wide 
-	circle.setOutlineColor(sf::Color(static_cast<uint8_t>(this->m_rColor * 255.0f), static_cast<uint8_t>(this->m_gColor * 255.0f), static_cast<uint8_t>(this->m_bColor * 255.0f)));
+	circle.setOutlineColor(getColor());
 
 	//
-	circleRange.setPosition(sf::Vector2f(this->xPosition + plantRadius - rangeRadius, this->yPosition + plantRadius - rangeRadius));
+	circleRange.setPosition(sf::Vector2f(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius));
 	circleRange.setRadius(this->rangeRadius);
 
 	circleRange.setFillColor(sf::Color(0, 255, 255, 1));
@@ -45,13 +44,30 @@ void Flower::setVisibleRange(bool value){ this->visibleRange = value; }
 
 bool Flower::getVisibleRange(){ return this->visibleRange; }
 
-void Flower::setRange(float value){ this->rangeRadius = value; }
+/*
+bool Flower::isOnMouseMoved(sf::Window *win){
+	while (win->pollEvent(event)) {
+		printf("event poll ! ");
+		switch (event.type) {
 
-void Flower::setColor(double r, double g, double b) {
-	this->m_rColor = r;
-	this->m_gColor = g;
-	this->m_bColor = b;
+			case sf::Event::MouseMoved :
+				printf("mouseMoved ! ");
+				return true;
+
+			case sf::Event::MouseButtonPressed :
+				printf("mouse pressed ");
+				break;
+
+			default:
+				break;
+		}
+	}
+	printf("no event ...");
+	return false;
 }
+*/
+
+void Flower::setRange(float value){ this->rangeRadius = value; }
 
 void Flower::initFromType(FlowerType type) {
 	switch (type) {

@@ -1,23 +1,11 @@
 #include "stdafx.h"
 #include "Entity.h"
 
-/*
-Entity::Entity(float xPosition, float yPosition, float width, float height){
 
-	this->xPosition = xPosition;
-	this->yPosition = yPosition;
-
-	this->width = width;
-	this->height = height;
-
-	this->xSpeed = 0;
-	this->ySpeed = 0;
-
-	this->m_rColor = 0;
-	this->m_gColor = 0;
-	this->m_bColor = 0;
+void Entity::setPosition(float x, float y){
+	this->xPosition = x;
+	this->yPosition = y;
 }
-*/
 
 void Entity::setSpeed(float xSpeed, float ySpeed){
 	this->xSpeed = xSpeed;
@@ -28,23 +16,48 @@ float Entity::getXSpeed(){ return this->xSpeed; }
 
 float Entity::getYSpeed(){ return this->ySpeed; }
 
-void Entity::setWidth(float width){
-	this->width = width;
+sf::Color Entity::getColor(){
+	return sf::Color(static_cast<uint8_t>(this->m_rColor * 255.0f), static_cast<uint8_t>(this->m_gColor * 255.0f), static_cast<uint8_t>(this->m_bColor * 255.0f));
 }
 
-void Entity::setHeight(float height){
-	this->height = height;
-}
+float Entity::getXPosition(){ return this->xPosition; }
 
-// how to use it
-void Entity::setColor(float m_rColor, float m_gColor, float m_bColor){
-	
+float Entity::getYPosition(){ return this->yPosition; }
 
+void Entity::setWidth(float width){ this->width = width; }
+
+void Entity::setHeight(float height){ this->height = height; }
+
+void Entity::setColor(double m_rColor, double m_gColor, double m_bColor){
 	this->m_rColor = m_rColor;
 	this->m_gColor = m_gColor;
 	this->m_bColor = m_bColor;
 }
 
 
+
+
+/*
+bool Entity::isOnMouseMoved(sf::Window* win) {
+	while (win->waitEvent(event)) {
+		printf("event poll ! ");
+		switch (event.type) {
+
+		case sf::Event::MouseMoved:
+			printf("mouseMoved ! ");
+			return true;
+
+		case sf::Event::MouseButtonPressed:
+			printf("mouse pressed ");
+			break;
+
+		default:
+			break;
+		}
+	}
+	printf("no event ...");
+	return false;
+}
+*/
 
 
