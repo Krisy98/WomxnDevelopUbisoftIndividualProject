@@ -1,8 +1,8 @@
 #pragma once
 #include "Context.h"
-#include "Flower.h"
-#include "TowerEmplacement.h"
-#include "Insect.h"
+#include "Game/Entities/Dynamic/Flower.h"
+#include "Game/Entities/Dynamic/Insect.h"
+#include "Game/Entities/Static/TowerEmplacement.h"
 
 
 struct Entities {
@@ -19,11 +19,14 @@ public :
 
 	virtual void update();
 	virtual void render(sf::RenderTarget& target);
-
-	// update
+	
 	void updateEntities(Entities entities);
 
-	// render
+	/// <summary>
+	/// Render (draw) a child entity
+	/// </summary>
+	/// <param name="target">the render target</param>
+	/// <param name="entities">entities to render</param>
 	void renderEntities(sf::RenderTarget& target, Entities entities);
 
 
@@ -47,8 +50,6 @@ private :
 	/*
 	entities :
 		- flower
-		- visible way
-		- unvisible way
 		- insects (enemies) // specific to the level
 		- basic informations :
 			- life

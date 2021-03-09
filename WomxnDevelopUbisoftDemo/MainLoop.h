@@ -20,7 +20,7 @@ private :
 
 	sf::Event event;
 
-	Context *context;  // first context of the program
+	Context *context;
 
 
 };

@@ -20,9 +20,6 @@
     <ClCompile Include="..\external\imgui-master\imgui_tables.cpp">
       <Filter>Engine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Engine\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="MainLoop.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -47,14 +44,17 @@
     <ClCompile Include="Context.cpp">
       <Filter>Game\Context</Filter>
     </ClCompile>
-    <ClCompile Include="TowerEmplacement.cpp">
+    <ClCompile Include="Engine\Entities\Entity.cpp">
+      <Filter>Engine\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Dynamic\Flower.cpp">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Dynamic\Insect.cpp">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Static\TowerEmplacement.cpp">
       <Filter>Game\Entities\Static</Filter>
-    </ClCompile>
-    <ClCompile Include="Insect.cpp">
-      <Filter>Game\Entities\Dynamic</Filter>
-    </ClCompile>
-    <ClCompile Include="Flower.cpp">
-      <Filter>Game\Entities\Dynamic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="..\external\imgui-sfml-master\imgui-SFML.h">
       <Filter>Engine\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Engine\Entities</Filter>
     </ClInclude>
     <ClInclude Include="MainLoop.h">
       <Filter>Game</Filter>
@@ -95,17 +92,20 @@
     <ClInclude Include="Context.h">
       <Filter>Game\Context</Filter>
     </ClInclude>
-    <ClInclude Include="TowerEmplacement.h">
-      <Filter>Game\Entities\Static</Filter>
-    </ClInclude>
-    <ClInclude Include="Insect.h">
-      <Filter>Game\Entities\Dynamic</Filter>
-    </ClInclude>
-    <ClInclude Include="Flower.h">
-      <Filter>Game\Entities\Dynamic</Filter>
-    </ClInclude>
     <ClInclude Include="EntityType.h">
       <Filter>Game\Entities\Dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Entities\Entity.h">
+      <Filter>Engine\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Dynamic\Flower.h">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Dynamic\Insect.h">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Static\TowerEmplacement.h">
+      <Filter>Game\Entities\Static</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,9 +117,6 @@
     </Filter>
     <Filter Include="Engine\ImGui">
       <UniqueIdentifier>{f630cd3c-1cea-471c-9a95-a35b86a8dd9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Entities">
-      <UniqueIdentifier>{1f480547-ed0b-459a-82a7-bcb930f48472}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\Entities">
       <UniqueIdentifier>{1ebb8cb2-f30f-48aa-90b3-caaf13ac03b9}</UniqueIdentifier>
@@ -138,6 +135,12 @@
     </Filter>
     <Filter Include="Game\Entities\Static">
       <UniqueIdentifier>{4f32e13e-5938-494d-bb41-4152807a332a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Entities">
+      <UniqueIdentifier>{b7727d2e-4033-4258-b1ec-d102c8c7bff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shapes">
+      <UniqueIdentifier>{51aeb136-f421-4c6c-b87f-c644fb0b41a7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

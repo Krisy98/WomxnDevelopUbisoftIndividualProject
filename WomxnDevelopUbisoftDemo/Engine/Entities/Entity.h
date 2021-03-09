@@ -47,7 +47,7 @@ private :
 	float width,
 		height;
 
-	float m_rColor,
+	double m_rColor,
 		m_gColor, 
 		m_bColor;
 

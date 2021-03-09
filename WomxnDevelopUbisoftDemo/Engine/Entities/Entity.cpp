@@ -36,7 +36,6 @@ void Entity::setColor(double m_rColor, double m_gColor, double m_bColor){
 
 
 
-
 /*
 bool Entity::isOnMouseMoved(sf::Window* win) {
 	while (win->waitEvent(event)) {

@@ -5,8 +5,6 @@ MainLoop::MainLoop() :
 	Game{ "Flowers Survive" }
 {
 
-	
-
 	initPlayContext();
 }
 

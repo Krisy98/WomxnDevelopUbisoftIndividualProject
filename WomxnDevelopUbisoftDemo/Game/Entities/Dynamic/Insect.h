@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "Engine/Entities/Entity.h"
 #include "EntityType.h"
 
 class Insect : public Entity {
