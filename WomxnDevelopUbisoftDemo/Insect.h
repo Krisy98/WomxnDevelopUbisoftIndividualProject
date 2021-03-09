@@ -24,9 +24,5 @@ private :
 		height;
 
 
-	float m_rColor,
-		m_gColor,
-		m_bColor;
-
 };
 

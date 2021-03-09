@@ -11,20 +11,31 @@ public :
 
 	virtual ~Entity() {};
 
-	void setSpeed(float xSpeed, float ySpeed);
-	float getXSpeed();
-	float getYSpeed();
-
-	void setWidth(float width);
-	void setHeight(float height);
-
-	void setColor(float m_rColor, float m_gColor, float m_bColor);
-
 	// to override
 	virtual void draw(sf::RenderTarget& target) = 0;
 	virtual void update() = 0;
 
 
+	//
+	//sf::Event event;
+	//bool isOnMouseMoved(sf::Window* win);
+
+
+
+protected :
+
+	void setPosition(float x, float y);
+	void setSpeed(float xSpeed, float ySpeed);
+	void setWidth(float width);
+	void setHeight(float height);
+	void setColor(double m_rColor, double m_gColor, double m_bColor);
+
+	
+	float getXPosition();
+	float getYPosition();
+	float getXSpeed();
+	float getYSpeed();
+	sf::Color getColor();
 
 private :
 	float xPosition, 

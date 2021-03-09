@@ -5,8 +5,6 @@
 #include "Insect.h"
 
 
-
-
 struct Entities {
 	Entity* current;
 	Entities* next;
@@ -16,7 +14,7 @@ struct Entities {
 class PlayContext : public Context {
 
 public :
-	PlayContext();
+	PlayContext(sf::Window *win);
 	virtual ~PlayContext();
 
 	virtual void update();
@@ -30,6 +28,8 @@ public :
 
 
 private :
+	sf::Event event;
+	sf::Window win;
 
 	void addFlower(float x, float y, FlowerType type);
 
@@ -37,6 +37,7 @@ private :
 
 	Entities *insects = (Entities*) malloc(sizeof(struct Entities));
 	Entities *flowers = (Entities *) malloc(sizeof(struct Entities));
+
 
 
 	TowerEmplacement *emplacement;

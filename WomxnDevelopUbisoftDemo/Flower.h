@@ -15,12 +15,17 @@ public :
 	void setVisibleRange(bool value);
 	bool getVisibleRange();
 
-	// mouse move, or just mouse on
 	
+	//bool isOnMouseMoved(sf::Window *win);
 	
 private :
+
+	/// <summary>
+	/// Set the attributes value according to the flowertype
+	/// </summary>
+	/// <param name="type">value from FlowerType enum</param>
 	void initFromType(FlowerType type);
-	void setColor(double r, double g, double b);
+
 	void setRange(float value);
 
 	sf::Event event;
@@ -28,8 +33,6 @@ private :
 	sf::CircleShape circle;
 	sf::CircleShape circleRange;
 
-	float xPosition, 
-		yPosition;
 
 	float plantRadius; 
 
@@ -37,9 +40,7 @@ private :
 
 	//int damage;
 
-	double m_rColor,
-		m_gColor,
-		m_bColor;
+	
 
 	bool visibleRange;
 

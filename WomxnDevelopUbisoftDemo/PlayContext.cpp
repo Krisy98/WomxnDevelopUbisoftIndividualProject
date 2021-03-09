@@ -2,7 +2,7 @@
 #include "PlayContext.h"
 
 
-PlayContext::PlayContext(){
+PlayContext::PlayContext(sf::Window *win){
 
 	flowers->current = nullptr;
 	flowers->next = nullptr;
@@ -24,13 +24,22 @@ PlayContext::PlayContext(){
 PlayContext::~PlayContext(){
 }
 
+
 void PlayContext::update(){
+
 	// movement
 	// collision
 
 
 	updateEntities(*flowers);
 
+	
+	//printf("" + flowers->current->isOnMouseMoved(&win));
+	
+	// y a rien
+	//if ((flowers->current)->isOnMouseMoved(&win)) ((Flower*) flowers->current)->setVisibleRange(true);
+
+	//if (event.type == sf::Event::MouseMoved) printf("he");
 }
 
 void PlayContext::updateEntities(Entities entities) {
