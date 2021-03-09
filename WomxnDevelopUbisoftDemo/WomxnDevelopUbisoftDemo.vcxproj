@@ -211,6 +211,7 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClCompile Include="Engine\Collision.cpp" />
     <ClCompile Include="Engine\Entities\Entity.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
+    <ClCompile Include="Engine\Shapes\Shape.cpp" />
     <ClCompile Include="Game\Door.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Flower.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Insect.cpp" />
@@ -220,7 +221,6 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainLoop.cpp" />
     <ClCompile Include="PlayContext.cpp" />
-    <ClCompile Include="Shape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\imgui-master\imgui.h" />
@@ -230,6 +230,7 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClInclude Include="Engine\Collision.h" />
     <ClInclude Include="Engine\Entities\Entity.h" />
     <ClInclude Include="Engine\Game.h" />
+    <ClInclude Include="Engine\Shapes\Shape.h" />
     <ClInclude Include="EntityType.h" />
     <ClInclude Include="Game\Door.h" />
     <ClInclude Include="Game\Entities\Dynamic\Flower.h" />
@@ -239,7 +240,6 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClInclude Include="Game\MainCharacter.h" />
     <ClInclude Include="MainLoop.h" />
     <ClInclude Include="PlayContext.h" />
-    <ClInclude Include="Shape.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
