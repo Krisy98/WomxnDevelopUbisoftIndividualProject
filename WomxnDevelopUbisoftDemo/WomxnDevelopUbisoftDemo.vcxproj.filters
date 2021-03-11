@@ -65,7 +65,9 @@
     <ClCompile Include="Engine\Shapes\Rectangle.cpp">
       <Filter>Engine\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="Engine\Shapes\Line.cpp">
+      <Filter>Engine\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -126,7 +128,9 @@
     <ClInclude Include="Engine\Shapes\Rectangle.h">
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Line.h" />
+    <ClInclude Include="Engine\Shapes\Line.h">
+      <Filter>Engine\Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
