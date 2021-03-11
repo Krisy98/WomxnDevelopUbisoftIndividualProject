@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Engine/Entities/Entity.h"
+#include "Engine/Shapes/Circle.h"
 #include "EntityType.h"
-#include "Engine/Shapes/Shape.h"
+
 
 class Flower : public Entity {
 
@@ -21,11 +22,10 @@ public :
 	
 
 private :
-	Shape shaper;
 	sf::Event event;
 
-	sf::CircleShape circle;
-	sf::CircleShape circleRange;
+	Circle* circle;
+	Circle* circleRange;
 
 
 	float plantRadius; 

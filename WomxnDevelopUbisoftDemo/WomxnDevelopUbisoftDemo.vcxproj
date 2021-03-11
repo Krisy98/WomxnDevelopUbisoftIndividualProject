@@ -211,6 +211,7 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClCompile Include="Engine\Collision.cpp" />
     <ClCompile Include="Engine\Entities\Entity.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
+    <ClCompile Include="Engine\Shapes\Circle.cpp" />
     <ClCompile Include="Engine\Shapes\Shape.cpp" />
     <ClCompile Include="Game\Door.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Flower.cpp" />
@@ -230,6 +231,7 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClInclude Include="Engine\Collision.h" />
     <ClInclude Include="Engine\Entities\Entity.h" />
     <ClInclude Include="Engine\Game.h" />
+    <ClInclude Include="Engine\Shapes\Circle.h" />
     <ClInclude Include="Engine\Shapes\Shape.h" />
     <ClInclude Include="EntityType.h" />
     <ClInclude Include="Game\Door.h" />

@@ -83,6 +83,13 @@ bool Rect<T>::contains(T x, T y) const
     T minY = std::min(top, static_cast<T>(top + height));
     T maxY = std::max(top, static_cast<T>(top + height));
 
+    /*
+    
+    mousePos.x >= getXPosition() && mousePos.x <= getXPosition() + getWidth() &&
+        mousePos.y >= getYPosition() && mousePos.y <= getYPosition() + getHeight()
+    
+    */
+
     return (x >= minX) && (x < maxX) && (y >= minY) && (y < maxY);
 }
 

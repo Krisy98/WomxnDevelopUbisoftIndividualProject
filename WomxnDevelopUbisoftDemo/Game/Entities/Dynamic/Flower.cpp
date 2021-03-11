@@ -16,42 +16,36 @@ Flower::Flower(float xPosition, float yPosition, FlowerType type){
 
 	initFromType(type);
 
-	circle = shaper.getCircle(getXPosition(), getYPosition(), this->plantRadius);
-	circle = shaper.setColor(circle, sf::Color(0, 0, 0, 0), 1.f, getColor());
+	circle = new Circle(getXPosition(), getYPosition(), plantRadius);
+	circle->setColorAndThickness(sf::Color(0, 0, 0, 0), 1.f, getColor());
 
-	circleRange = shaper.getCircle(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius, this->rangeRadius);
-
-	circleRange = shaper.setColor(circleRange, getRangeColor(), 1.f, getRangeOutLineColor());
+	circleRange = new Circle(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius, rangeRadius);
+	circleRange->setColorAndThickness(getRangeColor(), 1.f, getRangeOutLineColor());
 }
 
 Flower::~Flower(){
 }
 
 void Flower::update(sf::RenderWindow& window){
-	
-
 	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-	//std::cout << mousePos.x << std::endl;
 	
 	// collision
 
+	
 	if (mousePos.x >= getXPosition() && mousePos.x <= getXPosition() + getWidth() &&
 		mousePos.y >= getYPosition() && mousePos.y <= getYPosition() + getHeight())
 		setVisibleRange(true);
 	else
 		setVisibleRange(false);
 
-
-	
+		
 }
 
 void Flower::draw(sf::RenderTarget& target) {
-	target.draw(circle);
+	target.draw(circle->get());
 
-	//target.draw(circleRange);
-
-	if (this->visibleRange) target.draw(circleRange);
+	if (this->visibleRange) target.draw(circleRange->get());
 }
 
 void Flower::setVisibleRange(bool value){ this->visibleRange = value; }
@@ -89,7 +83,7 @@ void Flower::initFromType(FlowerType type) {
 
 		case FlowerType::Delphinium:
 			setColor(1, 0.2, 0.2);
-			setRange(20);
+			setRange(40);
 			break;
 	}
 }

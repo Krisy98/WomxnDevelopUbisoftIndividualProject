@@ -59,6 +59,9 @@
     <ClCompile Include="Engine\Shapes\Shape.cpp">
       <Filter>Engine\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Shapes\Circle.cpp">
+      <Filter>Engine\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -111,6 +114,9 @@
       <Filter>Game\Entities\Static</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Shapes\Shape.h">
+      <Filter>Engine\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shapes\Circle.h">
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
   </ItemGroup>
