@@ -9,8 +9,8 @@ public :
 	~Circle();
 
 	sf::CircleShape get();
-	sf::Color getColor();
-	sf::Color getOutLineColor();
+	sf::Color getColor() override;
+	sf::Color getOutLineColor() override;
 
 	void setColor(sf::Color color) override;
 	void setThickness(float thickness, sf::Color color) override;
@@ -18,6 +18,7 @@ public :
 
 private :
 	sf::CircleShape circle;
+	
 
 };
 

@@ -20,11 +20,11 @@ protected :
 	/// </summary>
 	void createBoundingBox();
 
-	void setPosition(float x, float y);
-	void setSpeed(float xSpeed, float ySpeed);
-	void setWidth(float width);
-	void setHeight(float height);
-	void setColor(double m_rColor, double m_gColor, double m_bColor);
+	void setPosition(sf::Vector2f position);
+	void setSpeed(sf::Vector2f speed);
+	void setSize(sf::Vector2f size);
+	void setColor(double rColor, double gColor, double bColor);
+	void setColor(double rColor, double gColor, double bColor, double alpha);
 
 	sf::Vector2f getPosition();
 	float getXPosition();
@@ -37,18 +37,16 @@ protected :
 	sf::Color getColor();
 
 private :
-	float xPosition, 
-		yPosition;
+	sf::Vector2f position;
 
-	float xSpeed,
-		ySpeed;
+	sf::Vector2f speed;
 
-	float width,
-		height;
+	sf::Vector2f size;
 
 	double m_rColor,
 		m_gColor, 
-		m_bColor;
+		m_bColor,
+		m_alpha;
 
 };
 

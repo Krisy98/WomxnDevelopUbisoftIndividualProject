@@ -4,13 +4,12 @@
 
 
 Flower::Flower(float xPosition, float yPosition, FlowerType type){
-	setPosition(xPosition, yPosition);
+	setPosition(sf::Vector2f(xPosition, yPosition));
 
 	this->plantRadius = 10.f;
 	this->visibleRange = false;
 
-	setWidth(20.f);
-	setHeight(20.f);
+	setSize(sf::Vector2f(20.f, 20.f));
 
 	createBoundingBox();
 

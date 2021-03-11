@@ -62,6 +62,9 @@
     <ClCompile Include="Engine\Shapes\Circle.cpp">
       <Filter>Engine\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Shapes\Rectangle.cpp">
+      <Filter>Engine\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -117,6 +120,9 @@
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Shapes\Circle.h">
+      <Filter>Engine\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shapes\Rectangle.h">
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
   </ItemGroup>

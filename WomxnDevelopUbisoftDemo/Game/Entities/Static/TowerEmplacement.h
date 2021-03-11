@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/Entities/Entity.h"
+#include "Engine/Shapes/Rectangle.h"
 
 class TowerEmplacement : public Entity {
 
@@ -9,7 +10,6 @@ public :
 	TowerEmplacement(float xPosition, float yPosition);
 	~TowerEmplacement();
 
-	void initForm(float edge);
 
 	void draw(sf::RenderTarget& target) override;
 	void update(sf::RenderWindow& win) override;
@@ -17,15 +17,7 @@ public :
 
 private :
 
-	sf::ConvexShape shape;
-
-
-	float xPosition,
-		yPosition;
-
-	float width,
-		height;
-
+	Rectangle* rectangle;
 
 	float m_rColor,
 		m_gColor,

@@ -2,75 +2,51 @@
 #include "Entity.h"
 
 void Entity::createBoundingBox(){ 
-	const auto position = sf::Vector2f(xPosition, yPosition);
-	const auto size = sf::Vector2f(width, height);
+	const auto position = this->position;
+	const auto size = this->size;
 
 	SetBoundingBox(position, size); 
 }
 
-void Entity::setPosition(float x, float y){
-	this->xPosition = x;
-	this->yPosition = y;
-}
 
-void Entity::setSpeed(float xSpeed, float ySpeed){
-	this->xSpeed = xSpeed;
-	this->ySpeed = ySpeed;
-}
+void Entity::setPosition(sf::Vector2f position){ this->position = position; }
 
-float Entity::getXSpeed(){ return this->xSpeed; }
+void Entity::setSpeed(sf::Vector2f speed){ this->speed = speed; }
 
-float Entity::getYSpeed(){ return this->ySpeed; }
+float Entity::getXSpeed(){ return this->speed.x; }
+
+float Entity::getYSpeed(){ return this->speed.y; }
 
 sf::Color Entity::getColor(){
-	return sf::Color(static_cast<uint8_t>(this->m_rColor * 255.0f), static_cast<uint8_t>(this->m_gColor * 255.0f), static_cast<uint8_t>(this->m_bColor * 255.0f));
+	return sf::Color(static_cast<uint8_t>(this->m_rColor * 255.0f), static_cast<uint8_t>(this->m_gColor * 255.0f), static_cast<uint8_t>(this->m_bColor * 255.0f), static_cast<uint8_t>(this->m_alpha * 255.0f));
 }
 
-sf::Vector2f Entity::getPosition(){ return sf::Vector2f(xPosition, yPosition); }
+sf::Vector2f Entity::getPosition() { return position; }
 
-float Entity::getXPosition(){ return this->xPosition; }
+float Entity::getXPosition() { return this->position.x; }
 
-float Entity::getYPosition(){ return this->yPosition; }
+float Entity::getYPosition(){ return this->position.y; }
 
-sf::Vector2f Entity::getSize(){ return sf::Vector2f(width, height); }
+sf::Vector2f Entity::getSize() { return this->size; }
 
-float Entity::getWidth(){ return width; }
+float Entity::getWidth(){ return size.x; }
 
-float Entity::getHeight(){ return height; }
+float Entity::getHeight(){ return size.y; }
 
-void Entity::setWidth(float width){ this->width = width; }
+void Entity::setSize(sf::Vector2f size){ this->size = size; }
 
-void Entity::setHeight(float height){ this->height = height; }
-
-void Entity::setColor(double m_rColor, double m_gColor, double m_bColor){
-	this->m_rColor = m_rColor;
-	this->m_gColor = m_gColor;
-	this->m_bColor = m_bColor;
+void Entity::setColor(double rColor, double gColor, double bColor){
+	this->m_rColor = rColor;
+	this->m_gColor = gColor;
+	this->m_bColor = bColor;
+	this->m_alpha = 1;
 }
 
-
-
-/*
-bool Entity::isOnMouseMoved(sf::Window* win) {
-	while (win->waitEvent(event)) {
-		printf("event poll ! ");
-		switch (event.type) {
-
-		case sf::Event::MouseMoved:
-			printf("mouseMoved ! ");
-			return true;
-
-		case sf::Event::MouseButtonPressed:
-			printf("mouse pressed ");
-			break;
-
-		default:
-			break;
-		}
-	}
-	printf("no event ...");
-	return false;
+void Entity::setColor(double rColor, double gColor, double bColor, double alpha){
+	this->m_rColor = rColor;
+	this->m_gColor = gColor;
+	this->m_bColor = bColor;
+	this->m_alpha = alpha;
 }
-*/
 
 
