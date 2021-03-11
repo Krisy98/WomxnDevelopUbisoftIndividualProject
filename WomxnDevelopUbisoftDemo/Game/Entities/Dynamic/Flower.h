@@ -27,14 +27,10 @@ private :
 	Circle* circle;
 	Circle* circleRange;
 
-
 	float plantRadius; 
 	float rangeRadius; 
-
 	//int damage;
-
 	bool visibleRange;
-
 
 
 	/// <summary>

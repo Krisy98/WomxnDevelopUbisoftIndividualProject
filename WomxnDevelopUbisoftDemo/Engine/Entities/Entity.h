@@ -1,10 +1,5 @@
 #pragma once
 
-
-
-// created by me
-
-
 class Entity : public BoxCollideable {
 
 public :
@@ -38,15 +33,12 @@ protected :
 
 private :
 	sf::Vector2f position;
-
 	sf::Vector2f speed;
-
 	sf::Vector2f size;
 
 	double m_rColor,
 		m_gColor, 
 		m_bColor,
 		m_alpha;
-
 };
 
