@@ -34,16 +34,15 @@ public :
 private :
 	sf::RenderWindow window;
 
+	void initEntities(Entities *firstEntity);
 	void addFlower(float x, float y, FlowerType type);
+	void addTowerEmplacement(float xPosition, float yPosition);
 
 	//int nbEmplacement;
 
 	Entities *insects = (Entities*) malloc(sizeof(struct Entities));
 	Entities *flowers = (Entities *) malloc(sizeof(struct Entities));
-
-
-
-	TowerEmplacement *emplacement;
+	Entities* emplacements = (Entities *) malloc(sizeof(struct Entities));
 
 
 
