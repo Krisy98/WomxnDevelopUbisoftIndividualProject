@@ -17,4 +17,4 @@ void Line::setColor(sf::Color color){ line->color = color; }
 
 void Line::setThickness(float thickness, sf::Color color){}
 
-void Line::setColorAndThickness(sf::Color color, float thickness, sf::Color outLineColor){ setColor(color); }
+//void Line::setColorAndThickness(sf::Color color, float thickness, sf::Color outLineColor){ setColor(color); }

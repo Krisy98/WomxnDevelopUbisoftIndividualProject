@@ -68,6 +68,9 @@
     <ClCompile Include="Engine\Shapes\Line.cpp">
       <Filter>Engine\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Shapes\RectangleFlatEdge.cpp">
+      <Filter>Engine\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -129,6 +132,9 @@
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Shapes\Line.h">
+      <Filter>Engine\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shapes\RectangleFlatEdge.h">
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
   </ItemGroup>

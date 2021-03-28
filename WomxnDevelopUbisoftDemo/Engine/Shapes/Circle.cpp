@@ -18,15 +18,19 @@ void Circle::setThickness(float thickness, sf::Color color){
 	}
 }
 
-void Circle::setColorAndThickness(sf::Color color, float thickness, sf::Color outLineColor){
-	setColor(color);
-	setThickness(thickness, outLineColor);
+void Circle::setPosition(float xPosition, float yPosition){
+	sf::Vector2f newPos = sf::Vector2f(xPosition, yPosition);
+	circle.setPosition(newPos);
 }
+
+void Circle::setPosition(sf::Vector2f position){ circle.setPosition(position); }
 
 sf::CircleShape Circle::get() { return circle; }
 
 sf::Color Circle::getColor(){ return circle.getFillColor(); }
 
 sf::Color Circle::getOutLineColor(){ return this->circle.getOutlineColor(); }
+
+sf::Vector2f Circle::getPosition(){ return this->circle.getPosition(); }
 
 

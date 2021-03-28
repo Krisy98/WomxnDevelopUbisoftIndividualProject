@@ -3,7 +3,7 @@
 #include <iostream>
 
 Rectangle::Rectangle(float xPosition, float yPosition, float width, float height){
-	setPosition(sf::Vector2f(xPosition, yPosition));
+	this->position = sf::Vector2f(xPosition, yPosition);
 	this->width = width;
 	this->height = height;
 }
@@ -12,6 +12,10 @@ Rectangle::~Rectangle(){
 }
 
 sf::ConvexShape Rectangle::get(){ return this->convexShape; }
+
+sf::Vector2f Rectangle::getPosition(){
+	return this->position;
+}
 
 sf::Color Rectangle::getColor() { return convexShape.getFillColor(); }
 
@@ -26,9 +30,13 @@ void Rectangle::setThickness(float thickness, sf::Color color){
 	}
 }
 
-void Rectangle::setColorAndThickness(sf::Color color, float thickness, sf::Color outLineColor){
-	setColor(color);
-	setThickness(thickness, outLineColor);
+void Rectangle::setPosition(float xPosition, float yPosition){
+	setPosition(sf::Vector2f(xPosition, yPosition));
+}
+
+void Rectangle::setPosition(sf::Vector2f position){
+	this->position = position;
+	convexShape.setPosition(position);
 }
 
 void Rectangle::createRectangle(){
@@ -54,15 +62,20 @@ void Rectangle::createRectangleFlatEdge(float fractionalWidth, float fractionalH
 
 	convexShape.setPointCount(8);
 
-	convexShape.setPoint(0, sf::Vector2f(this->xPosition, this->yPosition + edgeY / 2));
-	convexShape.setPoint(1, sf::Vector2f(this->xPosition + edgeX / 2, this->yPosition));
+	convexShape.setPoint(0, sf::Vector2f(0, edgeY / 2));
+	convexShape.setPoint(1, sf::Vector2f(edgeX / 2, 0));
 
-	convexShape.setPoint(2, sf::Vector2f(this->xPosition + this->width - edgeX / 2, this->yPosition));
-	convexShape.setPoint(3, sf::Vector2f(this->xPosition + this->width, this->yPosition + edgeY / 2));
+	convexShape.setPoint(2, sf::Vector2f(this->width - edgeX / 2, 0));
+	convexShape.setPoint(3, sf::Vector2f(this->width, edgeY / 2));
 
-	convexShape.setPoint(4, sf::Vector2f(this->xPosition + this->width, this->yPosition + this->height - edgeY / 2));
-	convexShape.setPoint(5, sf::Vector2f(this->xPosition + this->width - edgeX / 2, this->yPosition + this->height));
+	convexShape.setPoint(4, sf::Vector2f(this->width, this->height - edgeY / 2));
+	convexShape.setPoint(5, sf::Vector2f(this->width - edgeX / 2, this->height));
 
-	convexShape.setPoint(6, sf::Vector2f(this->xPosition + edgeX / 2, this->yPosition + this->height));
-	convexShape.setPoint(7, sf::Vector2f(this->xPosition, this->yPosition + this->height - edgeY / 2));
+	convexShape.setPoint(6, sf::Vector2f(edgeX / 2, this->height));
+	convexShape.setPoint(7, sf::Vector2f(0, this->height - edgeY / 2));
+
+
+	convexShape.setPosition(getPosition()); // set the correct position
+
+	std::cout << "xPos : " << convexShape.getPosition().x << std::endl;
 }

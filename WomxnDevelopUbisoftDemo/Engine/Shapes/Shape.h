@@ -1,4 +1,5 @@
 #pragma once
+
 class Shape {
 
 public :
@@ -8,16 +9,13 @@ public :
 
 	virtual void setColor(sf::Color color) = 0;
 	virtual void setThickness(float thickness, sf::Color color) = 0;
-	virtual void setColorAndThickness(sf::Color color, float thickness, sf::Color outLineColor) = 0;
+	void setColorAndThickness(sf::Color color, float thickness, sf::Color outLineColor);
 
-	void setPosition(float xPosition, float yPosition);
-	void setPosition(sf::Vector2f position);
+	virtual void setPosition(float xPosition, float yPosition) = 0;
+	virtual void setPosition(sf::Vector2f position) = 0;
 
-	sf::Vector2f getPosition();
+	virtual sf::Vector2f getPosition() = 0;
 
-protected :
-	float xPosition,
-		yPosition;
 
 };
 

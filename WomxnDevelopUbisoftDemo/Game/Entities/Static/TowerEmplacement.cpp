@@ -19,6 +19,7 @@ void TowerEmplacement::draw(sf::RenderTarget& target){
 
 void TowerEmplacement::update(sf::RenderWindow& win){
 	// click mouse event
+	rectangle->setPosition(getPosition()); // update position
 
 }
 

@@ -9,9 +9,13 @@ void Entity::createBoundingBox(){
 }
 
 
-void Entity::setPosition(sf::Vector2f position){ this->position = position; }
+void Entity::setPosition(sf::Vector2f position){ 
+	this->position = position; 
+}
 
-void Entity::setSpeed(sf::Vector2f speed){ this->speed = speed; }
+void Entity::setSpeed(sf::Vector2f speed){ 
+	this->speed = speed; 
+}
 
 float Entity::getXSpeed(){ return this->speed.x; }
 

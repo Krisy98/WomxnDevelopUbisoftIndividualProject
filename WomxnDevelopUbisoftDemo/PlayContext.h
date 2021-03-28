@@ -6,8 +6,8 @@
 
 
 struct Entities {
-	Entity* current;
-	Entities* next;
+	Entity* current{ nullptr };
+	Entities* next{ nullptr };
 };
 
 
@@ -20,7 +20,7 @@ public :
 	virtual void update(sf::RenderWindow& win);
 	virtual void render(sf::RenderTarget& target);
 	
-	void updateEntities(Entities entities, sf::RenderWindow& win);
+	void updateEntities(Entities entities, sf::RenderWindow& window);
 
 	/// <summary>
 	/// Render (draw) a child entity
@@ -33,16 +33,25 @@ public :
 	
 private :
 	sf::RenderWindow window;
+	float speedScrolling;
+
+	Entities* insects = (Entities*)malloc(sizeof(struct Entities));
+	Entities* flowers = (Entities*)malloc(sizeof(struct Entities));
+	Entities* emplacements = (Entities*)malloc(sizeof(struct Entities));
 
 	void initEntities(Entities *firstEntity);
+	void deleteEntities(Entities *entities);
 	void addFlower(float x, float y, FlowerType type);
 	void addTowerEmplacement(float xPosition, float yPosition);
 
-	//int nbEmplacement;
+	/// <summary>
+	/// update screen's view depending on the mouse position
+	/// </summary>
+	/// <param name="window"></param>
+	void updateScreen(sf::RenderWindow& window);
 
-	Entities *insects = (Entities*) malloc(sizeof(struct Entities));
-	Entities *flowers = (Entities *) malloc(sizeof(struct Entities));
-	Entities* emplacements = (Entities *) malloc(sizeof(struct Entities));
+	void setAllEntitiesPosition(sf::Vector2f speed);
+	void setEntitiesPosition(Entities entities, sf::Vector2f speed);
 
 
 

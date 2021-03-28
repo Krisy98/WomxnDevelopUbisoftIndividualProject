@@ -11,10 +11,12 @@ public :
 	sf::CircleShape get();
 	sf::Color getColor() override;
 	sf::Color getOutLineColor() override;
+	sf::Vector2f getPosition() override;
 
 	void setColor(sf::Color color) override;
 	void setThickness(float thickness, sf::Color color) override;
-	void setColorAndThickness(sf::Color color, float thickness, sf::Color outLineColor) override;
+	void setPosition(float xPosition, float yPosition) override;
+	void setPosition(sf::Vector2f position) override;
 
 private :
 	sf::CircleShape circle;

@@ -2,11 +2,12 @@
 
 #include "Shape.h"
 
-class Rectangle : public Shape {
+class RectangleFlatEdge : public Shape {
 
 public :
-	Rectangle(float xPosition, float yPosition, float width, float height);
-	~Rectangle();
+
+	RectangleFlatEdge(float xPosition, float yPosition, float width, float height, float fractionalWidth, float fractionalHeight);
+	~RectangleFlatEdge();
 
 	sf::ConvexShape get();
 	sf::Vector2f getPosition() override;
@@ -19,16 +20,12 @@ public :
 	void setPosition(float xPosition, float yPosition) override;
 	void setPosition(sf::Vector2f position) override;
 
-	void createRectangle();
-	void createRectangleFlatEdge(float fractionalWidth, float fractionalHeight);
-
-
 private :
 	sf::ConvexShape convexShape;
-	sf::Vector2f position;
-	
-	float width, 
-		height;
+	sf::Vector2f size,
+		position, 
+		fractionalSizeFlatEdge;
 
+	void create();
 };
 
