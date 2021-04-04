@@ -7,7 +7,7 @@ PlayContext::PlayContext(/*int idLvl*/){
 	// lvl to download
 	// wave to define
 
-	this->speedScrolling = 2.f;
+	this->speedScrolling = 1.f;
 
 	initEntities(emplacements);
 	initEntities(flowers);
@@ -63,19 +63,89 @@ void PlayContext::updateEntities(Entities entities, sf::RenderWindow& win) {
 
 void PlayContext::updateScreen(sf::RenderWindow& window) {
 	sf::Vector2i mousePos = sf::Mouse::getPosition(window); // get position mouse
-	int marginHeight = 0.05 * window.getSize().y;
+	float width = window.getSize().x;
+	float height = window.getSize().y;
+	float xSpeed = 0.0;
+	float ySpeed = 0.0;
 
-	
+	int margin = 0.05 * height;
 
-	if (mousePos.y < marginHeight) {
 
-		std::cout << "." << std::endl;
+	// case up
+	if (mousePos.y <= margin) {
+		int x = mousePos.x;
 
-		// case x == width/2
-		sf::Vector2f speed = sf::Vector2f(0, speedScrolling);
+		if (mousePos.x > width / 2) {
+			x = width - x;
+		}
+
+		float percent = 1 - (x / (width / 2));
 		
-		setAllEntitiesPosition(speed);
+		xSpeed = this->speedScrolling * percent;
+		ySpeed = this->speedScrolling;
+
+		if (mousePos.x > width / 2) {
+			xSpeed = -xSpeed;
+		}
 	}
+
+	// case down
+	else if (mousePos.y >= height - margin) {
+		int x = mousePos.x;
+
+		if (mousePos.x > width / 2) {
+			x = width - x;
+		}
+
+		float percent = 1 - (x / (width / 2));
+
+		xSpeed = this->speedScrolling * percent;
+		ySpeed = -this->speedScrolling;
+
+		if (mousePos.x > width / 2) {
+			xSpeed = -xSpeed;
+		}
+	}
+
+	// case left
+	else if (mousePos.x <= margin) {
+		int y = mousePos.y;
+
+		if (mousePos.y > width / 2) {
+			y = width - y;
+		}
+
+		float percent = 1 - (y / (width / 2));
+
+		ySpeed = this->speedScrolling * percent;
+		xSpeed = this->speedScrolling;
+
+		if (mousePos.y > width / 2) {
+			ySpeed = -ySpeed;
+		}
+	}
+
+	// case right
+	else if (mousePos.x >= width - margin) {
+		int y = mousePos.y;
+
+		if (mousePos.y > width / 2) {
+			y = width - y;
+		}
+
+		float percent = 1 - (y / (width / 2));
+
+		ySpeed = this->speedScrolling * percent;
+		xSpeed = -this->speedScrolling;
+
+		if (mousePos.y > width / 2) {
+			ySpeed = -ySpeed;
+		}
+	}
+
+	sf::Vector2f speed = sf::Vector2f(xSpeed, ySpeed);
+
+	setAllEntitiesPosition(speed);
 }
 
 void PlayContext::setAllEntitiesPosition(sf::Vector2f speed){

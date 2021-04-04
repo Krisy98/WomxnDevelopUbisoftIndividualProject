@@ -41,9 +41,6 @@
     <ClCompile Include="PlayContext.cpp">
       <Filter>Game\Context</Filter>
     </ClCompile>
-    <ClCompile Include="Context.cpp">
-      <Filter>Game\Context</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Entities\Entity.cpp">
       <Filter>Engine\Entities</Filter>
     </ClCompile>
@@ -70,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Shapes\RectangleFlatEdge.cpp">
       <Filter>Engine\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Context.cpp">
+      <Filter>Engine\Context</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +104,6 @@
     <ClInclude Include="PlayContext.h">
       <Filter>Game\Context</Filter>
     </ClInclude>
-    <ClInclude Include="Context.h">
-      <Filter>Game\Context</Filter>
-    </ClInclude>
     <ClInclude Include="EntityType.h">
       <Filter>Game\Entities\Dynamic</Filter>
     </ClInclude>
@@ -136,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Shapes\RectangleFlatEdge.h">
       <Filter>Engine\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Context.h">
+      <Filter>Engine\Context</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +171,9 @@
     </Filter>
     <Filter Include="Engine\Shapes">
       <UniqueIdentifier>{51aeb136-f421-4c6c-b87f-c644fb0b41a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Context">
+      <UniqueIdentifier>{5a5dcef4-a20c-4f44-94b4-f1240082d76b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
