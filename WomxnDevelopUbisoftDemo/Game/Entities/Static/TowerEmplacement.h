@@ -6,7 +6,7 @@
 class TowerEmplacement : public Entity {
 
 public :
-	TowerEmplacement(float xPosition, float yPosition);
+	TowerEmplacement(float xPosition, float yPosition, float size);
 	~TowerEmplacement();
 
 	void draw(sf::RenderTarget& target) override;

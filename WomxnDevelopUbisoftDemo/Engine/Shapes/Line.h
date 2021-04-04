@@ -10,13 +10,16 @@ public :
 
 	sf::Color getColor() override;
 	sf::Color getOutLineColor() override;
+	sf::Vector2f getPosition() override;
 	sf::Vertex* get();
 
 	void setColor(sf::Color color) override;
 	void setThickness(float thickness, sf::Color color) override;
+	void setPosition(float xPosition, float yPosition) override;
+	void setPosition(sf::Vector2f position) override;
 
 private :
-	sf::Vertex line[];
+	sf::Vertex points[];
 
 
 };

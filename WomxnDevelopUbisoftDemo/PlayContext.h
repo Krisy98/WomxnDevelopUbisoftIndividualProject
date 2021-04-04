@@ -2,6 +2,7 @@
 #include "Context.h"
 #include "Game/Entities/Dynamic/Flower.h"
 #include "Game/Entities/Dynamic/Insect.h"
+#include "Game/Entities/Static/Path.h"
 #include "Game/Entities/Static/TowerEmplacement.h"
 
 
@@ -38,11 +39,13 @@ private :
 	Entities* insects = (Entities*)malloc(sizeof(struct Entities));
 	Entities* flowers = (Entities*)malloc(sizeof(struct Entities));
 	Entities* emplacements = (Entities*)malloc(sizeof(struct Entities));
+	Entities* path = (Entities*)malloc(sizeof(struct Entities));
 
 	void initEntities(Entities *firstEntity);
 	void deleteEntities(Entities *entities);
 	void addFlower(float x, float y, FlowerType type);
 	void addTowerEmplacement(float xPosition, float yPosition);
+	void addPath(float xPosition, float yPosition, const char* orientation);
 
 	/// <summary>
 	/// update screen's view depending on the mouse position

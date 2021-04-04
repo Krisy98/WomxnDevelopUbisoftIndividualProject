@@ -45,10 +45,12 @@ void Rectangle::createRectangle(){
 
 	convexShape.setPointCount(4);
 
-	convexShape.setPoint(0, getPosition());
-	convexShape.setPoint(1, sf::Vector2f(x + width, y));
-	convexShape.setPoint(2, sf::Vector2f(x + width, y + height));
-	convexShape.setPoint(3, sf::Vector2f(x, y + height));
+	convexShape.setPoint(0, sf::Vector2f(0, 0));
+	convexShape.setPoint(1, sf::Vector2f(width, 0));
+	convexShape.setPoint(2, sf::Vector2f(width, height));
+	convexShape.setPoint(3, sf::Vector2f(0, height));
+
+	convexShape.setPosition(getPosition()); // set the correct position
 }
 
 void Rectangle::createRectangleFlatEdge(float fractionalWidth, float fractionalHeight){
@@ -77,5 +79,5 @@ void Rectangle::createRectangleFlatEdge(float fractionalWidth, float fractionalH
 
 	convexShape.setPosition(getPosition()); // set the correct position
 
-	std::cout << "xPos : " << convexShape.getPosition().x << std::endl;
+	//std::cout << "xPos : " << convexShape.getPosition().x << std::endl;
 }

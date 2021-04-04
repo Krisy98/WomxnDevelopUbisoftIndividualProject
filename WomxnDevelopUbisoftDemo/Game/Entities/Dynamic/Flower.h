@@ -8,7 +8,7 @@
 class Flower : public Entity {
 
 public :
-	Flower(float xPosition, float yPosition, FlowerType type);
+	Flower(float xPosition, float yPosition, float size, FlowerType type);
 	~Flower();
 
 	void draw(sf::RenderTarget& target) override;
@@ -22,7 +22,7 @@ public :
 	
 
 private :
-	sf::Event event;
+	sf::Event event; // TODO : pas de sf ici, gameplay n'interagit pas avec API. C'est que le moteur ??
 
 	Circle* circle;
 	Circle* circleRange;

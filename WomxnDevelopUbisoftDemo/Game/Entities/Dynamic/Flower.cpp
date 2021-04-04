@@ -3,20 +3,20 @@
 #include "Flower.h"
 
 
-Flower::Flower(float xPosition, float yPosition, FlowerType type){
-	setPosition(sf::Vector2f(xPosition, yPosition));
+Flower::Flower(float xPosition, float yPosition, float size, FlowerType type){
+	setPosition(xPosition, yPosition);
 
-	this->plantRadius = 10.f;
+	this->plantRadius = size/2;
 	this->visibleRange = false;
 
-	setSize(sf::Vector2f(20.f, 20.f));
+	setSize(sf::Vector2f(size, size));
 
 	createBoundingBox();
 
 	initFromType(type);
 
 	circle = new Circle(getXPosition(), getYPosition(), plantRadius);
-	circle->setColorAndThickness(sf::Color(0, 0, 0, 0), 1.f, getColor());
+	circle->setColorAndThickness(sf::Color(0, 0, 0, 0), 1.f, getColor()); // TODO, pas d'API
 
 	circleRange = new Circle(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius, rangeRadius);
 	circleRange->setColorAndThickness(getRangeColor(), 1.f, getRangeOutLineColor());

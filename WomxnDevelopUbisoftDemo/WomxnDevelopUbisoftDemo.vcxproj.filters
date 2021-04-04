@@ -71,6 +71,9 @@
     <ClCompile Include="Context.cpp">
       <Filter>Engine\Context</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Entities\Static\Path.cpp">
+      <Filter>Game\Entities\Static</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="Context.h">
       <Filter>Engine\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Static\Path.h">
+      <Filter>Game\Entities\Static</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

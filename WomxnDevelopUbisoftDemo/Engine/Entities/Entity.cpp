@@ -9,12 +9,32 @@ void Entity::createBoundingBox(){
 }
 
 
-void Entity::setPosition(sf::Vector2f position){ 
-	this->position = position; 
+void Entity::setPosition(float x, float y){ 
+	this->position = sf::Vector2f(x, y);
+}
+
+void Entity::setPosition(sf::Vector2f position){
+	this->position = position;
 }
 
 void Entity::setSpeed(sf::Vector2f speed){ 
 	this->speed = speed; 
+}
+
+void Entity::setSize(sf::Vector2f size) { this->size = size; }
+
+void Entity::setColor(double rColor, double gColor, double bColor) {
+	this->m_rColor = rColor;
+	this->m_gColor = gColor;
+	this->m_bColor = bColor;
+	this->m_alpha = 1;
+}
+
+void Entity::setColor(double rColor, double gColor, double bColor, double alpha) {
+	this->m_rColor = rColor;
+	this->m_gColor = gColor;
+	this->m_bColor = bColor;
+	this->m_alpha = alpha;
 }
 
 float Entity::getXSpeed(){ return this->speed.x; }
@@ -36,21 +56,5 @@ sf::Vector2f Entity::getSize() { return this->size; }
 float Entity::getWidth(){ return size.x; }
 
 float Entity::getHeight(){ return size.y; }
-
-void Entity::setSize(sf::Vector2f size){ this->size = size; }
-
-void Entity::setColor(double rColor, double gColor, double bColor){
-	this->m_rColor = rColor;
-	this->m_gColor = gColor;
-	this->m_bColor = bColor;
-	this->m_alpha = 1;
-}
-
-void Entity::setColor(double rColor, double gColor, double bColor, double alpha){
-	this->m_rColor = rColor;
-	this->m_gColor = gColor;
-	this->m_bColor = bColor;
-	this->m_alpha = alpha;
-}
 
 
