@@ -41,11 +41,13 @@ private :
 	Entities* emplacements = (Entities*)malloc(sizeof(struct Entities));
 	Entities* path = (Entities*)malloc(sizeof(struct Entities));
 
+
 	void initEntities(Entities *firstEntity);
 	void deleteEntities(Entities *entities);
 	void addFlower(float x, float y, FlowerType type);
+	void addInsect(float x, float y, InsectType type);
 	void addTowerEmplacement(float xPosition, float yPosition);
-	void addPath(float xPosition, float yPosition, const char* orientation);
+	void addPath(float xPosition, float yPosition,Orientation orientation);
 
 	/// <summary>
 	/// update screen's view depending on the mouse position

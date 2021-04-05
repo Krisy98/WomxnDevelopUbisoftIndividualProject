@@ -4,10 +4,9 @@
 enum class FlowerType { Anemone, Hyacinth, Pansy, Rose, Delphinium };
 
 
-// invisible insect?
-// faster etc
-enum class InsectType { a, b, c };
+
+enum class InsectType { Aphid, Cricket, LadyBirdBeetles, Worms };
 
 
-// IA 
+// different behavior
 enum class BossType { a, b, c};

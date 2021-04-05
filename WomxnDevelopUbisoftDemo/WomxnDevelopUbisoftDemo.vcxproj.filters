@@ -65,9 +65,6 @@
     <ClCompile Include="Engine\Shapes\Line.cpp">
       <Filter>Engine\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Shapes\RectangleFlatEdge.cpp">
-      <Filter>Engine\Shapes</Filter>
-    </ClCompile>
     <ClCompile Include="Context.cpp">
       <Filter>Engine\Context</Filter>
     </ClCompile>
@@ -134,14 +131,14 @@
     <ClInclude Include="Engine\Shapes\Line.h">
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Shapes\RectangleFlatEdge.h">
-      <Filter>Engine\Shapes</Filter>
-    </ClInclude>
     <ClInclude Include="Context.h">
       <Filter>Engine\Context</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entities\Static\Path.h">
       <Filter>Game\Entities\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Direction.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

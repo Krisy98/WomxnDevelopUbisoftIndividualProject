@@ -20,7 +20,11 @@ PlayContext::PlayContext(/*int idLvl*/){
 	addTowerEmplacement(100, 200);
 	addTowerEmplacement(200, 200);
 
-	addPath(100, 260, "vertical");
+	addPath(100, 230, Orientation::Horizontal);
+	addPath(140, 230, Orientation::Horizontal);
+	addPath(180, 230, Orientation::Horizontal);
+
+	addInsect(0, 250, InsectType::Cricket);
 }
 
 PlayContext::~PlayContext(){
@@ -50,6 +54,7 @@ void PlayContext::update(sf::RenderWindow& window){
 	// collision
 
 	updateEntities(*flowers, window);
+	updateEntities(*insects, window);
 	updateEntities(*emplacements, window);
 	updateEntities(*path, window);
 }
@@ -182,6 +187,7 @@ void PlayContext::render(sf::RenderTarget& target){
 	target.clear(sf::Color(0, 0, 0));
 
 	renderEntities(target, *flowers);
+	renderEntities(target, *insects);
 	renderEntities(target, *emplacements);
 	renderEntities(target, *path);
 }
@@ -211,6 +217,19 @@ void PlayContext::addFlower(float x, float y, FlowerType type) {
 	else start->next = temp;
 }
 
+void PlayContext::addInsect(float x, float y, InsectType type){
+	Entities* start = insects;
+	Entities* temp = new Entities();
+
+	temp->current = new Insect(x, y, 20.f, type);
+	temp->next = nullptr;
+
+	while (start->next != nullptr) start = start->next;
+
+	if (start->current == nullptr) start->current = temp->current;
+	else start->next = temp;
+}
+
 void PlayContext::addTowerEmplacement(float xPosition, float yPosition){
 	Entities* start = emplacements;
 	Entities* temp/* = (Entities*) malloc(sizeof(struct Entities))*/ = new Entities();
@@ -224,7 +243,7 @@ void PlayContext::addTowerEmplacement(float xPosition, float yPosition){
 	else start->next = temp;
 }
 
-void PlayContext::addPath(float xPosition, float yPosition, const char* orientation){
+void PlayContext::addPath(float xPosition, float yPosition, Orientation orientation){
 	Entities* start = path;
 	Entities* temp = new Entities();
 

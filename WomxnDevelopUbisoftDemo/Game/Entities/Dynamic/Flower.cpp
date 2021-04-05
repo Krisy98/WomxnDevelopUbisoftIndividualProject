@@ -63,27 +63,27 @@ void Flower::initFromType(FlowerType type) {
 		default:
 		case FlowerType::Anemone:
 			setColor(1, 1, 1);
-			setRange(20);
+			setRange(60);
 			break;
 
 		case FlowerType::Hyacinth:
 			setColor(0.7, 0.7, 0.7);
-			setRange(20);
+			setRange(60);
 			break;
 
 		case FlowerType::Pansy:
 			setColor(0.3, 0.7, 1);
-			setRange(20);
+			setRange(60);
 			break;
 
 		case FlowerType::Rose:
 			setColor(1, 0.5, 1);
-			setRange(20);
+			setRange(60);
 			break;
 
 		case FlowerType::Delphinium:
 			setColor(1, 0.2, 0.2);
-			setRange(40);
+			setRange(60);
 			break;
 	}
 }

@@ -1,15 +1,18 @@
 #pragma once
 
 #include "Engine/Entities/Entity.h"
-//#include "Engine/Shapes/Line.h"
 #include "Engine/Shapes/Rectangle.h"
 
+enum class Orientation {
+	Horizontal,
+	Vertical
+};
 
 class Path : public Entity {
 
 public :
 
-	Path(float xPosition, float yPosition, float size, const char* orientation);
+	Path(float xPosition, float yPosition, float size, Orientation orientation);
 	~Path();
 
 	void draw(sf::RenderTarget& target) override;
@@ -24,7 +27,7 @@ private :
 	Rectangle* leftLine{ nullptr }; // or up if orientation is horizontal
 	Rectangle* rightLine {nullptr}; // or down if orientation is horizontal
 
-	const char* orientation = nullptr;
+	Orientation orientation;
 
 };
 
