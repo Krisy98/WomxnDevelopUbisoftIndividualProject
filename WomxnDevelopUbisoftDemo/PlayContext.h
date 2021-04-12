@@ -5,13 +5,6 @@
 #include "Game/Entities/Static/Path.h"
 #include "Game/Entities/Static/TowerEmplacement.h"
 
-
-struct Entities {
-	Entity* current{ nullptr };
-	Entities* next{ nullptr };
-};
-
-
 class PlayContext : public Context {
 
 public :
@@ -20,17 +13,6 @@ public :
 
 	virtual void update(sf::RenderWindow& win);
 	virtual void render(sf::RenderTarget& target);
-	
-	void updateEntities(Entities entities, sf::RenderWindow& window);
-
-	/// <summary>
-	/// Render (draw) a child entity
-	/// </summary>
-	/// <param name="target">the render target</param>
-	/// <param name="entities">entities to render</param>
-	void renderEntities(sf::RenderTarget& target, Entities entities);
-
-
 	
 private :
 	sf::RenderWindow window;
@@ -41,11 +23,8 @@ private :
 	Entities* emplacements = (Entities*)malloc(sizeof(struct Entities));
 	Entities* path = (Entities*)malloc(sizeof(struct Entities));
 
-
-	void initEntities(Entities *firstEntity);
-	void deleteEntities(Entities *entities);
 	void addFlower(float x, float y, FlowerType type);
-	void addInsect(float x, float y, InsectType type);
+	void addInsect(float x, float y, Direction direction, InsectType type);
 	void addTowerEmplacement(float xPosition, float yPosition);
 	void addPath(float xPosition, float yPosition,Orientation orientation);
 
@@ -56,7 +35,6 @@ private :
 	void updateScreen(sf::RenderWindow& window);
 
 	void setAllEntitiesPosition(sf::Vector2f speed);
-	void setEntitiesPosition(Entities entities, sf::Vector2f speed);
 
 
 

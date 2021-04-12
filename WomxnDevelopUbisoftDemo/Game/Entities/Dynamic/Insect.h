@@ -8,7 +8,7 @@
 class Insect : public Entity {
 
 public : 
-	Insect(float xPosition, float yPosition, float size, InsectType type);
+	Insect(float xPosition, float yPosition, float size, Direction direction, InsectType type);
 
 	void draw(sf::RenderTarget& target) override;
 	void update(sf::RenderWindow& win) override;

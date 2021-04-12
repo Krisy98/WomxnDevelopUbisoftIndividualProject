@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Insect.h"
 
-Insect::Insect(float xPosition, float yPosition, float size, InsectType type){
+Insect::Insect(float xPosition, float yPosition, float size, Direction direction, InsectType type){
 
 	setPosition(xPosition, yPosition);
 	setSize(sf::Vector2f(size, size/2)); // rectangle form
@@ -14,7 +14,7 @@ Insect::Insect(float xPosition, float yPosition, float size, InsectType type){
 	body->createRectangle();
 	body->setColor(getColor());
 	
-	direction = Direction::East; 
+	this->direction = direction; 
 }
 
 void Insect::draw(sf::RenderTarget& target){

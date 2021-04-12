@@ -2,7 +2,7 @@
 #include "Entity.h"
 
 void Entity::createBoundingBox(){ 
-	const auto position = this->position;
+	const auto position = sf::Vector2f(this->position.x + size.x/2, this->position.y + size.y/2);
 	const auto size = this->size;
 
 	SetBoundingBox(position, size); 

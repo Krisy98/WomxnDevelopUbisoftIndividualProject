@@ -20,11 +20,11 @@ PlayContext::PlayContext(/*int idLvl*/){
 	addTowerEmplacement(100, 200);
 	addTowerEmplacement(200, 200);
 
-	addPath(100, 230, Orientation::Horizontal);
-	addPath(140, 230, Orientation::Horizontal);
+	addPath(0, 230, Orientation::Horizontal);
+	addPath(40, 230, Orientation::Horizontal);
 	addPath(180, 230, Orientation::Horizontal);
 
-	addInsect(0, 250, InsectType::Cricket);
+	addInsect(0, 250, Direction::East, InsectType::Cricket);
 }
 
 PlayContext::~PlayContext(){
@@ -34,19 +34,6 @@ PlayContext::~PlayContext(){
 	deleteEntities(path);
 }
 
-void PlayContext::initEntities(Entities* firstEntity) {
-	firstEntity->current = nullptr;
-	firstEntity->next = nullptr;
-}
-
-void PlayContext::deleteEntities(Entities *entities){
-	while (entities->current != nullptr) {
-		delete entities->current;
-		entities = entities->next;
-	}
-	delete entities;
-}
-
 void PlayContext::update(sf::RenderWindow& window){
 	updateScreen(window);
 
@@ -54,20 +41,11 @@ void PlayContext::update(sf::RenderWindow& window){
 	// collision
 
 	updateEntities(*flowers, window);
+
 	updateEntities(*insects, window);
+
 	updateEntities(*emplacements, window);
 	updateEntities(*path, window);
-}
-
-void PlayContext::updateEntities(Entities entities, sf::RenderWindow& win) {
-	Entities start = entities;
-
-	if (start.current != nullptr) start.current->update(win);
-
-	while (start.next != nullptr) {
-		start = *start.next;
-		start.current->update(win);
-	}
 }
 
 void PlayContext::updateScreen(sf::RenderWindow& window) {
@@ -78,7 +56,6 @@ void PlayContext::updateScreen(sf::RenderWindow& window) {
 	float ySpeed = 0.0;
 
 	int margin = 0.03 * height;
-
 
 	// case up
 	if (mousePos.y <= margin && mousePos.y > 0) {
@@ -164,25 +141,6 @@ void PlayContext::setAllEntitiesPosition(sf::Vector2f speed){
 	setEntitiesPosition(*path, speed);
 }
 
-void PlayContext::setEntitiesPosition(Entities entities, sf::Vector2f speed){
-	Entities start = entities;
-
-	if (start.current != nullptr) {
-		sf::Vector2f oldPos = start.current->getPosition();
-		sf::Vector2f newPos = sf::Vector2f(oldPos.x + speed.x, oldPos.y + speed.y);
-
-		start.current->setPosition(newPos);
-	}
-
-	while (start.next != nullptr) {
-		start = *start.next;
-		sf::Vector2f oldPos = start.current->getPosition();
-		sf::Vector2f newPos = sf::Vector2f(oldPos.x + speed.x, oldPos.y + speed.y);
-
-		start.current->setPosition(newPos);
-	}
-}
-
 void PlayContext::render(sf::RenderTarget& target){
 	target.clear(sf::Color(0, 0, 0));
 
@@ -190,18 +148,6 @@ void PlayContext::render(sf::RenderTarget& target){
 	renderEntities(target, *insects);
 	renderEntities(target, *emplacements);
 	renderEntities(target, *path);
-}
-
-
-void PlayContext::renderEntities(sf::RenderTarget& target, Entities entities){
-	Entities start = entities;
-
-	if (start.current != nullptr) start.current->draw(target);
-
-	while (start.next != nullptr) {
-		start = *start.next;
-		start.current->draw(target);
-	}
 }
 
 void PlayContext::addFlower(float x, float y, FlowerType type) {
@@ -217,11 +163,11 @@ void PlayContext::addFlower(float x, float y, FlowerType type) {
 	else start->next = temp;
 }
 
-void PlayContext::addInsect(float x, float y, InsectType type){
+void PlayContext::addInsect(float x, float y, Direction direction, InsectType type){
 	Entities* start = insects;
 	Entities* temp = new Entities();
 
-	temp->current = new Insect(x, y, 20.f, type);
+	temp->current = new Insect(x, y, 20.f, direction, type);
 	temp->next = nullptr;
 
 	while (start->next != nullptr) start = start->next;
@@ -255,5 +201,3 @@ void PlayContext::addPath(float xPosition, float yPosition, Orientation orientat
 	if (start->current == nullptr) start->current = temp->current;
 	else start->next = temp;
 }
-
-
