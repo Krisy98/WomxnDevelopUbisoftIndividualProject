@@ -17,22 +17,22 @@ void Context::deleteEntities(Entities* entities) {
 void Context::renderEntities(sf::RenderTarget& target, Entities entities) {
 	Entities start = entities;
 
-	if (start.current != nullptr) start.current->draw(target);
+	if (start.current != nullptr) start.current->drawEntity(target);
 
 	while (start.next != nullptr) {
 		start = *start.next;
-		start.current->draw(target);
+		start.current->drawEntity(target);
 	}
 }
 
 void Context::updateEntities(Entities entities, sf::RenderWindow& win) {
 	Entities start = entities;
 
-	if (start.current != nullptr) start.current->update(win);
+	if (start.current != nullptr) start.current->updateEntity(win);
 
 	while (start.next != nullptr) {
 		start = *start.next;
-		start.current->update(win);
+		start.current->updateEntity(win);
 	}
 }
 

@@ -2,7 +2,6 @@
 
 #include "Engine/Entities/Entity.h"
 #include "Engine/Shapes/Rectangle.h"
-#include "Engine/Direction.h"
 #include "EntityType.h"
 
 class Insect : public Entity {
@@ -13,14 +12,12 @@ public :
 	void draw(sf::RenderTarget& target) override;
 	void update(sf::RenderWindow& win) override;
 
-	void setDirection(Direction direction);
-	
 
+
+	//void draw(sf::RenderTarget& target);
 
 private :
 	Rectangle* body;
-
-	Direction direction;
 	
 	float life;
 

@@ -14,7 +14,7 @@ Insect::Insect(float xPosition, float yPosition, float size, Direction direction
 	body->createRectangle();
 	body->setColor(getColor());
 	
-	this->direction = direction; 
+	setDirection(direction);
 }
 
 void Insect::draw(sf::RenderTarget& target){
@@ -22,12 +22,45 @@ void Insect::draw(sf::RenderTarget& target){
 }
 
 void Insect::update(sf::RenderWindow& win){
+	Direction direction = getDirection();
+
+	if (direction == Direction::North || direction == Direction::South) {
+		if (body->getRotation() != 90) {
+			body->setRotation(90);
+		}
+	}
+
+	else if (body->getRotation() != 0) body->setRotation(0);
+
 	move();
 
 	body->setPosition(getPosition()); // update pos to the shape
 }
+/*
+switch (directionInsect){
+				default:
+				case Direction::North:
+					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition() - distance)) {
 
-void Insect::setDirection(Direction direction){ this->direction = direction; }
+					}
+					break;
+				case Direction::South:
+					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition() + distance)) {
+
+					}
+					break;
+				case Direction::East:
+					if (refPath.current->Contains(refInsects.current->getXPosition() + distance, refInsects.current->getYPosition())) {
+
+					}
+					break;
+				case Direction::West:
+					if (refPath.current->Contains(refInsects.current->getXPosition() - distance, refInsects.current->getYPosition())) {
+
+					}
+					break;
+			}
+*/
 
 void Insect::initFromType(InsectType type){
 	switch (type) {
@@ -56,7 +89,7 @@ void Insect::initFromType(InsectType type){
 }
 
 void Insect::move(){
-	switch (direction) {
+	switch (getDirection()) {
 		default:
 		case Direction::North:
 			setPosition(getXPosition(), getYPosition() - getYSpeed());
@@ -72,3 +105,4 @@ void Insect::move(){
 			break;
 	}
 }
+

@@ -4,6 +4,7 @@
 #include "Game/Entities/Dynamic/Insect.h"
 #include "Game/Entities/Static/Path.h"
 #include "Game/Entities/Static/TowerEmplacement.h"
+#include "Engine/Entities/Entity.h"
 
 class PlayContext : public Context {
 
@@ -17,16 +18,15 @@ public :
 private :
 	sf::RenderWindow window;
 	float speedScrolling;
+	float sizeCase;
 
-	Entities* insects = (Entities*)malloc(sizeof(struct Entities));
-	Entities* flowers = (Entities*)malloc(sizeof(struct Entities));
-	Entities* emplacements = (Entities*)malloc(sizeof(struct Entities));
-	Entities* path = (Entities*)malloc(sizeof(struct Entities));
+	Entities* insects = new Entities();
+	Entities* flowers = new Entities();
+	Entities* emplacements = new Entities();
+	Entities* path = new Entities();
 
-	void addFlower(float x, float y, FlowerType type);
-	void addInsect(float x, float y, Direction direction, InsectType type);
-	void addTowerEmplacement(float xPosition, float yPosition);
-	void addPath(float xPosition, float yPosition,Orientation orientation);
+
+	void addEntity(Entities* entities, Entity* entity);
 
 	/// <summary>
 	/// update screen's view depending on the mouse position
@@ -35,6 +35,9 @@ private :
 	void updateScreen(sf::RenderWindow& window);
 
 	void setAllEntitiesPosition(sf::Vector2f speed);
+
+	void updateInsects(sf::RenderWindow& window);
+
 
 
 

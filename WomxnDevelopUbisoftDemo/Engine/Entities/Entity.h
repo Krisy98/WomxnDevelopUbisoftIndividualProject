@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Engine/Direction.h"
+
 class Entity : public BoxCollideable {
 
 public :
@@ -7,10 +9,17 @@ public :
 	virtual void draw(sf::RenderTarget& target) = 0;
 	virtual void update(sf::RenderWindow& win) = 0;
 
+	void drawEntity(sf::RenderTarget& target);
+	void updateEntity(sf::RenderWindow& window);
+
 	void setPosition(float x, float y);
 	void setPosition(sf::Vector2f position);
-	sf::Vector2f getPosition();
+	void setDirection(Direction direction);
 
+	sf::Vector2f getPosition();
+	float getXPosition();
+	float getYPosition();
+	Direction getDirection();
 
 protected :
 	/// <summary>
@@ -22,9 +31,8 @@ protected :
 	void setSize(sf::Vector2f size);
 	void setColor(double rColor, double gColor, double bColor);
 	void setColor(double rColor, double gColor, double bColor, double alpha);
+	
 
-	float getXPosition();
-	float getYPosition();
 	sf::Vector2f getSize();
 	float getWidth();
 	float getHeight();
@@ -41,5 +49,7 @@ private :
 		m_gColor, 
 		m_bColor,
 		m_alpha;
+
+	Direction direction;
 };
 

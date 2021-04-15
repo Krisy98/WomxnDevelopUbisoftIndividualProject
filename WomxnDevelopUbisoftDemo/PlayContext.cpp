@@ -8,23 +8,27 @@ PlayContext::PlayContext(/*int idLvl*/){
 	// wave to define
 
 	this->speedScrolling = 1.4;
+	this->sizeCase = 20.f;
 
 	initEntities(emplacements);
 	initEntities(flowers);
 	initEntities(insects);
 	initEntities(path);
 
-	addFlower(200, 200, FlowerType::Anemone);
-	addFlower(100, 200, FlowerType::Delphinium);
+	
 
-	addTowerEmplacement(100, 200);
-	addTowerEmplacement(200, 200);
+	addEntity(flowers, new Flower(200, 200, this->sizeCase, FlowerType::Anemone));
+	addEntity(flowers, new Flower(200, 100, this->sizeCase, FlowerType::Delphinium));
 
-	addPath(0, 230, Orientation::Horizontal);
-	addPath(40, 230, Orientation::Horizontal);
-	addPath(180, 230, Orientation::Horizontal);
+	addEntity(emplacements, new TowerEmplacement(200, 200, this->sizeCase));
+	addEntity(emplacements, new TowerEmplacement(200, 100, this->sizeCase));
 
-	addInsect(0, 250, Direction::East, InsectType::Cricket);
+	addEntity(path, new Path(100, 280, this->sizeCase, Orientation::Vertical));
+	addEntity(path, new Path(100, 240, this->sizeCase, Orientation::Vertical));
+	addEntity(path, new Path(100, 200, this->sizeCase, Orientation::topLeftCorner));
+	addEntity(path, new Path(140, 200, this->sizeCase, Orientation::Horizontal));
+
+	addEntity(insects, new Insect(120, 300, this->sizeCase, Direction::North, InsectType::Cricket));
 }
 
 PlayContext::~PlayContext(){
@@ -42,7 +46,9 @@ void PlayContext::update(sf::RenderWindow& window){
 
 	updateEntities(*flowers, window);
 
-	updateEntities(*insects, window);
+	//updateEntities(*insects, window);
+
+	updateInsects(window);
 
 	updateEntities(*emplacements, window);
 	updateEntities(*path, window);
@@ -141,6 +147,107 @@ void PlayContext::setAllEntitiesPosition(sf::Vector2f speed){
 	setEntitiesPosition(*path, speed);
 }
 
+void PlayContext::updateInsects(sf::RenderWindow& window){
+	/*
+	Entities refInsects = *insects;
+	Entities refPath = *path;
+
+	updateEntities(*insects, window);
+
+	if (refInsects.current == nullptr || refPath.current == nullptr) { // if no insect or no path
+		return;
+	}
+
+	while (refInsects.current != nullptr) {
+		refPath = *path;
+
+		while (refPath.current != nullptr) {
+			Direction directionInsect = refInsects.current->getDirection();
+			float distance = this->sizeCase;
+			
+			switch (directionInsect){ // we check current path for the current insect
+				default:
+				case Direction::North:
+					
+					//std::cout << "actual : North" << std::endl;
+
+					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) { // if we find it
+
+						std::cout << "we found the current path" << std::endl;
+
+						if (refPath.next == nullptr) break;
+						
+						// we check if insect need to change his direction to still in the complete path
+						if (!refPath.next->current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition() - distance)) {
+
+							// we look at East
+							if (refPath.next->current->Contains(refInsects.current->getXPosition() + distance, refInsects.current->getYPosition())) {
+								std::cout << "change to EAST - ";
+								refInsects.current->setDirection(Direction::East);
+							}
+							 
+							// then West
+							if (refPath.next->current->Contains(refInsects.current->getXPosition() - distance, refInsects.current->getYPosition())) {
+								std::cout << "change to WEST - ";
+								refInsects.current->setDirection(Direction::West);
+							}
+
+						}
+					}
+					
+					break;
+				case Direction::South:
+					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) {
+
+						if (refPath.next == nullptr) break;
+
+						// we check if insect need to change his direction to still in the complete path
+						if (!refPath.next->current->Contains(refPath.next->current->getXPosition(), refPath.next->current->getYPosition() + distance)) {
+
+
+						}
+					}
+					break;
+				case Direction::East:
+					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) {
+
+						if (refPath.next == nullptr) break;
+
+						// we check if insect need to change his direction to still in the complete path
+						if (!refPath.next->current->Contains(refPath.next->current->getXPosition() + distance, refPath.next->current->getYPosition())) {
+
+
+
+						}
+					}
+					break;
+				case Direction::West:
+					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) {
+
+						if (refPath.next == nullptr) break;
+
+						// we check if insect need to change his direction to still in the complete path
+						if (!refPath.next->current->Contains(refPath.next->current->getXPosition() - distance, refPath.next->current->getYPosition())) {
+
+
+
+						}
+					}
+					break;
+			}
+			
+			if (refPath.next == nullptr) break;
+
+			refPath = *refPath.next;
+		}
+
+		if (refInsects.next == nullptr) break;
+
+		refInsects = *refInsects.next;
+	}
+	*/
+}
+
 void PlayContext::render(sf::RenderTarget& target){
 	target.clear(sf::Color(0, 0, 0));
 
@@ -150,54 +257,15 @@ void PlayContext::render(sf::RenderTarget& target){
 	renderEntities(target, *path);
 }
 
-void PlayContext::addFlower(float x, float y, FlowerType type) {
-	Entities* start = flowers;
-	Entities* temp/* = (Entities*) malloc(sizeof(struct Entities))*/ = new Entities();
+void PlayContext::addEntity(Entities* entities, Entity* entity){
+	Entities* start = entities;
+	Entities* temp = new Entities();
 
-	temp->current = new Flower(x, y, 20.f, type);
+	temp->current = entity;
 	temp->next = nullptr;
+
+	while (start->next != nullptr) start = start->next;
 	
-	while (start->next != nullptr) start = start->next;
-
-	if (start->current == nullptr) start->current = temp->current;
-	else start->next = temp;
-}
-
-void PlayContext::addInsect(float x, float y, Direction direction, InsectType type){
-	Entities* start = insects;
-	Entities* temp = new Entities();
-
-	temp->current = new Insect(x, y, 20.f, direction, type);
-	temp->next = nullptr;
-
-	while (start->next != nullptr) start = start->next;
-
-	if (start->current == nullptr) start->current = temp->current;
-	else start->next = temp;
-}
-
-void PlayContext::addTowerEmplacement(float xPosition, float yPosition){
-	Entities* start = emplacements;
-	Entities* temp/* = (Entities*) malloc(sizeof(struct Entities))*/ = new Entities();
-
-	temp->current = new TowerEmplacement(xPosition, yPosition, 20.f);
-	temp->next = nullptr;
-
-	while (start->next != nullptr) start = start->next;
-
-	if (start->current == nullptr) start->current = temp->current;
-	else start->next = temp;
-}
-
-void PlayContext::addPath(float xPosition, float yPosition, Orientation orientation){
-	Entities* start = path;
-	Entities* temp = new Entities();
-
-	temp->current = new Path(xPosition, yPosition, 20.f, orientation);
-	temp->next = nullptr;
-
-	while (start->next != nullptr) start = start->next;
-
 	if (start->current == nullptr) start->current = temp->current;
 	else start->next = temp;
 }

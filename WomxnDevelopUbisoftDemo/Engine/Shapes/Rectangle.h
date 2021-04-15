@@ -18,10 +18,12 @@ public :
 	void setThickness(float thickness, sf::Color color) override;
 	void setPosition(float xPosition, float yPosition) override;
 	void setPosition(sf::Vector2f position) override;
+	void setRotation(float rotation);
 
 	void createRectangle();
 	void createRectangleFlatEdge(float fractionalWidth, float fractionalHeight);
 
+	float getRotation();
 
 private :
 	sf::ConvexShape convexShape;

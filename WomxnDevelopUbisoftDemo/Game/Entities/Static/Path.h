@@ -5,7 +5,11 @@
 
 enum class Orientation {
 	Horizontal,
-	Vertical
+	Vertical,
+	botRightCorner,
+	topRightCorner,
+	botLeftCorner,
+	topLeftCorner
 };
 
 class Path : public Entity {
@@ -21,13 +25,13 @@ public :
 
 private :
 
-	//Line* leftLine {nullptr}; // or up if orientation is horizontal
-	//Line* rightLine {nullptr}; // or down if orientation is horizontal
-
-	Rectangle* leftLine{ nullptr }; // or up if orientation is horizontal
-	Rectangle* rightLine {nullptr}; // or down if orientation is horizontal
+	Rectangle* firstLine{ nullptr }; // or up if orientation is horizontal
+	Rectangle* secondLine {nullptr}; // or down if orientation is horizontal
 
 	Orientation orientation;
+
+	void buildPath();
+	void updatePosition();
 
 };
 
