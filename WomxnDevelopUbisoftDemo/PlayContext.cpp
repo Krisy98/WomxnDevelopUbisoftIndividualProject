@@ -49,7 +49,7 @@ PlayContext::~PlayContext(){
 }
 
 void PlayContext::update(sf::RenderWindow& window){
-	//updateScreen(window);
+	updateScreen(window);
 
 	// movement
 	// collision
@@ -147,14 +147,18 @@ void PlayContext::updateScreen(sf::RenderWindow& window) {
 
 	sf::Vector2f speed = sf::Vector2f(xSpeed, ySpeed);
 
-	setAllEntitiesPosition(speed);
+	moveScreen(speed);
 }
 
-void PlayContext::setAllEntitiesPosition(sf::Vector2f speed){
+void PlayContext::moveScreen(sf::Vector2f speed){
 	setEntitiesPosition(*flowers, speed);
 	setEntitiesPosition(*emplacements, speed);
 	setEntitiesPosition(*insects, speed);
 	setEntitiesPosition(*path, speed);
+
+	for (int i = 0; i < (int)points.size(); i++) {
+		points[i].set(points[i].getX() + speed.x, points[i].getY() + speed.y);
+	}
 }
 
 void PlayContext::updateInsects(sf::RenderWindow& window){

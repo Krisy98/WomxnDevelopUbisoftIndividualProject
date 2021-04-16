@@ -37,7 +37,7 @@ private :
 	/// <param name="window"></param>
 	void updateScreen(sf::RenderWindow& window);
 
-	void setAllEntitiesPosition(sf::Vector2f speed);
+	void moveScreen(sf::Vector2f speed);
 
 	void updateInsects(sf::RenderWindow& window);
 

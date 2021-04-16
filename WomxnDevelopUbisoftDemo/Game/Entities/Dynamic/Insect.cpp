@@ -29,7 +29,6 @@ void Insect::draw(sf::RenderTarget& target){
 }
 
 void Insect::update(sf::RenderWindow& win){
-
 	updateDirection();
 
 	updateRotation(); // thanks to direction
@@ -40,12 +39,9 @@ void Insect::update(sf::RenderWindow& win){
 }
 
 void Insect::move() {
-	
-
 	switch (getDirection()) {
 		default:
 		case Direction::North:
-			//std::cout << "North";
 			setPosition(getXPosition(), getYPosition() - getYSpeed());
 			break;
 		case Direction::South:
@@ -76,9 +72,6 @@ void Insect::updateDirection(){
 	}
 
 	Point aim = points->back();
-
-	// point courant est tj le premier point.
-	// Une fois dépassé, on l'enleve du tableau
 
 	switch (getDirection()) {
 		default:
@@ -161,7 +154,6 @@ void Insect::updateRotation() {
 			}
 			break;
 	}
-
 }
 
 void Insect::initFromType(InsectType type) {

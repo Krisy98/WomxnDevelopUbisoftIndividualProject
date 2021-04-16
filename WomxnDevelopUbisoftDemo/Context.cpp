@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Context.h"
+#include <iostream>
 
 void Context::initEntities(Entities* firstEntity) {
 	firstEntity->current = nullptr;
