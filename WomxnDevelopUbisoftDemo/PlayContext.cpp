@@ -8,27 +8,37 @@ PlayContext::PlayContext(/*int idLvl*/){
 	// wave to define
 
 	this->speedScrolling = 1.4;
-	this->sizeCase = 20.f;
+	this->baseSize = 20.f;
 
 	initEntities(emplacements);
 	initEntities(flowers);
 	initEntities(insects);
 	initEntities(path);
 
-	
+	//
 
-	addEntity(flowers, new Flower(200, 200, this->sizeCase, FlowerType::Anemone));
-	addEntity(flowers, new Flower(200, 100, this->sizeCase, FlowerType::Delphinium));
+	points.push_back(*new Point(200, 300));
+	points.push_back(*new Point(300, 300));
+	points.push_back(*new Point(300, 200));
+	points.push_back(*new Point(120, 200));
+	points.push_back(*new Point(120, 300));
 
-	addEntity(emplacements, new TowerEmplacement(200, 200, this->sizeCase));
-	addEntity(emplacements, new TowerEmplacement(200, 100, this->sizeCase));
 
-	addEntity(path, new Path(100, 280, this->sizeCase, Orientation::Vertical));
-	addEntity(path, new Path(100, 240, this->sizeCase, Orientation::Vertical));
-	addEntity(path, new Path(100, 200, this->sizeCase, Orientation::topLeftCorner));
-	addEntity(path, new Path(140, 200, this->sizeCase, Orientation::Horizontal));
+	//
 
-	addEntity(insects, new Insect(120, 300, this->sizeCase, Direction::North, InsectType::Cricket));
+	addEntity(flowers, new Flower(200, 200, this->baseSize, FlowerType::Anemone));
+	addEntity(flowers, new Flower(200, 100, this->baseSize, FlowerType::Delphinium));
+
+	addEntity(emplacements, new TowerEmplacement(200, 200, this->baseSize));
+	addEntity(emplacements, new TowerEmplacement(200, 100, this->baseSize));
+
+	addEntity(path, new Path(100, 280, this->baseSize, Orientation::Vertical));
+	addEntity(path, new Path(100, 240, this->baseSize, Orientation::Vertical));
+	addEntity(path, new Path(100, 200, this->baseSize, Orientation::topLeftCorner));
+	addEntity(path, new Path(140, 200, this->baseSize, Orientation::Horizontal));
+
+	addEntity(insects, new Insect(0, 300, this->baseSize, &points, InsectType::Cricket));
+
 }
 
 PlayContext::~PlayContext(){
@@ -39,16 +49,16 @@ PlayContext::~PlayContext(){
 }
 
 void PlayContext::update(sf::RenderWindow& window){
-	updateScreen(window);
+	//updateScreen(window);
 
 	// movement
 	// collision
 
 	updateEntities(*flowers, window);
 
-	//updateEntities(*insects, window);
+	updateEntities(*insects, window);
 
-	updateInsects(window);
+	//updateInsects(window);
 
 	updateEntities(*emplacements, window);
 	updateEntities(*path, window);
@@ -255,17 +265,4 @@ void PlayContext::render(sf::RenderTarget& target){
 	renderEntities(target, *insects);
 	renderEntities(target, *emplacements);
 	renderEntities(target, *path);
-}
-
-void PlayContext::addEntity(Entities* entities, Entity* entity){
-	Entities* start = entities;
-	Entities* temp = new Entities();
-
-	temp->current = entity;
-	temp->next = nullptr;
-
-	while (start->next != nullptr) start = start->next;
-	
-	if (start->current == nullptr) start->current = temp->current;
-	else start->next = temp;
 }

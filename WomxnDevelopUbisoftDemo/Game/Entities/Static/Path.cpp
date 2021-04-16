@@ -28,9 +28,7 @@ void Path::draw(sf::RenderTarget& target){
 }
 
 void Path::update(sf::RenderWindow& win){
-
 	updatePosition();
-
 }
 
 void Path::buildPath(){
@@ -112,5 +110,4 @@ void Path::updatePosition() {
 			secondLine->setPosition(xPosition, yPosition + size.y);
 			break;
 	}
-
 }

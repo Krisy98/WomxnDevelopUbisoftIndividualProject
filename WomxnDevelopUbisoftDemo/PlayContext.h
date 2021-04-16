@@ -1,10 +1,15 @@
 #pragma once
 #include "Context.h"
+#include "Engine/Shapes/Point.h"
+
+// Entities
 #include "Game/Entities/Dynamic/Flower.h"
 #include "Game/Entities/Dynamic/Insect.h"
 #include "Game/Entities/Static/Path.h"
 #include "Game/Entities/Static/TowerEmplacement.h"
 #include "Engine/Entities/Entity.h"
+
+#include <list>
 
 class PlayContext : public Context {
 
@@ -18,15 +23,13 @@ public :
 private :
 	sf::RenderWindow window;
 	float speedScrolling;
-	float sizeCase;
+	float baseSize;
+	std::vector<Point> points; // path to follow
 
 	Entities* insects = new Entities();
 	Entities* flowers = new Entities();
 	Entities* emplacements = new Entities();
 	Entities* path = new Entities();
-
-
-	void addEntity(Entities* entities, Entity* entity);
 
 	/// <summary>
 	/// update screen's view depending on the mouse position
@@ -39,11 +42,8 @@ private :
 	void updateInsects(sf::RenderWindow& window);
 
 
-
-
 	/*
 	entities :
-		- flower
 		- insects (enemies) // specific to the level
 		- basic informations :
 			- life

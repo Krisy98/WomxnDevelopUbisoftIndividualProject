@@ -17,6 +17,8 @@ public :
 	void initEntities(Entities* firstEntity);
 	void deleteEntities(Entities* entities);
 
+	void addEntity(Entities* entities, Entity* entity);
+
 	/// <summary>
 	/// Render an entity
 	/// </summary>

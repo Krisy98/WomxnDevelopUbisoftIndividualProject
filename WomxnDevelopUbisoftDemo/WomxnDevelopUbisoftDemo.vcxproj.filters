@@ -71,6 +71,9 @@
     <ClCompile Include="Game\Entities\Static\Path.cpp">
       <Filter>Game\Entities\Static</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Shapes\Point.cpp">
+      <Filter>Engine\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -138,7 +141,10 @@
       <Filter>Game\Entities\Static</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Direction.h">
-      <Filter>Game</Filter>
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shapes\Point.h">
+      <Filter>Engine\Shapes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

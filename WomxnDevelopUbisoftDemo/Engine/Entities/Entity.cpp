@@ -71,5 +71,3 @@ sf::Vector2f Entity::getSize() { return this->size; }
 float Entity::getWidth(){ return size.x; }
 
 float Entity::getHeight(){ return size.y; }
-
-

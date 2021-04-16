@@ -54,3 +54,16 @@ void Context::setEntitiesPosition(Entities entities, sf::Vector2f speed) {
 		start.current->setPosition(newPos);
 	}
 }
+
+void Context::addEntity(Entities* entities, Entity* entity) {
+	Entities* start = entities;
+	Entities* temp = new Entities();
+
+	temp->current = entity;
+	temp->next = nullptr;
+
+	while (start->next != nullptr) start = start->next;
+
+	if (start->current == nullptr) start->current = temp->current;
+	else start->next = temp;
+}
