@@ -39,8 +39,6 @@ private :
 
 	void moveScreen(sf::Vector2f speed);
 
-	void updateInsects(sf::RenderWindow& window);
-
 
 	/*
 	entities :

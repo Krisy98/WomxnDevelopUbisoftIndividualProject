@@ -57,7 +57,7 @@ void Insect::move() {
 }
 
 void Insect::nextPoint(){
-	points->pop_back();
+	points->erase(points->begin()); // erase first element
 
 	setDirection(Direction::None);
 	updateDirection();
@@ -71,7 +71,7 @@ void Insect::updateDirection(){
 		return;
 	}
 
-	Point aim = points->back();
+	Point aim = *points->begin(); // get first element
 
 	switch (getDirection()) {
 		default:

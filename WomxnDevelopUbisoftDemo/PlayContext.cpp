@@ -17,25 +17,30 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 	//
 
-	points.push_back(*new Point(200, 300));
-	points.push_back(*new Point(300, 300));
-	points.push_back(*new Point(300, 200));
-	points.push_back(*new Point(120, 200));
-	points.push_back(*new Point(120, 300));
+	points.push_back(*new Point(180, 300));
+	points.push_back(*new Point(180, 260));
+	
 
 
 	//
 
-	addEntity(flowers, new Flower(200, 200, this->baseSize, FlowerType::Anemone));
-	addEntity(flowers, new Flower(200, 100, this->baseSize, FlowerType::Delphinium));
+	addEntity(flowers, new Flower(220, 280, this->baseSize, FlowerType::Anemone));
+	addEntity(flowers, new Flower(220, 160, this->baseSize, FlowerType::Delphinium));
 
-	addEntity(emplacements, new TowerEmplacement(200, 200, this->baseSize));
-	addEntity(emplacements, new TowerEmplacement(200, 100, this->baseSize));
+	addEntity(emplacements, new TowerEmplacement(220, 280, this->baseSize));
+	addEntity(emplacements, new TowerEmplacement(220, 160, this->baseSize));
+	addEntity(emplacements, new TowerEmplacement(220, 120, this->baseSize));
 
-	addEntity(path, new Path(100, 280, this->baseSize, Orientation::Vertical));
-	addEntity(path, new Path(100, 240, this->baseSize, Orientation::Vertical));
-	addEntity(path, new Path(100, 200, this->baseSize, Orientation::topLeftCorner));
-	addEntity(path, new Path(140, 200, this->baseSize, Orientation::Horizontal));
+
+
+	addEntity(path, new Path(0, 280, baseSize, Orientation::Horizontal));
+	addEntity(path, new Path(40, 280, baseSize, Orientation::Horizontal)); // +40
+	addEntity(path, new Path(80, 280, baseSize, Orientation::Horizontal)); // +40
+	addEntity(path, new Path(120, 280, baseSize, Orientation::Horizontal)); // +40
+	addEntity(path, new Path(160, 280, baseSize, Orientation::botRightCorner)); // +40
+	addEntity(path, new Path(160, 240, baseSize, Orientation::Vertical));
+
+
 
 	addEntity(insects, new Insect(0, 300, this->baseSize, &points, InsectType::Cricket));
 
@@ -51,15 +56,8 @@ PlayContext::~PlayContext(){
 void PlayContext::update(sf::RenderWindow& window){
 	updateScreen(window);
 
-	// movement
-	// collision
-
 	updateEntities(*flowers, window);
-
 	updateEntities(*insects, window);
-
-	//updateInsects(window);
-
 	updateEntities(*emplacements, window);
 	updateEntities(*path, window);
 }
@@ -159,107 +157,6 @@ void PlayContext::moveScreen(sf::Vector2f speed){
 	for (int i = 0; i < (int)points.size(); i++) {
 		points[i].set(points[i].getX() + speed.x, points[i].getY() + speed.y);
 	}
-}
-
-void PlayContext::updateInsects(sf::RenderWindow& window){
-	/*
-	Entities refInsects = *insects;
-	Entities refPath = *path;
-
-	updateEntities(*insects, window);
-
-	if (refInsects.current == nullptr || refPath.current == nullptr) { // if no insect or no path
-		return;
-	}
-
-	while (refInsects.current != nullptr) {
-		refPath = *path;
-
-		while (refPath.current != nullptr) {
-			Direction directionInsect = refInsects.current->getDirection();
-			float distance = this->sizeCase;
-			
-			switch (directionInsect){ // we check current path for the current insect
-				default:
-				case Direction::North:
-					
-					//std::cout << "actual : North" << std::endl;
-
-					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) { // if we find it
-
-						std::cout << "we found the current path" << std::endl;
-
-						if (refPath.next == nullptr) break;
-						
-						// we check if insect need to change his direction to still in the complete path
-						if (!refPath.next->current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition() - distance)) {
-
-							// we look at East
-							if (refPath.next->current->Contains(refInsects.current->getXPosition() + distance, refInsects.current->getYPosition())) {
-								std::cout << "change to EAST - ";
-								refInsects.current->setDirection(Direction::East);
-							}
-							 
-							// then West
-							if (refPath.next->current->Contains(refInsects.current->getXPosition() - distance, refInsects.current->getYPosition())) {
-								std::cout << "change to WEST - ";
-								refInsects.current->setDirection(Direction::West);
-							}
-
-						}
-					}
-					
-					break;
-				case Direction::South:
-					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) {
-
-						if (refPath.next == nullptr) break;
-
-						// we check if insect need to change his direction to still in the complete path
-						if (!refPath.next->current->Contains(refPath.next->current->getXPosition(), refPath.next->current->getYPosition() + distance)) {
-
-
-						}
-					}
-					break;
-				case Direction::East:
-					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) {
-
-						if (refPath.next == nullptr) break;
-
-						// we check if insect need to change his direction to still in the complete path
-						if (!refPath.next->current->Contains(refPath.next->current->getXPosition() + distance, refPath.next->current->getYPosition())) {
-
-
-
-						}
-					}
-					break;
-				case Direction::West:
-					if (refPath.current->Contains(refInsects.current->getXPosition(), refInsects.current->getYPosition())) {
-
-						if (refPath.next == nullptr) break;
-
-						// we check if insect need to change his direction to still in the complete path
-						if (!refPath.next->current->Contains(refPath.next->current->getXPosition() - distance, refPath.next->current->getYPosition())) {
-
-
-
-						}
-					}
-					break;
-			}
-			
-			if (refPath.next == nullptr) break;
-
-			refPath = *refPath.next;
-		}
-
-		if (refInsects.next == nullptr) break;
-
-		refInsects = *refInsects.next;
-	}
-	*/
 }
 
 void PlayContext::render(sf::RenderTarget& target){
