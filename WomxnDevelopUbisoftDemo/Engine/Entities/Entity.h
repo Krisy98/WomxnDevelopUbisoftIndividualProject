@@ -14,12 +14,10 @@ public :
 
 	void setPosition(float x, float y);
 	void setPosition(sf::Vector2f position);
-	void setDirection(Direction direction);
 
 	sf::Vector2f getPosition();
 	float getXPosition();
 	float getYPosition();
-	Direction getDirection();
 
 protected :
 	/// <summary>
@@ -32,7 +30,6 @@ protected :
 	void setColor(double rColor, double gColor, double bColor);
 	void setColor(double rColor, double gColor, double bColor, double alpha);
 	
-
 	sf::Vector2f getSize();
 	float getWidth();
 	float getHeight();
@@ -49,7 +46,5 @@ private :
 		m_gColor, 
 		m_bColor,
 		m_alpha;
-
-	Direction direction;
 };
 

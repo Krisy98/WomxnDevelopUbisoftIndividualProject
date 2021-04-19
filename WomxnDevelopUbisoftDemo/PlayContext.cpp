@@ -19,8 +19,6 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 	points.push_back(*new Point(180, 300));
 	points.push_back(*new Point(180, 260));
-	
-
 
 	//
 

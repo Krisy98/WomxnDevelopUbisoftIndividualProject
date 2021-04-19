@@ -181,3 +181,7 @@ void Insect::initFromType(InsectType type) {
 		break;
 	}
 }
+
+void Insect::setDirection(Direction direction) { this->direction = direction; }
+
+Direction Insect::getDirection() { return this->direction; }

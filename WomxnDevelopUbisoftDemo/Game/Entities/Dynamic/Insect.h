@@ -21,11 +21,16 @@ private :
 	std::vector<Point>* points; // way
 	float life;
 	bool atHome; // false if no there no next point to go
+	Direction direction;
+
 
 	void initFromType(InsectType type);
 	void updateDirection();
 	void updateRotation();
 	void move();
 	void nextPoint();
+
+	void setDirection(Direction direction);
+	Direction getDirection();
 };
 

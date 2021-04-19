@@ -48,8 +48,6 @@ void Entity::setColor(double rColor, double gColor, double bColor, double alpha)
 	this->m_alpha = alpha;
 }
 
-void Entity::setDirection(Direction direction){ this->direction = direction; }
-
 float Entity::getXSpeed(){ return this->speed.x; }
 
 float Entity::getYSpeed(){ return this->speed.y; }
@@ -57,8 +55,6 @@ float Entity::getYSpeed(){ return this->speed.y; }
 sf::Color Entity::getColor(){
 	return sf::Color(static_cast<uint8_t>(this->m_rColor * 255.0f), static_cast<uint8_t>(this->m_gColor * 255.0f), static_cast<uint8_t>(this->m_bColor * 255.0f), static_cast<uint8_t>(this->m_alpha * 255.0f));
 }
-
-Direction Entity::getDirection(){ return this->direction; }
 
 sf::Vector2f Entity::getPosition() { return position; }
 
