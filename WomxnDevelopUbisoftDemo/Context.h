@@ -14,9 +14,23 @@ public :
 	virtual void update(sf::RenderWindow& win) = 0;
 	virtual void render(sf::RenderTarget& target) = 0;
 
+	/// <summary>
+	/// Inizialise variable firstEntity of Entities type
+	/// </summary>
+	/// <param name="firstEntity"></param>
 	void initEntities(Entities* firstEntity);
+
+	/// <summary>
+	/// Delete or destroy variable entities of Entities type
+	/// </summary>
+	/// <param name="entities"></param>
 	void deleteEntities(Entities* entities);
 
+	/// <summary>
+	/// Add a entity at the last value from the variable entities of Entities type
+	/// </summary>
+	/// <param name="entities"></param>
+	/// <param name="entity"></param>
 	void addEntity(Entities* entities, Entity* entity);
 
 	/// <summary>

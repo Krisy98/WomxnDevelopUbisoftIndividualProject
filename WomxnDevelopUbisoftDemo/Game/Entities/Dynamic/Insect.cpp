@@ -38,6 +38,15 @@ void Insect::update(sf::RenderWindow& win){
 	body->setPosition(getPosition()); // update pos to the shape
 }
 
+void Insect::reduceLife(float damage){
+	if (this->life - damage <= 0) {
+		setLife(0);
+	}
+	else {
+		setLife(this->life - damage);
+	}
+}
+
 void Insect::move() {
 	switch (getDirection()) {
 		default:
@@ -184,4 +193,8 @@ void Insect::initFromType(InsectType type) {
 
 void Insect::setDirection(Direction direction) { this->direction = direction; }
 
+void Insect::setLife(float life){ this->life = life; }
+
 Direction Insect::getDirection() { return this->direction; }
+
+float Insect::getLife(){ return this->life; }

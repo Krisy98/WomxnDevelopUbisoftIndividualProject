@@ -5,7 +5,6 @@
 class Entity : public BoxCollideable {
 
 public :
-
 	virtual void draw(sf::RenderTarget& target) = 0;
 	virtual void update(sf::RenderWindow& win) = 0;
 

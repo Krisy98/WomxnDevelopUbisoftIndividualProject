@@ -15,6 +15,7 @@ public :
 	void draw(sf::RenderTarget& target) override;
 	void update(sf::RenderWindow& win) override;
 
+	void reduceLife(float damage);
 
 private :
 	Rectangle* body;
@@ -23,14 +24,20 @@ private :
 	bool atHome; // false if no there no next point to go
 	Direction direction;
 
-
 	void initFromType(InsectType type);
 	void updateDirection();
 	void updateRotation();
 	void move();
+
+	/// <summary>
+	/// Delete the first point from the global variable of points
+	/// And set the new corresponding direction
+	/// </summary>
 	void nextPoint();
 
 	void setDirection(Direction direction);
+	void setLife(float life);
 	Direction getDirection();
+	float getLife();
 };
 
