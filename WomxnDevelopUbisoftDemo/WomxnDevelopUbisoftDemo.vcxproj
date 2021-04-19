@@ -251,7 +251,14 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClInclude Include="Game\MainCharacter.h" />
     <ClInclude Include="MainLoop.h" />
     <ClInclude Include="PlayContext.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WomxnDevelopUbisoftDemo.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Ressources\Files\lvl_1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
