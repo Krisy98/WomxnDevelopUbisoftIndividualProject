@@ -48,6 +48,11 @@ private :
 	/// </summary>
 	void createPath(File *file);
 
+	/// <summary>
+	/// Create every emplacement for flower entities from a file
+	/// </summary>
+	void createEmplacements(File* file);
+
 	/*
 	entities :
 		- insects (enemies) // specific to the level

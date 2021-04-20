@@ -260,7 +260,7 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ResourceCompile Include="WomxnDevelopUbisoftDemo.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resources\Levels\lvl_1.txt" />
+    <Text Include="Resources\Levels\lvl_0.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

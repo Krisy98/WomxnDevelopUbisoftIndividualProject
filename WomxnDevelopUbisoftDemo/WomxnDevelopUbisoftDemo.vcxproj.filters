@@ -204,7 +204,7 @@
     <ResourceCompile Include="WomxnDevelopUbisoftDemo.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resources\Levels\lvl_1.txt">
+    <Text Include="Resources\Levels\lvl_0.txt">
       <Filter>Resources\Levels</Filter>
     </Text>
   </ItemGroup>

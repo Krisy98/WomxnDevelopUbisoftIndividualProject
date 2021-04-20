@@ -82,8 +82,6 @@ void Rectangle::createRectangleFlatEdge(float fractionalWidth, float fractionalH
 
 
 	convexShape.setPosition(getPosition()); // set the correct position
-
-	//std::cout << "xPos : " << convexShape.getPosition().x << std::endl;
 }
 
 float Rectangle::getRotation(){

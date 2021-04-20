@@ -31,6 +31,8 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 	createPath(file);
 
+	createEmplacements(file);
+
 
 	/*
 
@@ -43,8 +45,10 @@ PlayContext::PlayContext(/*int idLvl*/){
 */
 
 
-	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::Cricket));
+	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::Worms));
 	
+
+
 }
 
 PlayContext::~PlayContext(){
@@ -185,16 +189,16 @@ void PlayContext::createPath(File* file) {
 		file->getString(&orientation);
 
 		if (orientation == "Horizontal") {
-			if (i >= nbPath - 2) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
+			if (i >= nbPath - 1) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
 
 			addEntity(path, new Path(x, y, this->baseSize, Orientation::Horizontal));
 		}
 		else if (orientation == "Vertical") {
-			if (i >= nbPath - 2) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
+			if (i >= nbPath - 1) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
 
 			addEntity(path, new Path(x, y, this->baseSize, Orientation::Vertical));
 		}
-		else if (orientation == "botLeftCorner") { //
+		else if (orientation == "botLeftCorner") { 
 			addEntity(path, new Path(x, y, this->baseSize, Orientation::botLeftCorner));
 
 			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
@@ -214,5 +218,20 @@ void PlayContext::createPath(File* file) {
 
 			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
 		}
+	}
+}
+
+void PlayContext::createEmplacements(File* file) {
+	float nbEmplacement;
+
+	file->getFloat(&nbEmplacement);
+
+	for (int i = 0; i < nbEmplacement; i++) {
+		float x, y;
+
+		file->getFloat(&x);
+		file->getFloat(&y);
+
+		addEntity(emplacements, new TowerEmplacement(x, y, this->baseSize));
 	}
 }
