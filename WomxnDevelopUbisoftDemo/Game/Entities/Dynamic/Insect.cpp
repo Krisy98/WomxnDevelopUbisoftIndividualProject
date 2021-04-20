@@ -85,13 +85,13 @@ void Insect::updateDirection(){
 	switch (getDirection()) {
 		default:
 		case Direction::None :
-			if (position.x == aim.getX()) {
+			if (position.x == aim.getX() || (position.x < aim.getX() + 1 && position.x > aim.getX()) || (position.x > aim.getX() - 1 && position.x < aim.getX())) {
 				if (position.y < aim.getY()) setDirection(Direction::South);
 
 				if (position.y > aim.getY()) setDirection(Direction::North);
 			}
 
-			else if (position.y == aim.getY()) {
+			else if (position.y == aim.getY() || (position.y < aim.getY() + 1 && position.y > aim.getY()) || (position.y > aim.getY() - 1 && position.y < aim.getY())) {
 				if (position.x < aim.getX()) setDirection(Direction::East);
 
 				if (position.x > aim.getX()) setDirection(Direction::West);

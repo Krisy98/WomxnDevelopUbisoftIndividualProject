@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <iostream>
 #include "File.h"
 
 File::File(const char* fileName){
@@ -38,6 +39,24 @@ void File::getFloat(float* value){
 		getline(file, string);
 
 		*value = std::stof(string);
+	}
+	else {
+		value = nullptr;
+	}
+}
+
+void File::getInt(int* value){
+	if (file.is_open() && fileMode == FileMode::READ) {
+		*value = file.get();
+	}
+	else {
+		value = nullptr;
+	}
+}
+
+void File::getString(std::string *value){
+	if (file.is_open() && fileMode == FileMode::READ) {
+		getline(file, *value);
 	}
 	else {
 		value = nullptr;

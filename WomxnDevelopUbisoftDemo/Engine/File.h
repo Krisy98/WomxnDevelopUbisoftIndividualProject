@@ -20,6 +20,8 @@ public :
 	void close();
 
 	void getFloat(float *value);
+	void getInt(int *value);
+	void getString(std::string *value);
 
 private :
 	std::fstream file;

@@ -1,14 +1,13 @@
 #include "stdafx.h"
 #include <iostream>
+#include <string>
 #include "PlayContext.h"
-#include "Engine/File.h"
 
 
 PlayContext::PlayContext(/*int idLvl*/){
-	File *file = new File("Resources/Levels/lvl_1.txt");
+	File *file = new File("Resources/Levels/lvl_0.txt"); // tuto
 
 	// wave to define
-
 	/*
 	sf::FileInputStream stream;
 	if (stream.open("Resources/Levels/lvl_1.txt")) {
@@ -22,27 +21,18 @@ PlayContext::PlayContext(/*int idLvl*/){
 	initEntities(insects);
 	initEntities(path);
 
-
+	this->speedScrolling = 1.4;
 
 	file->readMode();
+
 	file->getFloat(&this->baseSize);
 
+	//
 
-
+	createPath(file);
 
 
 	/*
-	this->speedScrolling = 1.4;
-	this->baseSize = 20.f;
-
-
-
-	//
-
-	points.push_back(*new Point(180, 300));
-	points.push_back(*new Point(180, 260));
-
-	//
 
 	addEntity(flowers, new Flower(220, 280, this->baseSize, FlowerType::Anemone));
 	addEntity(flowers, new Flower(220, 160, this->baseSize, FlowerType::Delphinium));
@@ -50,20 +40,11 @@ PlayContext::PlayContext(/*int idLvl*/){
 	addEntity(emplacements, new TowerEmplacement(220, 280, this->baseSize));
 	addEntity(emplacements, new TowerEmplacement(220, 160, this->baseSize));
 	addEntity(emplacements, new TowerEmplacement(220, 120, this->baseSize));
+*/
 
 
-
-	addEntity(path, new Path(0, 280, baseSize, Orientation::Horizontal));
-	addEntity(path, new Path(40, 280, baseSize, Orientation::Horizontal)); // +40
-	addEntity(path, new Path(80, 280, baseSize, Orientation::Horizontal)); // +40
-	addEntity(path, new Path(120, 280, baseSize, Orientation::Horizontal)); // +40
-	addEntity(path, new Path(160, 280, baseSize, Orientation::botRightCorner)); // +40
-	addEntity(path, new Path(160, 240, baseSize, Orientation::Vertical));
-
-
-
-	addEntity(insects, new Insect(0, 300, this->baseSize, &points, InsectType::Cricket));
-	*/
+	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::Cricket));
+	
 }
 
 PlayContext::~PlayContext(){
@@ -174,7 +155,8 @@ void PlayContext::moveScreen(sf::Vector2f speed){
 	setEntitiesPosition(*insects, speed);
 	setEntitiesPosition(*path, speed);
 
-	for (int i = 0; i < (int)points.size(); i++) {
+
+	for (int i = 0; i < (int) points.size(); i++) {
 		points[i].set(points[i].getX() + speed.x, points[i].getY() + speed.y);
 	}
 }
@@ -186,4 +168,51 @@ void PlayContext::render(sf::RenderTarget& target){
 	renderEntities(target, *insects);
 	renderEntities(target, *emplacements);
 	renderEntities(target, *path);
+}
+
+void PlayContext::createPath(File* file) {
+	float nbPath;
+
+	file->getFloat(&nbPath);
+
+	for (int i = 0; i < nbPath; i++) {
+		float x, y;
+		std::string orientation;
+
+		file->getFloat(&x);
+		file->getFloat(&y);
+
+		file->getString(&orientation);
+
+		if (orientation == "Horizontal") {
+			if (i >= nbPath - 2) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
+
+			addEntity(path, new Path(x, y, this->baseSize, Orientation::Horizontal));
+		}
+		else if (orientation == "Vertical") {
+			if (i >= nbPath - 2) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
+
+			addEntity(path, new Path(x, y, this->baseSize, Orientation::Vertical));
+		}
+		else if (orientation == "botLeftCorner") { //
+			addEntity(path, new Path(x, y, this->baseSize, Orientation::botLeftCorner));
+
+			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
+		}
+		else if (orientation == "botRightCorner") {
+			addEntity(path, new Path(x, y, this->baseSize, Orientation::botRightCorner));
+
+			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
+		}
+		else if (orientation == "topLeftCorner") {
+			addEntity(path, new Path(x, y, this->baseSize, Orientation::topLeftCorner));
+
+			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
+		}
+		else if (orientation == "topRightCorner") {
+			addEntity(path, new Path(x, y, this->baseSize, Orientation::topRightCorner));
+
+			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
+		}
+	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Context.h"
 #include "Engine/Shapes/Point.h"
+#include "Engine/File.h"
 
 // Entities
 #include "Game/Entities/Dynamic/Flower.h"
@@ -39,6 +40,13 @@ private :
 
 	void moveScreen(sf::Vector2f speed);
 
+	/// <summary>
+	/// Create a path way from a file that define the level
+	/// To be used correctly, the cursor need to be at the right place
+	/// First, it read the number of path entity
+	/// Then create them 
+	/// </summary>
+	void createPath(File *file);
 
 	/*
 	entities :
