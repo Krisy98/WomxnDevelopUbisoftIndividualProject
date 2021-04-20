@@ -1,19 +1,41 @@
 #include "stdafx.h"
 #include <iostream>
 #include "PlayContext.h"
+#include "Engine/File.h"
 
 
 PlayContext::PlayContext(/*int idLvl*/){
-	// lvl to download
+	File *file = new File("Resources/Levels/lvl_1.txt");
+
 	// wave to define
 
-	this->speedScrolling = 1.4;
-	this->baseSize = 20.f;
+	/*
+	sf::FileInputStream stream;
+	if (stream.open("Resources/Levels/lvl_1.txt")) {
+		float *f = new float();
+		stream.read(f, sizeof(float));
+		std::cout << *f;
+	}*/
 
 	initEntities(emplacements);
 	initEntities(flowers);
 	initEntities(insects);
 	initEntities(path);
+
+
+
+	file->readMode();
+	file->getFloat(&this->baseSize);
+
+
+
+
+
+	/*
+	this->speedScrolling = 1.4;
+	this->baseSize = 20.f;
+
+
 
 	//
 
@@ -41,7 +63,7 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 
 	addEntity(insects, new Insect(0, 300, this->baseSize, &points, InsectType::Cricket));
-
+	*/
 }
 
 PlayContext::~PlayContext(){

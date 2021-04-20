@@ -74,6 +74,9 @@
     <ClCompile Include="Engine\Shapes\Point.cpp">
       <Filter>Engine\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\File.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -149,6 +152,9 @@
     <ClInclude Include="resource.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\File.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -190,16 +196,16 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{f4b56b31-e95c-4ae5-a1f1-271484d157ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Files">
-      <UniqueIdentifier>{eede90ec-2085-4b79-88f9-54d548f5bf88}</UniqueIdentifier>
+    <Filter Include="Resources\Levels">
+      <UniqueIdentifier>{983de0d9-11c6-4ae9-ab13-d653a8014802}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WomxnDevelopUbisoftDemo.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Ressources\Files\lvl_1.txt">
-      <Filter>Resources\Files</Filter>
+    <Text Include="Resources\Levels\lvl_1.txt">
+      <Filter>Resources\Levels</Filter>
     </Text>
   </ItemGroup>
 </Project>
