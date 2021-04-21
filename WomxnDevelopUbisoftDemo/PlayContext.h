@@ -11,6 +11,7 @@
 #include "Engine/Entities/Entity.h"
 
 #include <list>
+#include <thread>
 
 class PlayContext : public Context {
 
@@ -20,12 +21,14 @@ public :
 
 	virtual void update(sf::RenderWindow& win);
 	virtual void render(sf::RenderTarget& target);
+	virtual void handleEvent(sf::Event event);
 	
 private :
 	sf::RenderWindow window;
 	float speedScrolling;
 	float baseSize;
 	std::vector<Point> points; // path to follow
+	bool threadActive;
 
 	Entities* insects = new Entities();
 	Entities* flowers = new Entities();
@@ -40,13 +43,15 @@ private :
 
 	void moveScreen(sf::Vector2f speed);
 
+	void isAEmplacementClicked(float xMouse, float yMouse);
+
 	/// <summary>
 	/// Create a path way from a file that define the level
 	/// To be used correctly, the cursor need to be at the right place
 	/// First, it read the number of path entity
 	/// Then create them 
 	/// </summary>
-	void createPath(File *file);
+	void createPath(File* file);
 
 	/// <summary>
 	/// Create every emplacement for flower entities from a file

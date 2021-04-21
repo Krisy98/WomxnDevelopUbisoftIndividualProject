@@ -1,54 +1,37 @@
 #include "stdafx.h"
+#include <SFML/System.hpp>
 #include <iostream>
 #include <string>
 #include "PlayContext.h"
 
 
 PlayContext::PlayContext(/*int idLvl*/){
-	File *file = new File("Resources/Levels/lvl_0.txt"); // tuto
-
-	// wave to define
-	/*
-	sf::FileInputStream stream;
-	if (stream.open("Resources/Levels/lvl_1.txt")) {
-		float *f = new float();
-		stream.read(f, sizeof(float));
-		std::cout << *f;
-	}*/
+	File *file = new File("Resources/Levels/lvl_0.txt");
 
 	initEntities(emplacements);
 	initEntities(flowers);
 	initEntities(insects);
 	initEntities(path);
 
-	this->speedScrolling = 1.4;
+	this->speedScrolling = 1.4f;
+	this->threadActive = false;
 
 	file->readMode();
-
 	file->getFloat(&this->baseSize);
 
-	//
-
 	createPath(file);
-
 	createEmplacements(file);
 
-
 	/*
-
 	addEntity(flowers, new Flower(220, 280, this->baseSize, FlowerType::Anemone));
 	addEntity(flowers, new Flower(220, 160, this->baseSize, FlowerType::Delphinium));
-
-	addEntity(emplacements, new TowerEmplacement(220, 280, this->baseSize));
-	addEntity(emplacements, new TowerEmplacement(220, 160, this->baseSize));
-	addEntity(emplacements, new TowerEmplacement(220, 120, this->baseSize));
-*/
+     */
 
 
 	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::Worms));
 	
 
-
+	file->close();
 }
 
 PlayContext::~PlayContext(){
@@ -65,6 +48,7 @@ void PlayContext::update(sf::RenderWindow& window){
 	updateEntities(*insects, window);
 	updateEntities(*emplacements, window);
 	updateEntities(*path, window);
+
 }
 
 void PlayContext::updateScreen(sf::RenderWindow& window) {
@@ -159,9 +143,29 @@ void PlayContext::moveScreen(sf::Vector2f speed){
 	setEntitiesPosition(*insects, speed);
 	setEntitiesPosition(*path, speed);
 
-
 	for (int i = 0; i < (int) points.size(); i++) {
 		points[i].set(points[i].getX() + speed.x, points[i].getY() + speed.y);
+	}
+}
+
+void PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
+	Entities start = *emplacements;
+
+
+	if (start.current == nullptr) { return; }
+
+	//std::cout << "first entity; x : " << start.current->getXPosition() 
+
+	if (start.current->Contains(xMouse, yMouse)) {
+		std::cout << "Mouse clicked on a emplacement ! " << std::endl;
+	}
+
+	while (start.next != nullptr) {
+		start = *start.next;
+
+		if (start.current->Contains(xMouse, yMouse)) {
+			std::cout << "Mouse clicked on a emplacement ! " << std::endl;
+		}
 	}
 }
 
@@ -172,6 +176,13 @@ void PlayContext::render(sf::RenderTarget& target){
 	renderEntities(target, *insects);
 	renderEntities(target, *emplacements);
 	renderEntities(target, *path);
+}
+void PlayContext::handleEvent(sf::Event event){
+	if (event.type == sf::Event::MouseButtonPressed) {
+		if (event.mouseButton.button == sf::Mouse::Left) {
+			isAEmplacementClicked(event.mouseButton.x, event.mouseButton.y);
+		}
+	}
 }
 
 void PlayContext::createPath(File* file) {

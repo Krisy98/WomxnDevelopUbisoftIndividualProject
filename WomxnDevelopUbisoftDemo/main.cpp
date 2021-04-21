@@ -5,8 +5,6 @@
 
 int main(){
 
-    //printf("main\n");
-
     /*
         GameDemo game{};
 

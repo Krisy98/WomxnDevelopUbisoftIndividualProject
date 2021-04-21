@@ -9,9 +9,7 @@ MainLoop::MainLoop() :
 }
 
 void MainLoop::Update(float deltaTime){
-
 	this->context->update(*getWindow());
-
 }
 
 void MainLoop::Render(sf::RenderTarget& target){
@@ -20,6 +18,10 @@ void MainLoop::Render(sf::RenderTarget& target){
 
 void MainLoop::RenderDebugMenu(sf::RenderTarget& target){
 	// nothing
+}
+
+void MainLoop::HandleEvent(sf::Event event){
+	this->context->handleEvent(event);
 }
 
 void MainLoop::initPlayContext(){

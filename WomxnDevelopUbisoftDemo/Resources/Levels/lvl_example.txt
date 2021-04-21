@@ -1,0 +1,18 @@
+	line 1 :
+referential width of an entity
+
+	line 2 :
+number N of path entity
+
+	next N lines :
+coordinate in X axis 	
+coordinate in Y axis
+A string to define Orientation (same as the struct Orientation in Path.h in the code)
+
+	next line :
+number M of towerEmplacement entity
+
+	next M lines :
+coordinate in X axis 
+coordinate in Y axis
+

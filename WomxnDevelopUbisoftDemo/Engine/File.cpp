@@ -37,11 +37,7 @@ void File::getFloat(float* value){
 		std::string string;
 
 		getline(file, string);
-
-		std::cout << "float : " << string << std::endl;
-
 		*value = std::stof(string);
-		//std::cout << *value << std::endl;
 	}
 	else {
 		value = nullptr;
@@ -51,7 +47,6 @@ void File::getFloat(float* value){
 void File::getInt(int* value){
 	if (file.is_open() && fileMode == FileMode::READ) {
 		*value = file.get();
-		std::cout << "int : " << *value << std::endl;
 	}
 	else {
 		value = nullptr;
@@ -61,7 +56,6 @@ void File::getInt(int* value){
 void File::getString(std::string *value){
 	if (file.is_open() && fileMode == FileMode::READ) {
 		getline(file, *value);
-		std::cout << "string : " << *value << std::endl;
 	}
 	else {
 		value = nullptr;

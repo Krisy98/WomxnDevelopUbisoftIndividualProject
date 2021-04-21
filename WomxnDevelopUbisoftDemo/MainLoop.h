@@ -11,6 +11,7 @@ public :
 	void Update(float deltaTime) override;
 	void Render(sf::RenderTarget& target) override;
 	void RenderDebugMenu(sf::RenderTarget& target) override;
+	void HandleEvent(sf::Event event) override;
 
 	void initPlayContext();
 	//void initMenuContext();
