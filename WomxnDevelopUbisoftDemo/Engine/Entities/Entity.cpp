@@ -21,11 +21,12 @@ void Entity::updateEntity(sf::RenderWindow& window){
 }
 
 void Entity::setPosition(float x, float y){
-	this->position = sf::Vector2f(x, y);
+	setPosition(sf::Vector2f(x, y));
 }
 
 void Entity::setPosition(sf::Vector2f position){
 	this->position = position;
+	createBoundingBox();
 }
 
 void Entity::setSpeed(sf::Vector2f speed){ 

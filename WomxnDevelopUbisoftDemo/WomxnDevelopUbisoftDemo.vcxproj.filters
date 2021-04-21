@@ -20,9 +20,6 @@
     <ClCompile Include="..\external\imgui-master\imgui_tables.cpp">
       <Filter>Engine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="MainLoop.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Game\MainCharacter.cpp">
       <Filter>Game\Demo</Filter>
     </ClCompile>
@@ -37,9 +34,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Engine\Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayContext.cpp">
-      <Filter>Game\Context</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Entities\Entity.cpp">
       <Filter>Engine\Entities</Filter>
@@ -65,9 +59,6 @@
     <ClCompile Include="Engine\Shapes\Line.cpp">
       <Filter>Engine\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="Context.cpp">
-      <Filter>Engine\Context</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entities\Static\Path.cpp">
       <Filter>Game\Entities\Static</Filter>
     </ClCompile>
@@ -76,6 +67,18 @@
     </ClCompile>
     <ClCompile Include="Engine\File.cpp">
       <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Context\PlayContext.cpp">
+      <Filter>Game\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainLoop.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Context\Context.cpp">
+      <Filter>Engine\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\FlowerMenu.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,9 +91,6 @@
     </ClInclude>
     <ClInclude Include="..\external\imgui-sfml-master\imgui-SFML.h">
       <Filter>Engine\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="MainLoop.h">
-      <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\MainCharacter.h">
       <Filter>Game\Demo</Filter>
@@ -106,9 +106,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Collision.h">
       <Filter>Engine\Demo</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayContext.h">
-      <Filter>Game\Context</Filter>
     </ClInclude>
     <ClInclude Include="EntityType.h">
       <Filter>Game\Entities\Dynamic</Filter>
@@ -137,9 +134,6 @@
     <ClInclude Include="Engine\Shapes\Line.h">
       <Filter>Engine\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Context.h">
-      <Filter>Engine\Context</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entities\Static\Path.h">
       <Filter>Game\Entities\Static</Filter>
     </ClInclude>
@@ -154,6 +148,18 @@
     </ClInclude>
     <ClInclude Include="Engine\File.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Context\PlayContext.h">
+      <Filter>Game\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainLoop.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Context\Context.h">
+      <Filter>Engine\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\FlowerMenu.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Levels\lvl_0.txt">
+      <Filter>Resources\Levels</Filter>
+    </Text>
+    <Text Include="Resources\Levels\lvl_example.txt">
       <Filter>Resources\Levels</Filter>
     </Text>
   </ItemGroup>

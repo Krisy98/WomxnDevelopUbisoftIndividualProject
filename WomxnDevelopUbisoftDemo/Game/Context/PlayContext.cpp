@@ -151,7 +151,6 @@ void PlayContext::moveScreen(sf::Vector2f speed){
 void PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
 	Entities start = *emplacements;
 
-
 	if (start.current == nullptr) { return; }
 
 	//std::cout << "first entity; x : " << start.current->getXPosition() 
@@ -165,6 +164,8 @@ void PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
 
 		if (start.current->Contains(xMouse, yMouse)) {
 			std::cout << "Mouse clicked on a emplacement ! " << std::endl;
+
+			this->flowerMenu = new FlowerMenu();
 		}
 	}
 }

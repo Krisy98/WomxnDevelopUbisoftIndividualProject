@@ -1,7 +1,8 @@
 #pragma once
-#include "Context.h"
+#include "Engine/Context/Context.h"
 #include "Engine/Shapes/Point.h"
 #include "Engine/File.h"
+#include "Game/FlowerMenu.h"
 
 // Entities
 #include "Game/Entities/Dynamic/Flower.h"
@@ -29,6 +30,7 @@ private :
 	float baseSize;
 	std::vector<Point> points; // path to follow
 	bool threadActive;
+	FlowerMenu *flowerMenu;
 
 	Entities* insects = new Entities();
 	Entities* flowers = new Entities();

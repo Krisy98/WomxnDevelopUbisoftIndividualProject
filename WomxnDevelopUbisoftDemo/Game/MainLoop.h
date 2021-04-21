@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Context.h";
-#include "PlayContext.h"
+#include "Engine/Context/Context.h";
+#include "Game/Context/PlayContext.h"
 
 class MainLoop : public Game {
 
@@ -18,11 +18,7 @@ public :
 	//void initMapContext();
 
 private :
-
 	sf::Event event;
-
 	Context *context;
-
-
 };
 

@@ -17,6 +17,7 @@ public :
 	sf::Vector2f getPosition();
 	float getXPosition();
 	float getYPosition();
+	sf::Vector2f getSize();
 
 protected :
 	/// <summary>
@@ -29,7 +30,6 @@ protected :
 	void setColor(double rColor, double gColor, double bColor);
 	void setColor(double rColor, double gColor, double bColor, double alpha);
 	
-	sf::Vector2f getSize();
 	float getWidth();
 	float getHeight();
 	float getXSpeed();

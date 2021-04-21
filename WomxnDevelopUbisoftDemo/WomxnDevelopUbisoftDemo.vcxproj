@@ -207,8 +207,8 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Context.cpp" />
     <ClCompile Include="Engine\Collision.cpp" />
+    <ClCompile Include="Engine\Context\Context.cpp" />
     <ClCompile Include="Engine\Entities\Entity.cpp" />
     <ClCompile Include="Engine\File.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
@@ -217,23 +217,24 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClCompile Include="Engine\Shapes\Point.cpp" />
     <ClCompile Include="Engine\Shapes\Rectangle.cpp" />
     <ClCompile Include="Engine\Shapes\Shape.cpp" />
+    <ClCompile Include="Game\Context\PlayContext.cpp" />
     <ClCompile Include="Game\Door.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Flower.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Insect.cpp" />
     <ClCompile Include="Game\Entities\Static\Path.cpp" />
     <ClCompile Include="Game\Entities\Static\TowerEmplacement.cpp" />
+    <ClCompile Include="Game\FlowerMenu.cpp" />
     <ClCompile Include="Game\GameDemo.cpp" />
     <ClCompile Include="Game\MainCharacter.cpp" />
+    <ClCompile Include="Game\MainLoop.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainLoop.cpp" />
-    <ClCompile Include="PlayContext.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\imgui-master\imgui.h" />
     <ClInclude Include="..\external\imgui-master\imgui_internal.h" />
     <ClInclude Include="..\external\imgui-sfml-master\imgui-SFML.h" />
-    <ClInclude Include="Context.h" />
     <ClInclude Include="Engine\Collision.h" />
+    <ClInclude Include="Engine\Context\Context.h" />
     <ClInclude Include="Engine\Direction.h" />
     <ClInclude Include="Engine\Entities\Entity.h" />
     <ClInclude Include="Engine\File.h" />
@@ -244,15 +245,16 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClInclude Include="Engine\Shapes\Rectangle.h" />
     <ClInclude Include="Engine\Shapes\Shape.h" />
     <ClInclude Include="EntityType.h" />
+    <ClInclude Include="Game\Context\PlayContext.h" />
     <ClInclude Include="Game\Door.h" />
     <ClInclude Include="Game\Entities\Dynamic\Flower.h" />
     <ClInclude Include="Game\Entities\Dynamic\Insect.h" />
     <ClInclude Include="Game\Entities\Static\Path.h" />
     <ClInclude Include="Game\Entities\Static\TowerEmplacement.h" />
+    <ClInclude Include="Game\FlowerMenu.h" />
     <ClInclude Include="Game\GameDemo.h" />
     <ClInclude Include="Game\MainCharacter.h" />
-    <ClInclude Include="MainLoop.h" />
-    <ClInclude Include="PlayContext.h" />
+    <ClInclude Include="Game\MainLoop.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -261,6 +263,7 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Levels\lvl_0.txt" />
+    <Text Include="Resources\Levels\lvl_example.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

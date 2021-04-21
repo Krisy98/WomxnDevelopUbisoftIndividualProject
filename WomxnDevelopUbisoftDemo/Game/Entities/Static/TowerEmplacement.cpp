@@ -21,5 +21,4 @@ void TowerEmplacement::draw(sf::RenderTarget& target){
 
 void TowerEmplacement::update(sf::RenderWindow& win){
 	rectangle->setPosition(getPosition()); // update position
-	createBoundingBox();
 }

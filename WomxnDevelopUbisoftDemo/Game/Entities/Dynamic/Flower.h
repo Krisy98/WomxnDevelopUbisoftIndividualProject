@@ -2,7 +2,7 @@
 
 #include "Engine/Entities/Entity.h"
 #include "Engine/Shapes/Circle.h"
-#include "EntityType.h"
+#include "Game/Entities/EntityType.h"
 
 
 class Flower : public Entity {
