@@ -22,6 +22,8 @@ PlayContext::PlayContext(/*int idLvl*/){
 	createPath(file);
 	createEmplacements(file);
 
+	this->flowerMenu = nullptr;
+
 	/*
 	addEntity(flowers, new Flower(220, 280, this->baseSize, FlowerType::Anemone));
 	addEntity(flowers, new Flower(220, 160, this->baseSize, FlowerType::Delphinium));
@@ -153,8 +155,6 @@ void PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
 
 	if (start.current == nullptr) { return; }
 
-	//std::cout << "first entity; x : " << start.current->getXPosition() 
-
 	if (start.current->Contains(xMouse, yMouse)) {
 		std::cout << "Mouse clicked on a emplacement ! " << std::endl;
 	}
@@ -163,9 +163,22 @@ void PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
 		start = *start.next;
 
 		if (start.current->Contains(xMouse, yMouse)) {
+			float xPosition = start.current->getXPosition();
+			float yPosition = start.current->getYPosition() + start.current->getSize().y;
+
 			std::cout << "Mouse clicked on a emplacement ! " << std::endl;
 
-			this->flowerMenu = new FlowerMenu();
+			if (flowerMenu != nullptr ) {
+				if (xPosition == flowerMenu->getXPosition() && yPosition == flowerMenu->getYPosition()) {
+					this->flowerMenu = nullptr;
+				}
+				else {
+					this->flowerMenu = new FlowerMenu(xPosition, yPosition);
+				}
+			}
+			else {
+				this->flowerMenu = new FlowerMenu(xPosition, yPosition);
+			}
 		}
 	}
 }
@@ -177,7 +190,10 @@ void PlayContext::render(sf::RenderTarget& target){
 	renderEntities(target, *insects);
 	renderEntities(target, *emplacements);
 	renderEntities(target, *path);
+
+	if (this->flowerMenu != nullptr) this->flowerMenu->draw(target);
 }
+
 void PlayContext::handleEvent(sf::Event event){
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
