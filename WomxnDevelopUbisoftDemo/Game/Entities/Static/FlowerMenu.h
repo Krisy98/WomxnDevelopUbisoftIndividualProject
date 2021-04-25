@@ -13,7 +13,7 @@ public :
 	~FlowerMenu();
 
 	void draw(sf::RenderTarget& target) override;
-	void update(sf::RenderWindow& win) override;
+	void update(sf::RenderWindow& window) override;
 
 	/// <summary>
 	/// Return the corresponding flower's type that contains x and y coordinates

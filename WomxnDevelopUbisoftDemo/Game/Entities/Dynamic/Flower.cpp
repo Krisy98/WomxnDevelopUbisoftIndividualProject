@@ -32,14 +32,12 @@ void Flower::update(sf::RenderWindow& window){
 	circle->setPosition(getPosition()); 
 	circleRange->setPosition(getXPosition() + plantRadius - rangeRadius, getYPosition() + plantRadius - rangeRadius);
 
-
 	// collision
 	if (mousePos.x >= getXPosition() && mousePos.x <= getXPosition() + getWidth() &&
 		mousePos.y >= getYPosition() && mousePos.y <= getYPosition() + getHeight())
 		setVisibleRange(true);
 	else
 		setVisibleRange(false);
-
 }
 
 void Flower::draw(sf::RenderTarget& target) {

@@ -12,7 +12,6 @@
 #include "Engine/Entities/Entity.h"
 
 #include <list>
-#include <thread>
 
 class PlayContext : public Context {
 
@@ -25,7 +24,6 @@ public :
 	virtual void handleEvent(sf::Event event);
 	
 private :
-	sf::RenderWindow window;
 	float speedScrolling;
 	float baseSize;
 	std::vector<Point> points; // path to follow

@@ -31,8 +31,23 @@ void FlowerMenu::draw(sf::RenderTarget& target){
 	textList->draw(target);
 }
 
-void FlowerMenu::update(sf::RenderWindow& win){
+void FlowerMenu::update(sf::RenderWindow& window){
+	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+	Texts* temp = textList->getTexts();
 
+	while (temp->current != nullptr) {
+		sf::Text* text = temp->current;
+		float posX = text->getPosition().x;
+		float posY = text->getPosition().y;
+
+		if (mousePos.x > posX && mousePos.x < posX + 90 && mousePos.y > posY && mousePos.y < posY + text->getCharacterSize()) {
+			text->setFillColor(sf::Color::White);
+		}
+		else text->setFillColor(sf::Color::Red);
+
+		if (temp->next != nullptr) temp = temp->next;
+		else break;
+	}
 }
 
 FlowerType* FlowerMenu::getItem(float x, float y){

@@ -83,6 +83,9 @@
     <ClCompile Include="Engine\ToDraw\TextList.cpp">
       <Filter>Engine\ToDraw</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Waves\Wave.cpp">
+      <Filter>Game\Waves</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -167,6 +170,9 @@
     <ClInclude Include="Engine\ToDraw\TextList.h">
       <Filter>Engine\ToDraw</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Waves\Wave.h">
+      <Filter>Game\Waves</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -213,6 +219,9 @@
     </Filter>
     <Filter Include="Engine\ToDraw\Shapes">
       <UniqueIdentifier>{51aeb136-f421-4c6c-b87f-c644fb0b41a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Waves">
+      <UniqueIdentifier>{89b8b510-6162-459a-887a-58b3c20fca6b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
