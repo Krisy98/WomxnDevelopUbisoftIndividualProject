@@ -47,23 +47,8 @@
     <ClCompile Include="Game\Entities\Static\TowerEmplacement.cpp">
       <Filter>Game\Entities\Static</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Shapes\Shape.cpp">
-      <Filter>Engine\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Shapes\Circle.cpp">
-      <Filter>Engine\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Shapes\Rectangle.cpp">
-      <Filter>Engine\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Shapes\Line.cpp">
-      <Filter>Engine\Shapes</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Entities\Static\Path.cpp">
       <Filter>Game\Entities\Static</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Shapes\Point.cpp">
-      <Filter>Engine\Shapes</Filter>
     </ClCompile>
     <ClCompile Include="Engine\File.cpp">
       <Filter>Engine</Filter>
@@ -77,8 +62,26 @@
     <ClCompile Include="Engine\Context\Context.cpp">
       <Filter>Engine\Context</Filter>
     </ClCompile>
-    <ClCompile Include="Game\FlowerMenu.cpp">
-      <Filter>Game</Filter>
+    <ClCompile Include="Game\Entities\Static\FlowerMenu.cpp">
+      <Filter>Game\Entities\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ToDraw\Shapes\Circle.cpp">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ToDraw\Shapes\Line.cpp">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ToDraw\Shapes\Point.cpp">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ToDraw\Shapes\Rectangle.cpp">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ToDraw\Shapes\Shape.cpp">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ToDraw\TextList.cpp">
+      <Filter>Engine\ToDraw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,9 +110,6 @@
     <ClInclude Include="Engine\Collision.h">
       <Filter>Engine\Demo</Filter>
     </ClInclude>
-    <ClInclude Include="EntityType.h">
-      <Filter>Game\Entities\Dynamic</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Entities\Entity.h">
       <Filter>Engine\Entities</Filter>
     </ClInclude>
@@ -122,26 +122,11 @@
     <ClInclude Include="Game\Entities\Static\TowerEmplacement.h">
       <Filter>Game\Entities\Static</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Shapes\Shape.h">
-      <Filter>Engine\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Shapes\Circle.h">
-      <Filter>Engine\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Shapes\Rectangle.h">
-      <Filter>Engine\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Shapes\Line.h">
-      <Filter>Engine\Shapes</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Entities\Static\Path.h">
       <Filter>Game\Entities\Static</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Direction.h">
       <Filter>Game\Entities\Dynamic</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Shapes\Point.h">
-      <Filter>Engine\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Resources</Filter>
@@ -158,8 +143,29 @@
     <ClInclude Include="Engine\Context\Context.h">
       <Filter>Engine\Context</Filter>
     </ClInclude>
-    <ClInclude Include="Game\FlowerMenu.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="Game\Entities\Static\FlowerMenu.h">
+      <Filter>Game\Entities\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\EntityType.h">
+      <Filter>Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ToDraw\Shapes\Shape.h">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ToDraw\Shapes\Circle.h">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ToDraw\Shapes\Line.h">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ToDraw\Shapes\Point.h">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ToDraw\Shapes\Rectangle.h">
+      <Filter>Engine\ToDraw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ToDraw\TextList.h">
+      <Filter>Engine\ToDraw</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -193,9 +199,6 @@
     <Filter Include="Engine\Entities">
       <UniqueIdentifier>{b7727d2e-4033-4258-b1ec-d102c8c7bff8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Shapes">
-      <UniqueIdentifier>{51aeb136-f421-4c6c-b87f-c644fb0b41a7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Context">
       <UniqueIdentifier>{5a5dcef4-a20c-4f44-94b4-f1240082d76b}</UniqueIdentifier>
     </Filter>
@@ -204,6 +207,12 @@
     </Filter>
     <Filter Include="Resources\Levels">
       <UniqueIdentifier>{983de0d9-11c6-4ae9-ab13-d653a8014802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ToDraw">
+      <UniqueIdentifier>{b8615345-65ed-4e46-b28e-559f34d23735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ToDraw\Shapes">
+      <UniqueIdentifier>{51aeb136-f421-4c6c-b87f-c644fb0b41a7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

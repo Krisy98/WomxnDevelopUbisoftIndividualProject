@@ -4,7 +4,6 @@
 #include <string>
 #include "PlayContext.h"
 
-
 PlayContext::PlayContext(/*int idLvl*/){
 	File *file = new File("Resources/Levels/lvl_0.txt");
 
@@ -14,7 +13,6 @@ PlayContext::PlayContext(/*int idLvl*/){
 	initEntities(path);
 
 	this->speedScrolling = 1.4f;
-	this->threadActive = false;
 
 	file->readMode();
 	file->getFloat(&this->baseSize);
@@ -31,8 +29,9 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 
 	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::Worms));
-	
 
+
+	
 	file->close();
 }
 
@@ -50,6 +49,17 @@ void PlayContext::update(sf::RenderWindow& window){
 	updateEntities(*insects, window);
 	updateEntities(*emplacements, window);
 	updateEntities(*path, window);
+}
+
+void PlayContext::render(sf::RenderTarget& target) {
+	target.clear(sf::Color(0, 0, 0));
+
+	renderEntities(target, *flowers);
+	renderEntities(target, *insects);
+	renderEntities(target, *emplacements);
+	renderEntities(target, *path);
+
+	if (this->flowerMenu != nullptr) this->flowerMenu->draw(target);
 
 }
 
@@ -150,56 +160,61 @@ void PlayContext::moveScreen(sf::Vector2f speed){
 	}
 }
 
-void PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
+bool PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
 	Entities start = *emplacements;
 
-	if (start.current == nullptr) { return; }
+	if (start.current == nullptr) { return false; }
 
 	if (start.current->Contains(xMouse, yMouse)) {
-		std::cout << "Mouse clicked on a emplacement ! " << std::endl;
+		setFlowerMenu(start.current);
+		return true;
 	}
 
 	while (start.next != nullptr) {
 		start = *start.next;
 
 		if (start.current->Contains(xMouse, yMouse)) {
-			float xPosition = start.current->getXPosition();
-			float yPosition = start.current->getYPosition() + start.current->getSize().y;
-
-			std::cout << "Mouse clicked on a emplacement ! " << std::endl;
-
-			if (flowerMenu != nullptr ) {
-				if (xPosition == flowerMenu->getXPosition() && yPosition == flowerMenu->getYPosition()) {
-					this->flowerMenu = nullptr;
-				}
-				else {
-					this->flowerMenu = new FlowerMenu(xPosition, yPosition);
-				}
-			}
-			else {
-				this->flowerMenu = new FlowerMenu(xPosition, yPosition);
-			}
+			setFlowerMenu(start.current);
+			return true;
 		}
 	}
+	return false;
 }
 
-void PlayContext::render(sf::RenderTarget& target){
-	target.clear(sf::Color(0, 0, 0));
+bool PlayContext::isAFlowerSelected(float xMouse, float yMouse){
+	if (flowerMenu != nullptr) {
+		FlowerType* flowerType = flowerMenu->getItem(xMouse, yMouse);
 
-	renderEntities(target, *flowers);
-	renderEntities(target, *insects);
-	renderEntities(target, *emplacements);
-	renderEntities(target, *path);
-
-	if (this->flowerMenu != nullptr) this->flowerMenu->draw(target);
+		if (flowerType != nullptr) {
+			addEntity(flowers, new Flower(flowerMenu->getXPosition(), flowerMenu->getYPosition() - baseSize, baseSize, *flowerType));
+		}
+		else flowerMenu = nullptr;
+	}
+	return false;
 }
 
 void PlayContext::handleEvent(sf::Event event){
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
-			isAEmplacementClicked(event.mouseButton.x, event.mouseButton.y);
+			
+			if (isAFlowerSelected(event.mouseButton.x, event.mouseButton.y)) {}
+			else if (isAEmplacementClicked(event.mouseButton.x, event.mouseButton.y)) {}
+			
 		}
 	}
+}
+
+void PlayContext::setFlowerMenu(Entity* entity) {
+	float xPosition = entity->getXPosition();
+	float yPosition = entity->getYPosition() + entity->getSize().y;
+
+	if (flowerMenu != nullptr) {
+		if (xPosition == flowerMenu->getXPosition() && yPosition == flowerMenu->getYPosition()) {
+			this->flowerMenu = nullptr;
+		}
+		else this->flowerMenu = new FlowerMenu(xPosition, yPosition);
+	}
+	else this->flowerMenu = new FlowerMenu(xPosition, yPosition);
 }
 
 void PlayContext::createPath(File* file) {

@@ -1,6 +1,6 @@
 #pragma once
 #include "Engine/Entities/Entity.h"
-#include "Engine/Shapes/Rectangle.h"
+#include "Engine/ToDraw/Shapes/Rectangle.h"
 
 enum class Orientation {
 	Horizontal,

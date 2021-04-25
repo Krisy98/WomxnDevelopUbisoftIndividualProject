@@ -1,8 +1,8 @@
 #pragma once
 #include "Engine/Context/Context.h"
-#include "Engine/Shapes/Point.h"
+#include "Engine/ToDraw/Shapes/Point.h"
 #include "Engine/File.h"
-#include "Game/FlowerMenu.h"
+#include "Game/Entities/static/FlowerMenu.h"
 
 // Entities
 #include "Game/Entities/Dynamic/Flower.h"
@@ -29,7 +29,6 @@ private :
 	float speedScrolling;
 	float baseSize;
 	std::vector<Point> points; // path to follow
-	bool threadActive;
 	FlowerMenu *flowerMenu;
 
 	Entities* insects = new Entities();
@@ -45,7 +44,8 @@ private :
 
 	void moveScreen(sf::Vector2f speed);
 
-	void isAEmplacementClicked(float xMouse, float yMouse);
+	bool isAEmplacementClicked(float xMouse, float yMouse);
+	bool isAFlowerSelected(float xMouse, float yMouse);
 
 	/// <summary>
 	/// Create a path way from a file that define the level
@@ -59,6 +59,13 @@ private :
 	/// Create every emplacement for flower entities from a file
 	/// </summary>
 	void createEmplacements(File* file);
+
+	/// <summary>
+	/// The entity param must be a TowerEmplacement entity
+	/// This function create or remove a flowerMenu from the entity
+	/// </summary>
+	/// <param name="entity"></param>
+	void setFlowerMenu(Entity* entity);
 
 	/*
 	entities :
