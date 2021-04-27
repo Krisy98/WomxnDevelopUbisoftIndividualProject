@@ -3,8 +3,8 @@
 #include "Engine/Entities/Entity.h"
 #include "Game/Entities/EntityType.h"
 
-#include "Engine/ToDraw/Shapes/Rectangle.h"
-#include "Engine/ToDraw/Shapes/Point.h"
+#include "Engine/Draw/Shapes/Rectangle.h"
+#include "Engine/Draw/Shapes/Point.h"
 
 
 class Insect : public Entity {

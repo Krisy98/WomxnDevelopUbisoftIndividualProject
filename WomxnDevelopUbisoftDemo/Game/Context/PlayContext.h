@@ -1,8 +1,9 @@
 #pragma once
 #include "Engine/Context/Context.h"
-#include "Engine/ToDraw/Shapes/Point.h"
+#include "Engine/Draw/Shapes/Point.h"
 #include "Engine/File.h"
 #include "Game/Entities/static/FlowerMenu.h"
+#include "Game/Waves/Wave.h"
 
 // Entities
 #include "Game/Entities/Dynamic/Flower.h"
@@ -27,6 +28,7 @@ private :
 	float speedScrolling;
 	float baseSize;
 	std::vector<Point> points; // path to follow
+	std::vector<Wave> waves; 
 	FlowerMenu *flowerMenu;
 
 	Entities* insects = new Entities();
@@ -55,8 +57,16 @@ private :
 
 	/// <summary>
 	/// Create every emplacement for flower entities from a file
+	/// To be used correctly, the cursor need to be at the right place
 	/// </summary>
 	void createEmplacements(File* file);
+
+	/// <summary>
+	/// Create wave that define the level from a file
+	/// The cursor need to be at the right emplacement
+	/// </summary>
+	/// <param name="file"></param>
+	void createWaves(File* file);
 
 	/// <summary>
 	/// The entity param must be a TowerEmplacement entity

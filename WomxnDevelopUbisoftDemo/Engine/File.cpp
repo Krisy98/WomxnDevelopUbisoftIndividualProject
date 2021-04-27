@@ -61,3 +61,7 @@ void File::getString(std::string *value){
 		value = nullptr;
 	}
 }
+
+bool File::hasNextLine(){
+	return !file.eof();
+}

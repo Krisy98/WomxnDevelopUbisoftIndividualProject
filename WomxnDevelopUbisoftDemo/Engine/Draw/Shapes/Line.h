@@ -1,17 +1,17 @@
 #pragma once
+#include "Engine/Draw/Shapes/Shape.h"
 
-#include "Engine/ToDraw/Shapes/Shape.h"
+class Line : public Shape {
 
-class Circle : public Shape{
 
 public :
-	Circle(float xPosition, float yPosition, float radius);
-	~Circle();
+	Line(sf::Vector2f startPoint, sf::Vector2f endPoint);
+	~Line();
 
-	sf::CircleShape get();
 	sf::Color getColor() override;
 	sf::Color getOutLineColor() override;
 	sf::Vector2f getPosition() override;
+	sf::Vertex* get();
 
 	void setColor(sf::Color color) override;
 	void setThickness(float thickness, sf::Color color) override;
@@ -19,8 +19,8 @@ public :
 	void setPosition(sf::Vector2f position) override;
 
 private :
-	sf::CircleShape circle;
-	
+	sf::Vertex points[];
+
 
 };
 

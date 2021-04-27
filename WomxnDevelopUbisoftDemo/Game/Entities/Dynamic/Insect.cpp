@@ -132,34 +132,34 @@ void Insect::updateRotation() {
 		default:
 		case Direction::North :
 			if (body->getRotation() == 0 || body->getRotation() > 270 ) {
-				body->setRotation(body->getRotation() - angle);
+				body->setRotation(body->getRotation() - angle*getYSpeed());
 			}
 			else if (body->getRotation() < 270) {
-				body->setRotation(body->getRotation() + angle);
+				body->setRotation(body->getRotation() + angle*getYSpeed());
 			}
 			break;
 
 		case Direction::South:
 			if (body->getRotation() < 90) {
-				body->setRotation(body->getRotation() + angle);
+				body->setRotation(body->getRotation() + angle*getYSpeed());
 			}
 			break;
 
 		case Direction::East:
 			if (body->getRotation() >= 270 && (body->getRotation() != 0 || body->getRotation() != 360)) {
-				body->setRotation(body->getRotation() + angle);
+				body->setRotation(body->getRotation() + angle*getXSpeed());
 			}
 			else if (body->getRotation() != 0) {
-				body->setRotation(body->getRotation() - angle);
+				body->setRotation(body->getRotation() - angle*getXSpeed());
 			}
 			break;
 
 		case Direction::West:
 			if (body->getRotation() >= 270 && body->getRotation() != 180) {
-				body->setRotation(body->getRotation() - angle);
+				body->setRotation(body->getRotation() - angle*getXSpeed());
 			}
 			else if (body->getRotation() != 180) {
-				body->setRotation(body->getRotation() + angle);
+				body->setRotation(body->getRotation() + angle*getXSpeed());
 			}
 			break;
 	}

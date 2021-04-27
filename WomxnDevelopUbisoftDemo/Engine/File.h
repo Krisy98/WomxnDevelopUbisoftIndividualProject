@@ -23,6 +23,8 @@ public :
 	void getInt(int *value);
 	void getString(std::string *value);
 
+	bool hasNextLine();
+
 private :
 	std::fstream file;
 	const char* fileName;

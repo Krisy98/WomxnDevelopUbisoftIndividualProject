@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "FlowerMenu.h"
 #include "Game/Entities/EntityType.h"
+#include "Engine/Draw/Color.h"
 
 #include <iostream>
 
@@ -43,7 +44,7 @@ void FlowerMenu::update(sf::RenderWindow& window){
 		if (mousePos.x > posX && mousePos.x < posX + 90 && mousePos.y > posY && mousePos.y < posY + text->getCharacterSize()) {
 			text->setFillColor(sf::Color::White);
 		}
-		else text->setFillColor(sf::Color::Red);
+		else text->setFillColor((*new Color()).getColor(0.8, 0.8, 0.8));
 
 		if (temp->next != nullptr) temp = temp->next;
 		else break;

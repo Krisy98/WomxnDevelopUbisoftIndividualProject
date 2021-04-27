@@ -65,26 +65,29 @@
     <ClCompile Include="Game\Entities\Static\FlowerMenu.cpp">
       <Filter>Game\Entities\Static</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\ToDraw\Shapes\Circle.cpp">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\ToDraw\Shapes\Line.cpp">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\ToDraw\Shapes\Point.cpp">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\ToDraw\Shapes\Rectangle.cpp">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\ToDraw\Shapes\Shape.cpp">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\ToDraw\TextList.cpp">
-      <Filter>Engine\ToDraw</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Waves\Wave.cpp">
       <Filter>Game\Waves</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Draw\Color.cpp">
+      <Filter>Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Draw\TextList.cpp">
+      <Filter>Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Draw\Shapes\Circle.cpp">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Draw\Shapes\Line.cpp">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Draw\Shapes\Point.cpp">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Draw\Shapes\Rectangle.cpp">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Draw\Shapes\Shape.cpp">
+      <Filter>Engine\Draw\Shapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,26 +155,32 @@
     <ClInclude Include="Game\Entities\EntityType.h">
       <Filter>Game\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\ToDraw\Shapes\Shape.h">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\ToDraw\Shapes\Circle.h">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\ToDraw\Shapes\Line.h">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\ToDraw\Shapes\Point.h">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\ToDraw\Shapes\Rectangle.h">
-      <Filter>Engine\ToDraw\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\ToDraw\TextList.h">
-      <Filter>Engine\ToDraw</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Waves\Wave.h">
       <Filter>Game\Waves</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Draw\Color.h">
+      <Filter>Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Draw\TextList.h">
+      <Filter>Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Draw\Shapes\Circle.h">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Draw\Shapes\Line.h">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Draw\Shapes\Point.h">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Draw\Shapes\Rectangle.h">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Draw\Shapes\Shape.h">
+      <Filter>Engine\Draw\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\magic_enum\include\magic_enum.hpp">
+      <Filter>utils\magic_enum</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -214,14 +223,20 @@
     <Filter Include="Resources\Levels">
       <UniqueIdentifier>{983de0d9-11c6-4ae9-ab13-d653a8014802}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\ToDraw">
-      <UniqueIdentifier>{b8615345-65ed-4e46-b28e-559f34d23735}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\ToDraw\Shapes">
-      <UniqueIdentifier>{51aeb136-f421-4c6c-b87f-c644fb0b41a7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Waves">
       <UniqueIdentifier>{89b8b510-6162-459a-887a-58b3c20fca6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Draw">
+      <UniqueIdentifier>{b8615345-65ed-4e46-b28e-559f34d23735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Draw\Shapes">
+      <UniqueIdentifier>{51aeb136-f421-4c6c-b87f-c644fb0b41a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{a982c356-b44d-4805-add8-806cca6d8e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\magic_enum">
+      <UniqueIdentifier>{561063fb-da77-4175-920e-9e615f3afa7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

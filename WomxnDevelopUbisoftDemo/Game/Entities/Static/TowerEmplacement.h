@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Engine/Entities/Entity.h"
-#include "Engine/ToDraw/Shapes/Rectangle.h"
+#include "Engine/Draw/Shapes/Rectangle.h"
 
 class TowerEmplacement : public Entity {
 

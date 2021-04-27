@@ -16,6 +16,5 @@ public :
 
 	virtual sf::Vector2f getPosition() = 0;
 
-
 };
 

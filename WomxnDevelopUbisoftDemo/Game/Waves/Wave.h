@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Entities/EntityType.h"
-#include "Engine/ToDraw/Shapes/Point.h"
+#include "Engine/Draw/Shapes/Point.h"
 
 #include <list>
 

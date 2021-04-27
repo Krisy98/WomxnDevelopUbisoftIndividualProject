@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <SFML/System.hpp>
+#include "../utils/magic_enum/include/magic_enum.hpp"
 #include <iostream>
 #include <string>
 #include "PlayContext.h"
@@ -19,6 +20,7 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 	createPath(file);
 	createEmplacements(file);
+	createWaves(file);
 
 	this->flowerMenu = nullptr;
 
@@ -211,40 +213,25 @@ void PlayContext::createPath(File* file) {
 		float x, y;
 		std::string orientation;
 
+		constexpr auto& entries = magic_enum::enum_entries<Orientation>();
+		constexpr int size = magic_enum::enum_count<Orientation>();
+
 		file->getFloat(&x);
 		file->getFloat(&y);
 
 		file->getString(&orientation);
 
-		if (orientation == "Horizontal") {
-			if (i >= nbPath - 1) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
+		for (int j = 0; j < size; j++) {
 
-			addEntity(path, new Path(x, y, this->baseSize, Orientation::Horizontal));
-		}
-		else if (orientation == "Vertical") {
-			if (i >= nbPath - 1) { points.push_back(*new Point(x + this->baseSize, y + this->baseSize)); }
-
-			addEntity(path, new Path(x, y, this->baseSize, Orientation::Vertical));
-		}
-		else if (orientation == "botLeftCorner") { 
-			addEntity(path, new Path(x, y, this->baseSize, Orientation::botLeftCorner));
-
-			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
-		}
-		else if (orientation == "botRightCorner") {
-			addEntity(path, new Path(x, y, this->baseSize, Orientation::botRightCorner));
-
-			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
-		}
-		else if (orientation == "topLeftCorner") {
-			addEntity(path, new Path(x, y, this->baseSize, Orientation::topLeftCorner));
-
-			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
-		}
-		else if (orientation == "topRightCorner") {
-			addEntity(path, new Path(x, y, this->baseSize, Orientation::topRightCorner));
-
-			points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
+			if (entries[j].second == orientation) {
+				if ((orientation == "Horizontal" || orientation == "Vertical") && i >= nbPath - 1) {
+					points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
+				}
+				else {
+					points.push_back(*new Point(x + this->baseSize, y + this->baseSize));
+				}
+				addEntity(path, new Path(x, y, this->baseSize, entries[j].first));
+			}
 		}
 	}
 }
@@ -261,5 +248,32 @@ void PlayContext::createEmplacements(File* file) {
 		file->getFloat(&y);
 
 		addEntity(emplacements, new TowerEmplacement(x, y, this->baseSize));
+	}
+}
+
+void PlayContext::createWaves(File* file){
+
+	std::cout << file->hasNextLine() << std::endl;
+
+	while (file->hasNextLine()) {
+		float xPos, yPos;
+		std::string strType;
+		int nbInsect;
+
+		file->getFloat(&xPos);
+		file->getFloat(&yPos);
+
+		file->getString(&strType);
+
+		file->getInt(&nbInsect);
+
+		constexpr auto& entries = magic_enum::enum_entries<InsectType>();
+		constexpr int size = magic_enum::enum_count<InsectType>();
+
+		for (int i = 0; i < size; i++) {
+			if (entries[i].second == strType) {
+				waves.push_back(*new Wave(entries[i].first, nbInsect, sf::Vector2f(xPos, yPos)));
+			}
+		}
 	}
 }
