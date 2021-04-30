@@ -29,7 +29,9 @@ void Context::renderEntities(sf::RenderTarget& target, Entities entities) {
 void Context::updateEntities(Entities entities, sf::RenderWindow& win) {
 	Entities start = entities;
 
-	if (start.current != nullptr) start.current->updateEntity(win);
+	if (start.current != nullptr) {
+		start.current->updateEntity(win);
+	}
 
 	while (start.next != nullptr) {
 		start = *start.next;
@@ -54,6 +56,27 @@ void Context::setEntitiesPosition(Entities entities, sf::Vector2f speed) {
 
 		start.current->setPosition(newPos);
 	}
+}
+
+void Context::removeEntity(Entities* entities, Entity* entity){
+	Entities* temp = entities;
+	
+	if (temp->current == entity) {
+		if (temp->next != nullptr) temp = temp->next;
+		else temp->current = nullptr;
+	}
+
+	while (temp->current != nullptr) {
+		if (temp->next != nullptr) {
+
+			if (temp->next->current == entity) {
+				temp->next = temp->next->next;
+			}
+			else temp = temp->next;
+		}
+		else break;
+	}
+	entities = temp;
 }
 
 void Context::addEntity(Entities* entities, Entity* entity) {

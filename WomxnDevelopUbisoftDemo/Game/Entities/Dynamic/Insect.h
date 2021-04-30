@@ -16,6 +16,9 @@ public :
 	void update(sf::RenderWindow& win) override;
 
 	void reduceLife(float damage);
+	void applyDifficulty(float difficultyLevel);
+
+	float getLife();
 
 private :
 	Rectangle* body;
@@ -38,6 +41,4 @@ private :
 	void setDirection(Direction direction);
 	void setLife(float life);
 	Direction getDirection();
-	float getLife();
 };
-

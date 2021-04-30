@@ -2,10 +2,6 @@
 
 #include "Engine/Entities/Entity.h"
 
-struct Entities {
-	Entity* current{ nullptr };
-	Entities* next{ nullptr };
-};
 
 class Context {
 
@@ -44,5 +40,7 @@ public :
 	void updateEntities(Entities entities, sf::RenderWindow& window);
 
 	void setEntitiesPosition(Entities entities, sf::Vector2f speed);
+
+	void removeEntity(Entities* entities, Entity* entity);
 };
 

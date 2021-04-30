@@ -39,12 +39,18 @@ void Insect::update(sf::RenderWindow& win){
 }
 
 void Insect::reduceLife(float damage){
+	std::cout << "damage send : " << damage << std::endl;
 	if (this->life - damage <= 0) {
 		setLife(0);
 	}
 	else {
 		setLife(this->life - damage);
 	}
+}
+
+void Insect::applyDifficulty(float difficultyLevel){
+	difficultyLevel /= 100; //percentage
+	life *= difficultyLevel;
 }
 
 void Insect::move() {
@@ -169,22 +175,22 @@ void Insect::initFromType(InsectType type) {
 	switch (type) {
 	default:
 	case InsectType::Aphid:
-		life = 200;
+		life = 500;
 		setSpeed(sf::Vector2f(0.5, 0.5));
 		setColor(1, 0.4, 0.2);
 		break;
 	case InsectType::Cricket:
-		life = 400;
+		life = 1000;
 		setSpeed(sf::Vector2f(1, 1));
 		setColor(0.7, 0.6, 0);
 		break;
 	case InsectType::LadyBirdBeetles:
-		life = 600;
+		life = 1500;
 		setSpeed(sf::Vector2f(0.5, 0.5));
 		setColor(1, 0.1, 0.1);
 		break;
 	case InsectType::Worms:
-		life = 800;
+		life = 2000;
 		setSpeed(sf::Vector2f(0.2, 0.2));
 		setColor(1, 0.6, 0.6);
 		break;

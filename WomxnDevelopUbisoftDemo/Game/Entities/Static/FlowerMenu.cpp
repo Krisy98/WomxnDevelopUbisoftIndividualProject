@@ -7,7 +7,7 @@
 
 FlowerMenu::FlowerMenu(float xPosition, float yPosition){
 
-	if (!this->font.loadFromFile("Resources/Fonts/champagne_and_limousines.ttf")) {
+	if (!this->font.loadFromFile("Assets/fonts\\champagne_and_limousines.ttf")) {
 		std::cout << "Fail to load file !" << std::endl;
 	}
 

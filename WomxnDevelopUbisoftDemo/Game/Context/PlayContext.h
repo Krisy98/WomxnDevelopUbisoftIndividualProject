@@ -42,6 +42,8 @@ private :
 	/// <param name="window"></param>
 	void updateScreen(sf::RenderWindow& window);
 
+	void updateInsects();
+
 	void moveScreen(sf::Vector2f speed);
 
 	bool isAEmplacementClicked(float xMouse, float yMouse);

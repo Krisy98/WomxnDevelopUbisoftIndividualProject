@@ -89,6 +89,12 @@
     <ClCompile Include="Engine\Draw\Shapes\Shape.cpp">
       <Filter>Engine\Draw\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Physics\Physics.cpp">
+      <Filter>Engine\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Dynamic\Seed.cpp">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -182,6 +188,12 @@
     <ClInclude Include="..\utils\magic_enum\include\magic_enum.hpp">
       <Filter>utils\magic_enum</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Physics\Physics.h">
+      <Filter>Engine\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Dynamic\Seed.h">
+      <Filter>Game\Entities\Dynamic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -237,6 +249,9 @@
     </Filter>
     <Filter Include="utils\magic_enum">
       <UniqueIdentifier>{561063fb-da77-4175-920e-9e615f3afa7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Physics">
+      <UniqueIdentifier>{fa437b99-ddab-4e5f-b7f2-0dbbc13abef6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

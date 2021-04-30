@@ -219,10 +219,12 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClCompile Include="Engine\Entities\Entity.cpp" />
     <ClCompile Include="Engine\File.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
+    <ClCompile Include="Engine\Physics\Physics.cpp" />
     <ClCompile Include="Game\Context\PlayContext.cpp" />
     <ClCompile Include="Game\Door.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Flower.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Insect.cpp" />
+    <ClCompile Include="Game\Entities\Dynamic\Seed.cpp" />
     <ClCompile Include="Game\Entities\Static\FlowerMenu.cpp" />
     <ClCompile Include="Game\Entities\Static\Path.cpp" />
     <ClCompile Include="Game\Entities\Static\TowerEmplacement.cpp" />
@@ -250,10 +252,12 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClInclude Include="Engine\Entities\Entity.h" />
     <ClInclude Include="Engine\File.h" />
     <ClInclude Include="Engine\Game.h" />
+    <ClInclude Include="Engine\Physics\Physics.h" />
     <ClInclude Include="Game\Context\PlayContext.h" />
     <ClInclude Include="Game\Door.h" />
     <ClInclude Include="Game\Entities\Dynamic\Flower.h" />
     <ClInclude Include="Game\Entities\Dynamic\Insect.h" />
+    <ClInclude Include="Game\Entities\Dynamic\Seed.h" />
     <ClInclude Include="Game\Entities\EntityType.h" />
     <ClInclude Include="Game\Entities\Static\FlowerMenu.h" />
     <ClInclude Include="Game\Entities\Static\Path.h" />

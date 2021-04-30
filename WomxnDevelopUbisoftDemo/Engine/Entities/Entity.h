@@ -15,15 +15,19 @@ public :
 	void setPosition(sf::Vector2f position);
 
 	sf::Vector2f getPosition();
+	void getPosition(sf::Vector2f& position);
 	float getXPosition();
 	float getYPosition();
 	sf::Vector2f getSize();
+	sf::Vector2f getCenter();
 
 protected :
 	/// <summary>
 	/// Create its bounding box. Must position and size yet be defined to success
 	/// </summary>
 	void createBoundingBox();
+
+	void move();
 
 	void setSpeed(sf::Vector2f speed);
 	void setSize(sf::Vector2f size);
@@ -47,3 +51,7 @@ private :
 		m_alpha;
 };
 
+struct Entities {
+	Entity* current{ nullptr };
+	Entities* next{ nullptr };
+};

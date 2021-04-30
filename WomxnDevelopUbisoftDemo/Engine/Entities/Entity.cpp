@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Entity.h"
 
+#include <iostream>
+
 void Entity::createBoundingBox(){ 
 	const auto position = sf::Vector2f(this->position.x + size.x/2, this->position.y + size.y/2);
 	//const auto position = sf::Vector2f(this->position.x, this->position.y);
@@ -9,6 +11,12 @@ void Entity::createBoundingBox(){
 	SetCenter(position);
 
 	SetBoundingBox(position, size); 
+}
+
+void Entity::move(){
+	float xPosition = getXPosition() + getXSpeed();
+	float yPosition = getYPosition() + getYSpeed();
+	setPosition(xPosition, yPosition);
 }
 
 
@@ -59,11 +67,17 @@ sf::Color Entity::getColor(){
 
 sf::Vector2f Entity::getPosition() { return position; }
 
+void Entity::getPosition(sf::Vector2f& position){
+	position = this->position;
+}
+
 float Entity::getXPosition() { return this->position.x; }
 
 float Entity::getYPosition(){ return this->position.y; }
 
 sf::Vector2f Entity::getSize() { return this->size; }
+
+sf::Vector2f Entity::getCenter(){ return GetCenter(); }
 
 float Entity::getWidth(){ return size.x; }
 

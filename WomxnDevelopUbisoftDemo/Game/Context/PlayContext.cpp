@@ -6,7 +6,7 @@
 #include "PlayContext.h"
 
 PlayContext::PlayContext(/*int idLvl*/){
-	File *file = new File("Resources/Levels/lvl_0.txt");
+	File *file = new File("Assets/levels\\lvl_0.txt");
 
 	initEntities(emplacements);
 	initEntities(flowers);
@@ -26,9 +26,7 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 
 	//
-
-	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::Worms));
-
+	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::LadyBirdBeetles));
 	//
 
 
@@ -51,6 +49,9 @@ void PlayContext::update(sf::RenderWindow& window){
 	updateEntities(*path, window);
 
 	if (this->flowerMenu != nullptr) this->flowerMenu->update(window);
+
+	updateInsects();
+
 }
 
 void PlayContext::render(sf::RenderTarget& target) {
@@ -135,6 +136,21 @@ void PlayContext::updateScreen(sf::RenderWindow& window) {
 	moveScreen(speed);
 }
 
+void PlayContext::updateInsects(){
+	Entities* temp = insects;
+
+	while (temp->current != nullptr) {
+		Insect* insect = dynamic_cast<Insect*>(temp->current);
+
+		if (insect->getLife() <= 0) {
+			removeEntity(insects, insect);
+		}
+
+		if (temp->next != nullptr) temp = temp->next;
+		else break;
+	}
+}
+
 void PlayContext::moveScreen(sf::Vector2f speed){
 	setEntitiesPosition(*flowers, speed);
 	setEntitiesPosition(*emplacements, speed);
@@ -172,7 +188,12 @@ bool PlayContext::isAFlowerSelected(float xMouse, float yMouse){
 		FlowerType* flowerType = flowerMenu->getItem(xMouse, yMouse);
 
 		if (flowerType != nullptr) {
-			addEntity(flowers, new Flower(flowerMenu->getXPosition(), flowerMenu->getYPosition() - baseSize, baseSize, *flowerType));
+			float x = flowerMenu->getXPosition();
+			float y = flowerMenu->getYPosition() - baseSize;
+			
+			std::cout << "(insects != nullptr) : " << (insects != nullptr) << std::endl; //
+
+			addEntity(flowers, new Flower(sf::Vector2f(x, y), baseSize, *flowerType, insects));
 			return true;
 		}
 		else flowerMenu = nullptr;
