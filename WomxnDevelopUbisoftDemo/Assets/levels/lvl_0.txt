@@ -106,3 +106,15 @@ Horizontal
 160
 400
 160
+0
+60
+5
+Worms
+0
+60
+8
+Aphid
+0
+60
+4
+Cricket

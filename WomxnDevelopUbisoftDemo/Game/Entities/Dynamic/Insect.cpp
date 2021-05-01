@@ -39,7 +39,6 @@ void Insect::update(sf::RenderWindow& win){
 }
 
 void Insect::reduceLife(float damage){
-	std::cout << "damage send : " << damage << std::endl;
 	if (this->life - damage <= 0) {
 		setLife(0);
 	}
@@ -72,21 +71,24 @@ void Insect::move() {
 }
 
 void Insect::nextPoint(){
-	points->erase(points->begin()); // erase first element
+	indexPoints++;
 
-	setDirection(Direction::None);
-	updateDirection();
+	if (indexPoints < points->size() - 1) {
+		setDirection(Direction::None);
+
+		updateDirection();
+	}
 }
 
 void Insect::updateDirection(){
 	sf::Vector2f position = getPosition();
 
-	if ((int)points->size() == 0) {
+	if (indexPoints >= points->size() - 1) {
 		atHome = true;
 		return;
 	}
 
-	Point aim = *points->begin(); // get first element
+	Point aim = points->at(indexPoints); // get first element
 
 	switch (getDirection()) {
 		default:
@@ -173,28 +175,35 @@ void Insect::updateRotation() {
 
 void Insect::initFromType(InsectType type) {
 	switch (type) {
-	default:
-	case InsectType::Aphid:
-		life = 500;
-		setSpeed(sf::Vector2f(0.5, 0.5));
-		setColor(1, 0.4, 0.2);
-		break;
-	case InsectType::Cricket:
-		life = 1000;
-		setSpeed(sf::Vector2f(1, 1));
-		setColor(0.7, 0.6, 0);
-		break;
-	case InsectType::LadyBirdBeetles:
-		life = 1500;
-		setSpeed(sf::Vector2f(0.5, 0.5));
-		setColor(1, 0.1, 0.1);
-		break;
-	case InsectType::Worms:
-		life = 2000;
-		setSpeed(sf::Vector2f(0.2, 0.2));
-		setColor(1, 0.6, 0.6);
-		break;
-	}
+		default:
+		case InsectType::Aphid:
+			life = 500;
+			setSpeed(sf::Vector2f(0.4, 0.4));
+			setColor(1, 0.4, 0.2);
+			timeForPrepare = sf::seconds(3.f);
+			break;
+
+		case InsectType::Cricket:
+			life = 1000;
+			setSpeed(sf::Vector2f(0.9, 0.9));
+			setColor(0.7, 0.6, 0);
+			timeForPrepare = sf::seconds(1.5f);
+			break;
+
+		case InsectType::LadyBirdBeetles:
+			life = 1500;
+			setSpeed(sf::Vector2f(0.5, 0.5));
+			setColor(1, 0.1, 0.1);
+			timeForPrepare = sf::seconds(4.f);
+			break;
+
+		case InsectType::Worms:
+			life = 2000;
+			setSpeed(sf::Vector2f(0.2, 0.2));
+			setColor(1, 0.6, 0.6);
+			timeForPrepare = sf::seconds(6.f);
+			break;
+		}
 }
 
 void Insect::setDirection(Direction direction) { this->direction = direction; }
@@ -204,3 +213,7 @@ void Insect::setLife(float life){ this->life = life; }
 Direction Insect::getDirection() { return this->direction; }
 
 float Insect::getLife(){ return this->life; }
+
+sf::Time Insect::getTimeForPrepare(){
+	return this->timeForPrepare;
+}

@@ -24,9 +24,10 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 	this->flowerMenu = nullptr;
 
+	
 
 	//
-	addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::LadyBirdBeetles));
+	//addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::LadyBirdBeetles));
 	//
 
 
@@ -51,7 +52,24 @@ void PlayContext::update(sf::RenderWindow& window){
 	if (this->flowerMenu != nullptr) this->flowerMenu->update(window);
 
 	updateInsects();
+	
+	if ((int) waves.size() > 0) {
+		Wave* wave = &waves.at(0);
 
+		if (wave->isDone()) { nextWave(); }
+
+		else if (wave->getTimeToPrepare().asSeconds() <= clock.getElapsedTime().asSeconds()) {
+			sf::Vector2f position = wave->getPosition();
+			InsectType type = *wave->getType();
+		
+			addEntity(insects, new Insect(position.x, position.y, this->baseSize, &points, type));
+		
+			wave->decrementNbInsect();
+			clock.restart();
+		}
+	}
+	
+	
 }
 
 void PlayContext::render(sf::RenderTarget& target) {
@@ -160,25 +178,28 @@ void PlayContext::moveScreen(sf::Vector2f speed){
 	for (int i = 0; i < (int) points.size(); i++) {
 		points[i].set(points[i].getX() + speed.x, points[i].getY() + speed.y);
 	}
+
+	for (int i = 0; i < (int)waves.size(); i++) {
+		float x = waves[i].getPosition().x;
+		float y = waves[i].getPosition().y;
+
+		waves[i].setPosition(sf::Vector2f(x + speed.x, y + speed.y));
+	}
 }
 
 bool PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
 	Entities start = *emplacements;
 
 	if (start.current == nullptr) { return false; }
-
-	if (start.current->Contains(xMouse, yMouse)) {
-		setFlowerMenu(start.current);
-		return true;
-	}
-
-	while (start.next != nullptr) {
-		start = *start.next;
-
+	
+	while (start.current != nullptr) {
 		if (start.current->Contains(xMouse, yMouse)) {
 			setFlowerMenu(start.current);
 			return true;
 		}
+
+		if (start.next != nullptr) start = *start.next;
+		else break;
 	}
 	return false;
 }
@@ -190,8 +211,6 @@ bool PlayContext::isAFlowerSelected(float xMouse, float yMouse){
 		if (flowerType != nullptr) {
 			float x = flowerMenu->getXPosition();
 			float y = flowerMenu->getYPosition() - baseSize;
-			
-			std::cout << "(insects != nullptr) : " << (insects != nullptr) << std::endl; //
 
 			addEntity(flowers, new Flower(sf::Vector2f(x, y), baseSize, *flowerType, insects));
 			return true;
@@ -199,6 +218,15 @@ bool PlayContext::isAFlowerSelected(float xMouse, float yMouse){
 		else flowerMenu = nullptr;
 	}
 	return false;
+}
+
+bool PlayContext::isLevelDone() { return waves.empty(); }
+
+void PlayContext::nextWave(){
+	if (waves.size() == 0) {
+		return;
+	}
+	else waves.erase(waves.begin()); // erase first element
 }
 
 void PlayContext::handleEvent(sf::Event event){
@@ -274,27 +302,19 @@ void PlayContext::createEmplacements(File* file) {
 
 void PlayContext::createWaves(File* file){
 
-	std::cout << file->hasNextLine() << std::endl;
-
 	while (file->hasNextLine()) {
 		float xPos, yPos;
 		std::string strType;
-		int nbInsect;
+		float nbInsect;
 
 		file->getFloat(&xPos);
 		file->getFloat(&yPos);
 
+		file->getFloat(&nbInsect);
 		file->getString(&strType);
+		
+		InsectType type = magic_enum::enum_cast<InsectType>(strType).value();
 
-		file->getInt(&nbInsect);
-
-		constexpr auto& entries = magic_enum::enum_entries<InsectType>();
-		constexpr int size = magic_enum::enum_count<InsectType>();
-
-		for (int i = 0; i < size; i++) {
-			if (entries[i].second == strType) {
-				waves.push_back(*new Wave(entries[i].first, nbInsect, sf::Vector2f(xPos, yPos)));
-			}
-		}
+		waves.push_back(*new Wave(type, nbInsect, sf::Vector2f(xPos, yPos)));
 	}
 }

@@ -3,9 +3,14 @@
 #include "Game/Entities/EntityType.h"
 #include "Engine/Draw/Color.h"
 
+#include "../utils/magic_enum/include/magic_enum.hpp"
+
 #include <iostream>
+#include <string>
 
 FlowerMenu::FlowerMenu(float xPosition, float yPosition){
+	constexpr auto& entries = magic_enum::enum_names<FlowerType>();
+	constexpr int size = magic_enum::enum_count<FlowerType>();
 
 	if (!this->font.loadFromFile("Assets/fonts\\champagne_and_limousines.ttf")) {
 		std::cout << "Fail to load file !" << std::endl;
@@ -18,8 +23,9 @@ FlowerMenu::FlowerMenu(float xPosition, float yPosition){
 
 	charSize = 20.f;
 
-	for (int i = 0; i < nbFlower; i++) { 
-		addItem(xPosItem, yPosItem, flowerStr[i]); 
+	for (int i = 0; i < size; i++) { 
+		addItem(xPosItem, yPosItem, entries[i].data()); 
+
 		yPosItem += charSize + 5;
 	}
 }

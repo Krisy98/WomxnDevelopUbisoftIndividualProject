@@ -36,6 +36,8 @@ private :
 	Entities* emplacements = new Entities();
 	Entities* path = new Entities();
 
+	sf::Clock clock;
+
 	/// <summary>
 	/// update screen's view depending on the mouse position
 	/// </summary>
@@ -48,6 +50,11 @@ private :
 
 	bool isAEmplacementClicked(float xMouse, float yMouse);
 	bool isAFlowerSelected(float xMouse, float yMouse);
+	bool isLevelDone();
+
+	void nextWave();
+
+	 
 
 	/// <summary>
 	/// Create a path way from a file that define the level

@@ -16,7 +16,7 @@ public :
 	void update(sf::RenderWindow& window) override;
 
 	/// <summary>
-	/// Return the corresponding flower's type that contains x and y coordinates
+	/// Return the corresponding flower's type that contains x and y coordinates in the menuFlower deployed
 	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>

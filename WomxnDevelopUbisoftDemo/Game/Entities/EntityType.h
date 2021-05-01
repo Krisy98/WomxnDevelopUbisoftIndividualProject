@@ -9,18 +9,17 @@ enum class FlowerType {
     Delphinium
 };
 
-// sorted by dangerosity level
-static const char* flowerStr[] = { 
-    "Anemone",
-    "Hyacinth",
-    "Pansy",
-    "Rose",
-    "Delphinium"
+enum class InsectType { 
+    Aphid, 
+    Cricket, 
+    LadyBirdBeetles, 
+    Worms 
 };
 
-const int nbFlower = 5;
-
-enum class InsectType { Aphid, Cricket, LadyBirdBeetles, Worms };
 
 // different behavior
-enum class BossType { a, b, c};
+enum class BossType { 
+    a, 
+    b, 
+    c
+};
