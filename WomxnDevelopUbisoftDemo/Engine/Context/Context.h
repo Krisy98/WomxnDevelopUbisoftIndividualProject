@@ -10,6 +10,7 @@ public :
 	virtual void update(sf::RenderWindow& win) = 0;
 	virtual void render(sf::RenderTarget& target) = 0;
 	virtual void handleEvent(sf::Event event) = 0;
+	virtual bool done() = 0;
 
 	/// <summary>
 	/// Inizialise variable firstEntity of Entities type

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "MainLoop.h"
 
+#include <iostream>
+
 MainLoop::MainLoop() :
 	Game{ "Flowers Survive" }
 {
@@ -10,6 +12,11 @@ MainLoop::MainLoop() :
 
 void MainLoop::Update(float deltaTime){
 	this->context->update(*getWindow());
+
+
+	if (this->context->done()) {
+		std::cout << "DONE !" << std::endl;
+	}
 }
 
 void MainLoop::Render(sf::RenderTarget& target){

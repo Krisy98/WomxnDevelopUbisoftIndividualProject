@@ -23,6 +23,7 @@ public :
 	virtual void update(sf::RenderWindow& win);
 	virtual void render(sf::RenderTarget& target);
 	virtual void handleEvent(sf::Event event);
+	virtual bool done();
 	
 private :
 	float speedScrolling;

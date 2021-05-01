@@ -24,12 +24,9 @@ PlayContext::PlayContext(/*int idLvl*/){
 
 	this->flowerMenu = nullptr;
 
-	
-
 	//
 	//addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::LadyBirdBeetles));
 	//
-
 
 	file->close();
 }
@@ -220,7 +217,7 @@ bool PlayContext::isAFlowerSelected(float xMouse, float yMouse){
 	return false;
 }
 
-bool PlayContext::isLevelDone() { return waves.empty(); }
+bool PlayContext::isLevelDone() { return waves.size() == 0 && (insects->current == nullptr); }
 
 void PlayContext::nextWave(){
 	if (waves.size() == 0) {
@@ -238,6 +235,10 @@ void PlayContext::handleEvent(sf::Event event){
 			
 		}
 	}
+}
+
+bool PlayContext::done(){
+	return isLevelDone();
 }
 
 void PlayContext::setFlowerMenu(Entity* entity) {
