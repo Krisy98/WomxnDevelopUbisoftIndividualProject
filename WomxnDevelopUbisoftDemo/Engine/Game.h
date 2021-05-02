@@ -19,9 +19,6 @@ protected:
     virtual void Render(sf::RenderTarget& target) = 0;
     virtual void RenderDebugMenu(sf::RenderTarget& target) = 0;
     virtual void HandleEvent(sf::Event event) = 0;
-    
-    void runEventThread();
-    void runGameThread();
 
 private:
     sf::RenderWindow m_Window;

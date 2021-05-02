@@ -21,13 +21,17 @@ public :
 	float getLife();
 
 	sf::Time getTimeForPrepare();
+	float getRewardPoint();
 
 private :
 	Rectangle* body;
 	std::vector<Point>* points; // way
+
 	int indexPoints = 0;
 	float life;
-	bool atHome; // false if no there no next point to go
+	float rewardPoint;
+	bool atHome; // true if no there no next point to go
+
 	Direction direction;
 	sf::Time timeForPrepare;
 

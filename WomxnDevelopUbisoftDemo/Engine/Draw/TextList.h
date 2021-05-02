@@ -13,8 +13,6 @@ class TextList {
 public:
 	TextList();
 	~TextList();
-
-	//sf::Text getText(int id);
 	
 	/// <summary>
 	/// Give a const char* that contains coordinates x and y

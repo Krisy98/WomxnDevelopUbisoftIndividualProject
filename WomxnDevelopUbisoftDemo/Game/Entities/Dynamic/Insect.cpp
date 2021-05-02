@@ -177,31 +177,39 @@ void Insect::initFromType(InsectType type) {
 	switch (type) {
 		default:
 		case InsectType::Aphid:
-			life = 500;
 			setSpeed(sf::Vector2f(0.4, 0.4));
 			setColor(1, 0.4, 0.2);
+
+			life = 500;
 			timeForPrepare = sf::seconds(3.f);
+			rewardPoint = 20;
 			break;
 
 		case InsectType::Cricket:
-			life = 1000;
 			setSpeed(sf::Vector2f(0.9, 0.9));
 			setColor(0.7, 0.6, 0);
+
+			life = 1000;
 			timeForPrepare = sf::seconds(1.5f);
+			rewardPoint = 35;
 			break;
 
 		case InsectType::LadyBirdBeetles:
-			life = 1500;
 			setSpeed(sf::Vector2f(0.5, 0.5));
 			setColor(1, 0.1, 0.1);
+
+			life = 1500;
 			timeForPrepare = sf::seconds(4.f);
+			rewardPoint = 50;
 			break;
 
 		case InsectType::Worms:
-			life = 2000;
 			setSpeed(sf::Vector2f(0.2, 0.2));
 			setColor(1, 0.6, 0.6);
+
+			life = 2000;
 			timeForPrepare = sf::seconds(6.f);
+			rewardPoint = 60;
 			break;
 		}
 }
@@ -214,6 +222,6 @@ Direction Insect::getDirection() { return this->direction; }
 
 float Insect::getLife(){ return this->life; }
 
-sf::Time Insect::getTimeForPrepare(){
-	return this->timeForPrepare;
-}
+sf::Time Insect::getTimeForPrepare(){ return this->timeForPrepare; }
+
+float Insect::getRewardPoint(){ return this->rewardPoint; }

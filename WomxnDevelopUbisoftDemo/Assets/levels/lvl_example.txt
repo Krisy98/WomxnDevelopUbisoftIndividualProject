@@ -16,3 +16,8 @@ number M of towerEmplacement entity
 coordinate in X axis 
 coordinate in Y axis
 
+	next lines (represente waves of enemy) :
+coordinate in X axis 	
+coordinate in Y axis
+number of insect
+the name of the insect's type

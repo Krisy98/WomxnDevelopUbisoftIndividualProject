@@ -220,6 +220,8 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClCompile Include="Engine\File.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
     <ClCompile Include="Engine\Physics\Physics.cpp" />
+    <ClCompile Include="Game\Context\EndContext.cpp" />
+    <ClCompile Include="Game\Context\MenuContext.cpp" />
     <ClCompile Include="Game\Context\PlayContext.cpp" />
     <ClCompile Include="Game\Door.cpp" />
     <ClCompile Include="Game\Entities\Dynamic\Flower.cpp" />
@@ -253,6 +255,8 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
     <ClInclude Include="Engine\File.h" />
     <ClInclude Include="Engine\Game.h" />
     <ClInclude Include="Engine\Physics\Physics.h" />
+    <ClInclude Include="Game\Context\EndContext.h" />
+    <ClInclude Include="Game\Context\MenuContext.h" />
     <ClInclude Include="Game\Context\PlayContext.h" />
     <ClInclude Include="Game\Door.h" />
     <ClInclude Include="Game\Entities\Dynamic\Flower.h" />
@@ -271,10 +275,6 @@ xcopy /y /d  "$(SolutionDir)external\SFML-2.5.1\bin\*.dll" "$(OutDir)"</Command>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WomxnDevelopUbisoftDemo.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Resources\Levels\lvl_0.txt" />
-    <Text Include="Resources\Levels\lvl_example.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

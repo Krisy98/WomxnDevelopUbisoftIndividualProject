@@ -95,6 +95,12 @@
     <ClCompile Include="Game\Entities\Dynamic\Seed.cpp">
       <Filter>Game\Entities\Dynamic</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Context\EndContext.cpp">
+      <Filter>Game\Context</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Context\MenuContext.cpp">
+      <Filter>Game\Context</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -194,6 +200,12 @@
     <ClInclude Include="Game\Entities\Dynamic\Seed.h">
       <Filter>Game\Entities\Dynamic</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Context\EndContext.h">
+      <Filter>Game\Context</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Context\MenuContext.h">
+      <Filter>Game\Context</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -232,9 +244,6 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{f4b56b31-e95c-4ae5-a1f1-271484d157ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Levels">
-      <UniqueIdentifier>{983de0d9-11c6-4ae9-ab13-d653a8014802}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Waves">
       <UniqueIdentifier>{89b8b510-6162-459a-887a-58b3c20fca6b}</UniqueIdentifier>
     </Filter>
@@ -256,13 +265,5 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WomxnDevelopUbisoftDemo.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Resources\Levels\lvl_0.txt">
-      <Filter>Resources\Levels</Filter>
-    </Text>
-    <Text Include="Resources\Levels\lvl_example.txt">
-      <Filter>Resources\Levels</Filter>
-    </Text>
   </ItemGroup>
 </Project>

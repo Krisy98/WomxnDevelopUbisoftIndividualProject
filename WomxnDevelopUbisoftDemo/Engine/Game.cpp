@@ -58,74 +58,9 @@ void Game::RunGameLoop(){
 
         deltaTime = clock.getElapsedTime().asSeconds();
     }
- 
-
-
-    //
-
-    //std::thread eventThread (runEventThread);
-    //std::thread gameThread (runGameThread);
-
-    //eventThread.join();
-    //gameThread.join();
-
 }
 
 sf::RenderWindow* Game::getWindow(){
     sf::RenderWindow *win = &m_Window;
     return win;
 }
-
-void Game::runEventThread(){ //
-
-    while (m_Window.isOpen()) {
-        sf::Event event;
-
-        mutex.lock(); //
-
-        if (m_Window.pollEvent(event)) {
-
-            switch (event.type) {
-                case sf::Event::Closed:
-                    m_Window.close();
-                    break;
-
-                case sf::Event::KeyPressed:
-                    
-                    if (event.key.code == sf::Keyboard::Escape) { m_Window.close(); }
-                    else if (event.key.code == sf::Keyboard::F1) { toggleImGui = !toggleImGui; }
-                    break;
-                    
-            }
-            ImGui::SFML::ProcessEvent(event);
-        }
-
-        mutex.unlock(); //
-    }
-}
-
-void Game::runGameThread(){
-    float deltaTime{ 1.0f / APP_MAX_FRAMERATE };
-    sf::Clock clock;
-
-    while (m_Window.isOpen()) {
-        clock.restart();
-
-        ImGui::SFML::Update(m_Window, clock.restart());
-
-        Update(deltaTime);
-        Render(m_Window);
-        RenderDebugMenu(m_Window);
-
-        ImGui::EndFrame();
-        mutex.lock(); //
-        if (toggleImGui) { ImGui::SFML::Render(m_Window); }
-        mutex.unlock(); //
-
-        m_Window.display();
-
-        deltaTime = clock.getElapsedTime().asSeconds();
-
-    }
-}
-

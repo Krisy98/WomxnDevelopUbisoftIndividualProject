@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Engine/Context/Context.h"
 #include "Engine/Draw/Shapes/Point.h"
 #include "Engine/File.h"
@@ -24,13 +25,15 @@ public :
 	virtual void render(sf::RenderTarget& target);
 	virtual void handleEvent(sf::Event event);
 	virtual bool done();
+
+	bool isLevelDone();
 	
 private :
 	float speedScrolling;
 	float baseSize;
 	std::vector<Point> points; // path to follow
 	std::vector<Wave> waves; 
-	FlowerMenu *flowerMenu;
+	FlowerMenu *flowerMenu = nullptr;
 
 	Entities* insects = new Entities();
 	Entities* flowers = new Entities();
@@ -45,18 +48,46 @@ private :
 	/// <param name="window"></param>
 	void updateScreen(sf::RenderWindow& window);
 
-	void updateInsects();
+	/// <summary>
+	/// Test if there is an insect with no life and in this case remove it
+	/// </summary>
+	void lookForDeadInsect();
 
+	/// <summary>
+	/// Update position for all physics elements,
+	/// That make sure to keep correct coordinates
+	/// when player want to move into the screen
+	/// </summary>
+	/// <param name="speed"></param>
 	void moveScreen(sf::Vector2f speed);
 
+	/// <summary>
+	/// test and return true if there is a tower emplacement clicked on by the mouse
+	/// If it found it, call setFlowerMenu to update it correctly
+	/// </summary>
+	/// <param name="xMouse"></param>
+	/// <param name="yMouse"></param>
+	/// <returns></returns>
 	bool isAEmplacementClicked(float xMouse, float yMouse);
-	bool isAFlowerSelected(float xMouse, float yMouse);
-	bool isLevelDone();
 
+	/// <summary>
+	/// test and return true if there is a item of flowerMenu clicked on by the mouse
+	/// </summary>
+	/// <param name="xMouse"></param>
+	/// <param name="yMouse"></param>
+	/// <returns></returns>
+	bool isAFlowerSelected(float xMouse, float yMouse);
+
+	/// <summary>
+	/// update the current wave which insect will be dropped
+	/// </summary>
 	void nextWave();
 
+	/// <summary>
+	/// Add an insect with correct condition of time
+	/// </summary>
+	void dropInsect();
 	 
-
 	/// <summary>
 	/// Create a path way from a file that define the level
 	/// To be used correctly, the cursor need to be at the right place
@@ -84,16 +115,6 @@ private :
 	/// </summary>
 	/// <param name="entity"></param>
 	void setFlowerMenu(Entity* entity);
-
-	/*
-	entities :
-		- insects (enemies) // specific to the level
-		- basic informations :
-			- life
-			- indication of the enemies direction
-	*/
-
-	// sounds
 
 };
 

@@ -22,12 +22,6 @@ PlayContext::PlayContext(/*int idLvl*/){
 	createEmplacements(file);
 	createWaves(file);
 
-	this->flowerMenu = nullptr;
-
-	//
-	//addEntity(insects, new Insect(0, 60, this->baseSize, &points, InsectType::LadyBirdBeetles));
-	//
-
 	file->close();
 }
 
@@ -48,25 +42,8 @@ void PlayContext::update(sf::RenderWindow& window){
 
 	if (this->flowerMenu != nullptr) this->flowerMenu->update(window);
 
-	updateInsects();
-	
-	if ((int) waves.size() > 0) {
-		Wave* wave = &waves.at(0);
-
-		if (wave->isDone()) { nextWave(); }
-
-		else if (wave->getTimeToPrepare().asSeconds() <= clock.getElapsedTime().asSeconds()) {
-			sf::Vector2f position = wave->getPosition();
-			InsectType type = *wave->getType();
-		
-			addEntity(insects, new Insect(position.x, position.y, this->baseSize, &points, type));
-		
-			wave->decrementNbInsect();
-			clock.restart();
-		}
-	}
-	
-	
+	lookForDeadInsect();
+	dropInsect();
 }
 
 void PlayContext::render(sf::RenderTarget& target) {
@@ -78,7 +55,6 @@ void PlayContext::render(sf::RenderTarget& target) {
 	renderEntities(target, *path);
 
 	if (this->flowerMenu != nullptr) this->flowerMenu->draw(target);
-
 }
 
 void PlayContext::updateScreen(sf::RenderWindow& window) {
@@ -151,7 +127,7 @@ void PlayContext::updateScreen(sf::RenderWindow& window) {
 	moveScreen(speed);
 }
 
-void PlayContext::updateInsects(){
+void PlayContext::lookForDeadInsect(){
 	Entities* temp = insects;
 
 	while (temp->current != nullptr) {
@@ -160,7 +136,6 @@ void PlayContext::updateInsects(){
 		if (insect->getLife() <= 0) {
 			removeEntity(insects, insect);
 		}
-
 		if (temp->next != nullptr) temp = temp->next;
 		else break;
 	}
@@ -182,6 +157,13 @@ void PlayContext::moveScreen(sf::Vector2f speed){
 
 		waves[i].setPosition(sf::Vector2f(x + speed.x, y + speed.y));
 	}
+
+	if (flowerMenu != nullptr) {
+		float x = flowerMenu->getPosition().x;
+		float y = flowerMenu->getPosition().y;
+
+		flowerMenu->setPosition(sf::Vector2f(x + speed.x, y + speed.y));
+	}
 }
 
 bool PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
@@ -194,7 +176,6 @@ bool PlayContext::isAEmplacementClicked(float xMouse, float yMouse){
 			setFlowerMenu(start.current);
 			return true;
 		}
-
 		if (start.next != nullptr) start = *start.next;
 		else break;
 	}
@@ -217,13 +198,30 @@ bool PlayContext::isAFlowerSelected(float xMouse, float yMouse){
 	return false;
 }
 
-bool PlayContext::isLevelDone() { return waves.size() == 0 && (insects->current == nullptr); }
+bool PlayContext::isLevelDone() { return waves.size() == 0 && insects->current == nullptr; }
 
 void PlayContext::nextWave(){
 	if (waves.size() == 0) {
 		return;
 	}
 	else waves.erase(waves.begin()); // erase first element
+}
+
+void PlayContext::dropInsect(){
+	if ((int)waves.size() > 0) {
+		Wave* wave = &waves.at(0);
+
+		if (wave->isDone()) { nextWave(); }
+		else if (wave->getTimeToPrepare().asSeconds() <= clock.getElapsedTime().asSeconds()) {
+			sf::Vector2f position = wave->getPosition();
+			InsectType type = *wave->getType();
+
+			addEntity(insects, new Insect(position.x, position.y, this->baseSize, &points, type));
+
+			wave->decrementNbInsect();
+			clock.restart();
+		}
+	}
 }
 
 void PlayContext::handleEvent(sf::Event event){
@@ -238,7 +236,7 @@ void PlayContext::handleEvent(sf::Event event){
 }
 
 bool PlayContext::done(){
-	return isLevelDone();
+	return isLevelDone() /* || loose()*/;
 }
 
 void PlayContext::setFlowerMenu(Entity* entity) {

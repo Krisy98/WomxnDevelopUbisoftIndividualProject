@@ -16,25 +16,6 @@ TextList::~TextList(){
 	delete texts;
 }
 
-/*
-sf::Text TextList::getText(int id){
-	Texts* temp = texts;
-	
-	while (temp->current != nullptr) {
-		if (temp->id == id) return *temp->current;
-		if (temp->next != nullptr) temp = temp->next;
-		else break;
-	}
-
-	sf::Text* text;
-
-	text->setString("");
-
-	return *text;
-}
-*/
-
-
 const char* TextList::getCChar(float x, float y){
 	Texts* temp = texts;
 
@@ -45,9 +26,6 @@ const char* TextList::getCChar(float x, float y){
 		if (temp->next != nullptr) temp = temp->next;
 		else break;
 	}
-
-
-
 	return nullptr;
 }
 
@@ -61,7 +39,6 @@ void TextList::setText(const char* text, int id){
 		if (texts->id == id) {
 			texts->current->setString(text);
 		}
-
 		if (texts->next != nullptr) texts = texts->next;
 		else break;
 	}
@@ -78,7 +55,6 @@ void TextList::addText(sf::Text* text){
 	
 	if (temp->current == nullptr) {
 		temp->current = atEnd->current;
-		//std::cout << temp->current->getString().toAnsiString() << std::endl;
 		return;
 	}
 	else { temp->next = atEnd; }
@@ -88,8 +64,6 @@ void TextList::draw(sf::RenderTarget& target){
 	Texts* temp = texts;
 
 	if (temp->current != nullptr) target.draw(*temp->current);
-
-	//std::cout << (temp->current == nullptr) << std::endl;
 
 	while (temp->next != nullptr) {
 		temp = temp->next;
